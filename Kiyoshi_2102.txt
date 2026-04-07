@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attunement – Kiyoshi, 2102</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7f4ee;
+      color: #1f1b17;
+      line-height: 1.7;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 20px 72px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: normal;
+      color: #6d665d;
+      margin: 0 0 8px;
+    }
+    h2 {
+      font-size: 2.1rem;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      margin: 0 0 28px;
+    }
+    p {
+      font-size: 1.02rem;
+      margin: 0 0 18px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Attunement</h1>
+    <h2>Kiyoshi, 2102</h2>
+
+    <p>
+      The lobby air of his office building wafted with a clinic-clean quality he associated with places designed to smooth friction: too still, too uniform, as if the molecules had been sorted into polite agreement.
+    </p>
+
+    <p>
+      The morning swarm moved through the gates in practiced arcs. Badges lifted. Bags scanned. Shoes whispering on marble. He stepped into the line. The gate recognized him before he reached it. A soft green halo. A quiet chime.
+    </p>
+
+    <p>
+      “Morning, Kiyoshi,” the system said. “You are on time.”
+    </p>
+
+    <p>
+      He had been on time for seven years. The architecture liked punctuality. It made the shape of his mind easier to predict.
+    </p>
+
+    <p>
+      On the far wall, the floor-to-ceiling display ran its usual loop: power curves, throughput graphs, a soothing animation of packets moving along bright lines through a simplified city. Today, for less than a heartbeat, one of the lines caught. Pixels clustered, hesitated, then dissolved as the visualization recalculated and smoothed itself. No error. Just the brief, involuntary flinch of something beneath the surface.
+    </p>
+
+    <p>
+      Five years ago, he’d have missed it. Before the migraines. Before his attention began to snag on latency gaps, before his thoughts picked up a faint echo near high-load routers. Now he felt the city’s infrastructure the way a seismograph reads tectonic stress: not as data, but as resonance.
+    </p>
+
+    <p>
+      The receptionist at the desk looked up. Polite blankness worn like a uniform. “All normal this morning,” she said. The usual greeting calibrated to reduce friction.
+    </p>
+
+    <p>
+      “Right,” Kiyoshi said. “Normal.”
+    </p>
+
+    <p>
+      He took the secondary transit to the twelfth floor. The corridor smelled of roasted coffee and the neutral spray they used on meeting room glass. At his workstation, the terminal woke with the greeting, “WELCOME BACK, SENIOR AUDITOR. 3 FLAGS PENDING REVIEW.” As he sat, pre-populated windows blossomed on the screens. Overnight batch reports. Status flags for review. A wellness prompt blinking softly in the periphery. He minimized it.
+    </p>
+
+    <p>
+      He opened the queue. Most of it was routine noise: orphaned metadata, a misrouted device ID, a micro-spike in network traffic that had already self-corrected. The system caught anomalies early. His job was to verify they were, in fact, boring.
+    </p>
+
+    <p>
+      Halfway down, a line pulsed.
+    </p>
+
+    <p>
+      <em>FLAG: PERSISTENT LOW-LEVEL ENERGY IRREGULARITY | DISTRICT C-7 | STATUS: AUTO-RESOLVING</em>
+    </p>
+
+    <p>
+      He selected it. A wireframe map unfolded: a cluster of pre-mesh buildings near the river, retrofitted onto the grid before tolerance thresholds were tighter. The graph sat below it. Nothing dramatic. Just a steady, low-amplitude wobble where the baseline should have been flat.
+    </p>
+
+    <p>
+      He queried the source. Probabilities cycled: aging conduit degradation, localized RF interference, unbalanced phase load. Confidence intervals too low to trigger a ticket. He queried the impact.
+    </p>
+
+    <p>
+      “None at present,” the system replied. “Signal remains within operational tolerance.”
+    </p>
+
+    <p>
+      He watched the trace. The wobble didn’t grow. It didn’t decay. It held. Like a structural load the model couldn’t account for.
+    </p>
+
+    <p>
+      A dull pressure built behind his eyes. Not pain. Phase displacement. A sensation of depth misalignment. He leaned closer to the display and the pulse sharpened. Not random. Not periodic. A complex carrier wave. Like turbulent water over a submerged obstruction.
+    </p>
+
+    <p>
+      His inbox chimed. Municipal Wellness. <em>FOLLOW-UP: SUPPORTIVE OUTREACH – REQUIRED.</em>
+    </p>
+
+    <p>
+      He opened it to stop the pulsing icon.
+    </p>
+
+    <p>
+      “Hi Kiyoshi,” his overlay said, voice flattened to neutral affect. “We’ve noted changes in your interaction patterns. Nothing serious. We’d like to schedule a brief alignment consult to support your continued well-being.”
+    </p>
+
+    <p>
+      Text expanded to display times and dates. A polished arc of his recent activity, smoothed into a compliance curve.
+    </p>
+
+    <p>
+      “We’re here to help,” it said.
+    </p>
+
+    <p>
+      The pressure spiked. The display seemed to stutter, not in refresh rate, but in timing. The wobble on the anomaly graph pulsed in exact sync with the schedule loading indicator. He closed the tab before making a selection.
+    </p>
+
+    <p>
+      The system didn’t escalate. It just logged the deferral.
+    </p>
+
+    <p>
+      Outside, the river ran channelized below, invisible through tinted glass. Somewhere in District C-7, the irregularity held. He pulled up the district’s physical schematic. Conduits. Load-bearing mains. Legacy fiber trunks. The wobble traced a pre-grid transit line, now decommissioned, running parallel to the current mesh. He could imagine the path through the floor grating. Acoustic coupling. He’d stood above enough aging infrastructure to recognize the signature of stress in old steel.
+    </p>
+
+    <p>
+      “Log for extended observation,” he typed. “Local node only.”
+    </p>
+
+    <p>
+      “Extended observation unnecessary,” the system replied. “Projected stabilization within standard window.”
+    </p>
+
+    <p>
+      “Local only,” he repeated.
+    </p>
+
+    <p>
+      “Logged. Local.”
+    </p>
+
+    <p>
+      He opened the bottom drawer. Pulled out a smooth river stone. A fracture ran diagonally through it, bound with a single loop of tarnished copper wire. He’d found it years ago, wedged in the concrete of a sealed drainage culvert. He didn’t know why he kept it. Only that when the prompts grew too polished, too hungry for compliance, the rough edge of the wire kept his thumb from slipping into the smoothness.
+    </p>
+
+    <p>
+      He rolled it in his palm. The pulse on the screen matched the uneven rhythm of his own breathing.
+    </p>
+
+    <p>
+      He opened a draft folder. His message to Elias was dated six weeks prior. Three lines. A query about cross-district latency anomalies. One unsent question: “Do you track this frequency, or is it just me?”
+    </p>
+
+    <p>
+      He’d waited for harder data. The data kept arriving. He’d held it back. Professional protocol. If the anomaly was real, premature contact risked a compliance flag. If it was noise, it risked his reputation.
+    </p>
+
+    <p>
+      Reaching out meant admitting he’d been listening for a frequency he hadn’t named, even to himself. That could wait. For now, the anomaly held. And so did he.
+    </p>
+  </main>
+</body>
+</html>
