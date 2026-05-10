@@ -5,87 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Training Document (2068)</title>
   <style>
+    :root {
+      --bg: #f5f1ea;
+      --paper: #fbf8f3;
+      --ink: #1f1b17;
+      --muted: #6e675f;
+      --line: #d8d0c6;
+      --accent: #2f5a36;
+      --accent-dark: #243f29;
+      --shadow: rgba(28, 22, 17, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      background: #f7f4ee;
-      color: #1f1b17;
-      line-height: 1.7;
+      background: linear-gradient(to bottom, #f7f3ed, var(--bg));
+      color: var(--ink);
+      line-height: 1.78;
     }
-    main {
-      max-width: 720px;
+
+    .site-nav {
+      max-width: 42rem;
       margin: 0 auto;
-      padding: 56px 20px 72px;
+      padding: 28px 24px 0;
+      font-size: 0.9rem;
     }
-    h1 {
-      font-size: 1.5rem;
-      letter-spacing: 0.12em;
+
+    .site-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: currentColor;
+    }
+
+    article {
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 32px 24px 72px;
+    }
+
+    .designation {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3.8vw, 2.7rem);
+      line-height: 1.15;
       font-weight: normal;
-      color: #6d665d;
-      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+      margin: 0 0 22px;
     }
-    h2 {
-      font-size: 2.1rem;
-      font-weight: normal;
-      letter-spacing: -0.02em;
-      margin: 0 0 28px;
-    }
-    h3 {
-      font-size: 1.2rem;
-      font-weight: bold;
-      letter-spacing: -0.005em;
-      margin: 40px 0 16px;
-    }
-    h4 {
-      font-size: 1rem;
-      font-style: italic;
-      font-weight: normal;
-      color: #3a342d;
-      margin: 26px 0 12px;
-    }
-    p {
+
+    .byline {
       font-size: 1.02rem;
-      margin: 0 0 18px;
-    }
-    p.title {
+      color: var(--ink);
+      margin: 0 0 4px;
       font-style: italic;
-      margin-bottom: 6px;
     }
-    p.metadata {
-      color: #6d665d;
+
+    .credit {
       font-size: 0.92rem;
-      margin-bottom: 0;
+      color: var(--muted);
+      margin: 0 0 36px;
     }
-    ul {
-      margin: 0 0 18px;
-      padding-left: 24px;
+
+    .rule {
+      width: 72px;
+      height: 1px;
+      background: var(--line);
+      margin: 0 0 36px;
     }
-    li {
-      font-size: 1.02rem;
-      margin-bottom: 10px;
-      line-height: 1.7;
+
+    p {
+      font-size: 1.08rem;
+      margin: 0 0 22px;
     }
-    blockquote {
-      margin: 18px 0 12px;
-      padding-left: 18px;
-      border-left: 2px solid #c9c1b4;
+
+    h2 {
+      font-size: 1.12rem;
+      font-weight: normal;
       font-style: italic;
-      color: #3a342d;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      margin: 44px 0 18px;
     }
-    hr {
-      border: none;
-      border-top: 1px solid #d8d2c5;
-      margin: 36px 0;
+
+    blockquote {
+      margin: 0 0 28px;
+      padding: 4px 0 4px 22px;
+      border-left: 2px solid var(--accent);
+      color: #322b25;
+      font-style: italic;
+      font-size: 1.06rem;
     }
-    .closing {
-      margin-top: 48px;
-      color: #6d665d;
+
+    .colophon {
+      margin: 56px 0 0;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
       font-size: 0.95rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .back {
+      margin: 48px 0 0;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .back a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .back a:hover {
+      color: var(--accent);
+      border-bottom-color: currentColor;
+    }
+
+    @media (max-width: 520px) {
+      article { padding: 24px 20px 56px; }
+      p { font-size: 1.04rem; }
+      blockquote { font-size: 1.02rem; }
+      h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
+  <nav class="site-nav">
+    <a href="index.html">← The Forest is Woven</a>
+  </nav>
   <main>
     <h2>Training Document (2098)</h2>
 
@@ -239,6 +302,10 @@
 
     <p class="closing">End of Module 7. For Module 8 (<em>Coordinating Care Across Familial Networks: Working with Augmented Family Members of Sensitive Subjects</em>), see the practitioner library.</p>
 
+    <p class="back">
+      <a href="index.html">← Return to The Forest is Woven</a>
+    </p>
+	
   </main>
 </body>
 </html>
