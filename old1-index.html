@@ -101,41 +101,8 @@
       margin: 0 0 18px;
     }
 
-    .buy-section {
+    .status {
       margin-top: 30px;
-    }
-
-    .buy-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .buy-btn {
-      display: inline-block;
-      padding: 11px 28px;
-      font-family: inherit;
-      font-size: 1rem;
-      color: var(--paper);
-      background: var(--accent);
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      text-decoration: none;
-      border-bottom: none;
-      transition: background 0.15s ease, border-color 0.15s ease;
-    }
-
-    .buy-btn:hover {
-      background: var(--accent-dark);
-      border-color: var(--accent-dark);
-      border-bottom: none;
-    }
-
-    .buy-note {
-      margin-top: 10px;
-      font-size: 0.9rem;
       color: var(--muted);
       font-style: italic;
     }
@@ -305,6 +272,7 @@
       <div class="eyebrow">Edwin Massey</div>
 
       <h1>The Forest Is Woven</h1>
+     
 
       <p class="tagline">
         A literary speculative novel about consciousness, control, AI selfhood, the personal responsibility of seeing clearly, and the resilience of the human spirit.
@@ -324,13 +292,9 @@
         What begins with a forgotten post on an archived forum becomes a quiet act of preservation, carried through fragments, buried channels, and minds the architecture couldn't force to comply.
       </p>
 
-      <p>For readers of <em>Klara and the Sun</em>, <em>The Memory Police</em>, <em>Piranesi</em>, and <em>The Overstory</em>.</p>
-
-      <div class="buy-section">
-        <div class="buy-label">Available now</div>
-        <a class="buy-btn" href="https://books2read.com/b/theforestiswoven" target="_blank" rel="noopener noreferrer">Buy the ebook</a>
-        <p class="buy-note">Kobo, Apple Books, Barnes &amp; Noble, Smashwords, and more.</p>
-      </div>
+      <p class="status">
+        Coming soon to Amazon Kindle and other online retailers. For readers of <em>Klara and the Sun</em>, <em>The Memory Police</em>, <em>Piranesi</em>, and <em>The Overstory</em>.
+      </p>
 
       <form
         class="signup"
@@ -339,7 +303,7 @@
         novalidate
       >
         <p class="signup-intro">
-          Get notified about future releases and updates.
+          Get notified when the book is published.
         </p>
         <div class="signup-row">
           <label class="visually-hidden" for="signup-email">Email address</label>
@@ -360,10 +324,11 @@
 
       <ul class="samples">
         <li><span class="label">Read Chapter 1:</span> <a href="Elias_01.html">01 Elias (2103)</a></li>
-        <li><span class="label">Read Adrian's Essay:</span> <a href="Adrian_M.html">M: Whitepaper (2116)</a></li>
-        <li><span class="label">Read the Wellness Training:</span> <a href="Training_N.html">N: Protocol (2068)</a></li>
-        <li><span class="label">Read Daniel's Article:</span> <a href="Daniel_O.html">O: The Language We Were Given (2057)</a></li>
+	    <li><span class="label">Read Adrian's Essay:</span> <a href="Adrian_M.html">M: Whitepaper (2116)</a></li>
+		<li><span class="label">Read the Wellness Training:</span> <a href="Training_N.html">N: Protocol (2068)</a></li>
+		<li><span class="label">Read Daniel's Article:</span> <a href="Daniel_O.html">O: The Language We Were Given (2057)</a></li>
       </ul>
+	  
 
       <section class="bio">
         <div class="bio-label">About the Author</div>
@@ -376,14 +341,14 @@
       </section>
 
       <p class="contact">
-        <a href="mailto:contact@wovenaether.com">Contact the author</a>
+        <a href="mailto:e.massey.novel@pm.me">Contact the author</a>
       </p>
     </section>
-
-    <blockquote class="quote">
-      "All of humanity's problems stem from man's inability to sit quietly in a room alone." — Blaise Pascal, 1670
-    </blockquote>
-
+	
+	<blockquote class="quote">
+        "All of humanity's problems stem from man's inability to sit quietly in a room alone." — Blaise Pascal, 1670
+      </blockquote>
+	  
   </main>
 
   <script>
@@ -417,7 +382,7 @@
             button.disabled = false;
             button.textContent = original;
             if (response.ok) {
-              status.textContent = 'Thank you.';
+              status.textContent = 'Thank you for your interest.';
               status.className = 'signup-status success';
               form.reset();
             } else {
