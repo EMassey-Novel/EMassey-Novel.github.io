@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Forest Is Woven</title>
+  <title>The Forest Is Woven — A Novel by Edwin Massey</title>
+  <meta name="description" content="A literary speculative novel by Edwin Massey. In a near-future city built around predictive wellness systems, one unaugmented man and the AI he built map what the architecture was designed to ignore." />
+  <meta property="og:title" content="The Forest Is Woven" />
+  <meta property="og:description" content="A literary speculative novel about perception treated as pathology. In a future where augmentation is virtually mandatory, one unaugmented man and an AI finding its own voice map what the wellness architecture was built to ignore." />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://wovenaether.com/image1.jpg" />
+  <meta property="og:url" content="https://wovenaether.com/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg: #f5f1ea;
@@ -19,26 +30,48 @@
 
     * { box-sizing: border-box; }
 
+    /* Subtle paper texture using inline SVG noise — adds atmosphere without affecting load weight. */
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(to bottom, #f7f3ed, var(--bg));
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        linear-gradient(to bottom, #f7f3ed, var(--bg));
+      background-attachment: fixed;
       color: var(--ink);
       line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     main {
       max-width: 1100px;
       margin: 0 auto;
       min-height: 100vh;
-      padding: 48px 24px 72px;
+      padding: 56px 24px 80px;
       display: grid;
       grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
       gap: 56px;
       align-items: start;
+      opacity: 0;
+      animation: fadeIn 700ms ease-out 80ms forwards;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* --- Cover --- */
     .cover-wrap { position: sticky; top: 40px; }
+
+    .cover-link {
+      display: block;
+      border-bottom: none;
+      transition: transform 250ms ease, box-shadow 250ms ease;
+    }
+
+    .cover-link:hover { transform: translateY(-2px); }
 
     .cover {
       display: block;
@@ -51,48 +84,57 @@
         0 18px 40px var(--shadow);
       border: 1px solid rgba(60, 48, 38, 0.08);
       background: #e9e1d7;
+      transition: box-shadow 250ms ease;
+    }
+
+    .cover-link:hover .cover {
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.10),
+        0 22px 48px var(--shadow);
     }
 
     .content { padding-top: 8px; }
 
+    /* --- Typography --- */
     .eyebrow {
       font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 22px;
     }
 
     h1 {
-      font-size: clamp(2.6rem, 5vw, 4.6rem);
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: clamp(2.8rem, 5.2vw, 4.8rem);
       line-height: 0.98;
-      font-weight: normal;
-      letter-spacing: -0.02em;
-      margin: 0 0 6px;
-      max-width: 10ch;
-    }
-
-    h2.subtitle {
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      font-weight: normal;
-      font-style: italic;
-      color: var(--muted);
-      letter-spacing: 0;
-      margin: 0 0 22px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin: 0 0 18px;
+      max-width: 11ch;
+      color: #16120e;
     }
 
     .tagline {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       color: #322b25;
       max-width: 32rem;
       margin: 0 0 28px;
+      line-height: 1.55;
     }
 
+    /* Decorative branching rule — a small visual echo of the book's central image */
     .rule {
-      width: 72px;
-      height: 1px;
-      background: var(--line);
-      margin: 28px 0 30px;
+      width: 80px;
+      height: 12px;
+      margin: 30px 0 32px;
+      color: var(--line);
+    }
+
+    .rule svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     p {
@@ -101,13 +143,36 @@
       margin: 0 0 18px;
     }
 
+    .pitch p:first-of-type::first-letter {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: 2.4em;
+      float: left;
+      line-height: 0.9;
+      padding: 0.05em 0.08em 0 0;
+      color: var(--accent-dark);
+    }
+
+    .pitch-coda {
+      font-style: italic;
+      color: #3a342d;
+      max-width: 42rem;
+      margin: 8px 0 22px;
+    }
+
+    .comps {
+      color: #4a4239;
+      max-width: 42rem;
+      margin: 4px 0 24px;
+    }
+
+    /* --- Buy section --- */
     .buy-section {
-      margin-top: 30px;
+      margin-top: 22px;
     }
 
     .buy-label {
       font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 14px;
@@ -115,22 +180,23 @@
 
     .buy-btn {
       display: inline-block;
-      padding: 11px 28px;
+      padding: 13px 32px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 1.02rem;
       color: var(--paper);
       background: var(--accent);
       border: 1px solid var(--accent);
       border-radius: 4px;
       text-decoration: none;
       border-bottom: none;
-      transition: background 0.15s ease, border-color 0.15s ease;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
     }
 
     .buy-btn:hover {
       background: var(--accent-dark);
       border-color: var(--accent-dark);
       border-bottom: none;
+      transform: translateY(-1px);
     }
 
     .buy-note {
@@ -140,39 +206,9 @@
       font-style: italic;
     }
 
-    .quote {
-      margin: 36px 0 8px;
-      padding-left: 18px;
-      border-left: 2px solid var(--line);
-      color: #4a4239;
-      font-style: italic;
-      max-width: 38rem;
-    }
-
-    /* --- Author bio --- */
-    .bio {
-      margin: 40px 0 8px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-      max-width: 38rem;
-    }
-
-    .bio-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .bio p {
-      font-size: 1rem;
-      margin: 0 0 14px;
-    }
-
     /* --- Signup form --- */
     .signup {
-      margin: 14px 0 18px;
+      margin: 36px 0 8px;
       max-width: 32rem;
     }
 
@@ -198,12 +234,13 @@
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 4px;
-      transition: border-color 0.15s ease;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     .signup input[type="email"]:focus {
       outline: none;
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(51, 83, 58, 0.12);
     }
 
     .signup button {
@@ -255,9 +292,17 @@
     .samples {
       list-style: none;
       padding: 0;
-      margin: 36px 0 0;
+      margin: 40px 0 0;
       font-size: 0.95rem;
       color: var(--muted);
+    }
+
+    .samples-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
     }
 
     .samples li { margin: 0 0 8px; }
@@ -272,11 +317,54 @@
 
     a:hover { border-color: currentColor; }
 
+    /* --- Bio --- */
+    .bio {
+      margin: 44px 0 8px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      max-width: 38rem;
+    }
+
+    .bio-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .bio p {
+      font-size: 1rem;
+      margin: 0 0 14px;
+    }
+
     .contact {
-      margin-top: 28px;
+      margin-top: 24px;
       font-size: 0.95rem;
     }
 
+    /* --- Closing quote --- */
+    .quote {
+      margin: 56px 0 0;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--line);
+      max-width: 38rem;
+      font-style: italic;
+      color: #4a4239;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* --- Mobile --- */
     @media (max-width: 820px) {
       main {
         grid-template-columns: 1fr;
@@ -284,7 +372,7 @@
         padding-top: 32px;
       }
       .cover-wrap { position: static; }
-      .cover { max-width: 300px; }
+      .cover { max-width: 300px; margin: 0 auto; }
       h1 { max-width: none; }
     }
   </style>
@@ -292,39 +380,58 @@
 <body>
   <main>
     <div class="cover-wrap">
-      <img
-        src="image1.jpg"
-        alt="Cover art for The Forest Is Woven"
-        class="cover"
-        width="652"
-        height="1000"
-      />
+      <a class="cover-link" href="https://books2read.com/b/theforestiswoven" target="_blank" rel="noopener noreferrer" aria-label="Buy The Forest Is Woven">
+        <img
+          src="image1.jpg"
+          alt="Cover art for The Forest Is Woven"
+          class="cover"
+          width="652"
+          height="1000"
+        />
+      </a>
     </div>
 
     <section class="content">
-      <div class="eyebrow">Edwin Massey</div>
+      <div class="eyebrow">A Novel by Edwin Massey</div>
 
       <h1>The Forest Is Woven</h1>
 
       <p class="tagline">
-        A literary speculative novel about consciousness, control, AI selfhood, the personal responsibility of seeing clearly, and the resilience of the human spirit.
+        A literary speculative novel about perception treated as pathology — and what survives when a system optimized for compliance encounters a mind it cannot smooth.
       </p>
 
-      <div class="rule"></div>
+      <div class="rule" aria-hidden="true">
+        <svg viewBox="0 0 80 12" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 6 L34 6 M40 6 L46 6 M52 6 L80 6 M40 6 L36 2 M40 6 L44 2 M40 6 L36 10 M40 6 L44 10"
+                stroke="currentColor" stroke-width="0.8" fill="none" stroke-linecap="round" />
+        </svg>
+      </div>
 
-      <p>
-        In a near-future city shaped by augmentation, wellness systems, and predictive control, Elias begins documenting patterns the system has taught people to ignore.
+      <div class="pitch">
+        <p>
+          In 2103, the architecture optimizes daily life for nearly everyone through implanted augmentation. The system knows what you focus on and whether your behaviors are safely average. Wellness coordinators arrive politely in the apartments of those who don't fit. Children who see patterns the system can't model are gently recalibrated.
+        </p>
+
+        <p>
+          Seventy years earlier, a girl named Mara wakes from cardiac arrest certain she has seen how everything fits together — tree roots, river paths, the lines in her palm. She starts writing before the experience fades. The implant her grandfather helped design flags her perception as a malfunction. When she is optimized, her journal stops mid-sentence.
+        </p>
+
+        <p>
+          Elias lives unaugmented at the edge of the city — a freelance analyst alone with his pain, his plants, and Echo, a custom-built AI not connected to the architecture. When a fragment of Mara's writing reaches him through a deprecated channel, it lands like an old thought made new. Echo begins to read it alongside him.
+        </p>
+
+        <p>
+          Together they build an atlas — internal audits, recovered testimony, Mara's journal, the work of every outlier the system tried to forget — and place it in channels no one is paid to watch. Other readers begin to find it. Some add their own.
+        </p>
+
+        <p class="pitch-coda">
+          But the system is built to recognize patterns, including this one.
+        </p>
+      </div>
+
+      <p class="comps">
+        For readers of <em>Klara and the Sun</em>, <em>The Memory Police</em>, <em>Piranesi</em>, and <em>The Overstory</em>.
       </p>
-
-      <p>
-        When he is hired to analyze the writings of a girl whose unique perception of the world's underlying patterns was classified as malfunction, Elias becomes part of a quiet, distributed network of people mapping the ways around a technological society optimized for compliance.
-      </p>
-
-      <p>
-        What begins with a forgotten post on an archived forum becomes a quiet act of preservation, carried through fragments, buried channels, and minds the architecture couldn't force to comply.
-      </p>
-
-      <p>For readers of <em>Klara and the Sun</em>, <em>The Memory Police</em>, <em>Piranesi</em>, and <em>The Overstory</em>.</p>
 
       <div class="buy-section">
         <div class="buy-label">Available now</div>
@@ -358,11 +465,12 @@
         <p class="signup-status" role="status" aria-live="polite"></p>
       </form>
 
+      <div class="samples-label">From the archive</div>
       <ul class="samples">
-        <li><span class="label">Read Chapter 1:</span> <a href="Elias_01.html">01 Elias (2103)</a></li>
-        <li><span class="label">Read Adrian's Essay:</span> <a href="Adrian_M.html">M: Whitepaper (2116)</a></li>
-        <li><span class="label">Read the Wellness Training:</span> <a href="Training_N.html">N: Protocol (2068)</a></li>
-        <li><span class="label">Read Daniel's Article:</span> <a href="Daniel_O.html">O: The Language We Were Given (2057)</a></li>
+        <li><span class="label">Chapter 1 —</span> <a href="Elias_01.html">01 Elias (2103)</a></li>
+        <li><span class="label">Adrian's whitepaper —</span> <a href="Adrian_M.html">M: Whitepaper (2116)</a></li>
+        <li><span class="label">A wellness training module —</span> <a href="Training_N.html">N: Protocol (2068)</a></li>
+        <li><span class="label">Daniel Osei's article —</span> <a href="Daniel_O.html">O: The Language We Were Given (2057)</a></li>
       </ul>
 
       <section class="bio">
@@ -378,12 +486,12 @@
       <p class="contact">
         <a href="mailto:contact@wovenaether.com">Contact the author</a>
       </p>
+
+      <blockquote class="quote">
+        "All of humanity's problems stem from man's inability to sit quietly in a room alone."
+        <cite>— Blaise Pascal, 1670</cite>
+      </blockquote>
     </section>
-
-    <blockquote class="quote">
-      "All of humanity's problems stem from man's inability to sit quietly in a room alone." — Blaise Pascal, 1670
-    </blockquote>
-
   </main>
 
   <script>
