@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>01: Elias (2103) — The Forest is Woven</title>
+  <title>01: Elias (2103) — The Forest Is Woven</title>
+  <meta name="description" content="Read Chapter 1 of The Forest Is Woven by Edwin Massey." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg: #f5f1ea;
@@ -11,9 +17,8 @@
       --ink: #1f1b17;
       --muted: #6e675f;
       --line: #d8d0c6;
-      --accent: #2f5a36;
+      --accent: #33533a;
       --accent-dark: #243f29;
-      --shadow: rgba(28, 22, 17, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -21,252 +26,285 @@
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(to bottom, #f7f3ed, var(--bg));
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        linear-gradient(to bottom, #f7f3ed, var(--bg));
+      background-attachment: fixed;
       color: var(--ink);
-      line-height: 1.78;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .site-nav {
-      max-width: 42rem;
-      margin: 0 auto;
-      padding: 28px 24px 0;
-      font-size: 0.9rem;
-    }
-
-    .site-nav a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-
-    .site-nav a:hover {
-      color: var(--accent);
-      border-bottom-color: currentColor;
-    }
-
-    article {
+    .chapter {
       max-width: 38rem;
       margin: 0 auto;
-      padding: 32px 24px 72px;
+      padding: 48px 24px 80px;
+      opacity: 0;
+      animation: fadeIn 700ms ease-out 80ms forwards;
     }
 
-    .designation {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .top-nav {
+      margin-bottom: 56px;
+      font-size: 0.92rem;
+    }
+
+    .chapter-header {
+      margin-bottom: 8px;
+    }
+
+    .eyebrow {
       font-size: 0.82rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 8px;
     }
 
-    h1 {
-      font-size: clamp(2rem, 3.8vw, 2.7rem);
-      line-height: 1.15;
-      font-weight: normal;
-      letter-spacing: -0.01em;
-      margin: 0 0 22px;
+    h1.chapter-title {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 0 0 6px;
+      color: #16120e;
     }
 
-    .rule {
-      width: 72px;
-      height: 1px;
-      background: var(--line);
-      margin: 0 0 36px;
-    }
-
-    p {
-      font-size: 1.08rem;
-      margin: 0 0 22px;
-    }
-
-    h2 {
-      font-size: 1.12rem;
-      font-weight: normal;
-      font-style: italic;
-      color: var(--ink);
-      letter-spacing: 0.01em;
-      margin: 44px 0 18px;
-    }
-
-    blockquote {
-      margin: 0 0 28px;
-      padding: 4px 0 4px 22px;
-      border-left: 2px solid var(--accent);
-      color: #322b25;
-      font-style: italic;
-      font-size: 1.06rem;
-    }
-
-    .back {
-      margin: 48px 0 0;
-      text-align: center;
-      font-size: 0.92rem;
-    }
-
-    .back a {
+    .year {
+      font-size: 0.95rem;
       color: var(--muted);
+      font-style: italic;
+    }
+
+    .separator {
+      width: 80px;
+      height: 12px;
+      margin: 28px 0 36px;
+      color: var(--line);
+    }
+
+    .separator svg { width: 100%; height: 100%; display: block; }
+
+    .prose {
+      font-size: 1.06rem;
+      line-height: 1.72;
+    }
+
+    .prose p {
+      margin: 0 0 18px;
+    }
+
+    .prose p.lede::first-letter {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: 2.4em;
+      float: left;
+      line-height: 0.9;
+      padding: 0.05em 0.08em 0 0;
+      color: var(--accent-dark);
+    }
+
+    .prose .excerpt {
+      font-style: italic;
+      border-left: 2px solid var(--line);
+      padding: 4px 0 4px 20px;
+      margin: 22px 0;
+      color: #3a342d;
+    }
+
+    .bottom-nav {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--accent);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: color 0.15s ease, border-color 0.15s ease;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
 
-    .back a:hover {
-      color: var(--accent);
-      border-bottom-color: currentColor;
-    }
+    a:hover { border-color: currentColor; }
 
-    @media (max-width: 520px) {
-      article { padding: 24px 20px 56px; }
-      p { font-size: 1.04rem; }
-      h1 { font-size: 1.8rem; }
+    @media (max-width: 640px) {
+      .chapter { padding: 32px 20px 60px; }
+      .top-nav { margin-bottom: 40px; }
     }
   </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="index.html">← The Forest is Woven</a>
-  </nav>
+  <article class="chapter">
+    <nav class="top-nav">
+      <a href="index.html">← The Forest Is Woven</a>
+    </nav>
 
-  <article>
-    <div class="designation"></div>
+    <header class="chapter-header">
+      <div class="eyebrow">Chapter One</div>
+      <h1 class="chapter-title">Elias</h1>
+      <div class="year">2103</div>
+    </header>
 
-    <h1>01: Elias (2103)</h1>
+    <div class="separator" aria-hidden="true">
+      <svg viewBox="0 0 80 12" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 6 L34 6 M40 6 L46 6 M52 6 L80 6 M40 6 L36 2 M40 6 L44 2 M40 6 L36 10 M40 6 L44 10"
+              stroke="currentColor" stroke-width="0.8" fill="none" stroke-linecap="round" />
+      </svg>
+    </div>
 
-    <div class="rule"></div>
+    <div class="prose">
+      <p class="excerpt">The boy lay on his back and looked up through the canopy of trees. The light came through the leaves in an ever-changing pattern. It was as if the forest was thinking about something.</p>
 
-    <p>The boy lay on his back and stared up through the forest canopy. The golden light came through the leaves in an ever-changing pattern, as if the trees were processing information.</p>
+      <p class="lede">Those lines glowed in small, angled handwriting on one of Elias's screens.</p>
 
-    <p>Those lines glowed white against black in small, angled handwriting on one of Elias's screens.</p>
+      <p>He had stumbled across the story weeks ago, buried in a preserved mirror of a defunct low-traffic board. There, unaugmented outcasts traded content and ideas selected more for their texture than utility. The only metadata for the story: M. Cross. Last indexed 2063.</p>
 
-    <p>He had stumbled across the excerpt weeks ago, buried in an archive of an old, low-traffic board where unaugmented outcasts traded content and ideas selected more for their texture than utility. The only metadata for the excerpt: M. Cross. Last indexed 2063.</p>
+      <p>He'd first read it the way he read most things at 2 AM, searching for meaning, not expecting to find it. Then he'd saved it in his archive folder, deciding that anything that mattered would survive being filed away.</p>
 
-    <p>He'd first read it the way he read most things at 6 AM after only three hours of sleep, seeking meaning but expecting none. Then he'd saved it in his archive folder, deciding that anything that mattered would survive being filed away.</p>
+      <p>This morning he'd opened the file again without intending to. It appeared in his recent files when he was looking for something else. After he'd accidentally opened it, the lines met him like an old thought made new.</p>
 
-    <p>This morning he'd opened it again without intending to. The file appeared at the top of a search when he was looking for something else. He clicked it again, and the lines met him like a favorite old thought made new.</p>
+      <p>He waited for his internal voice to chime in: <em>you're doing it again, assigning meaning to everything.</em> The voice stayed quiet, and that unnerved him more than a scolding.</p>
 
-    <p>He waited for his internal voice to chime in: you're doing it again, assigning meaning to everything. The voice stayed quiet, and that unnerved him more than any doubts.</p>
+      <p>With his shoulders curled over the terminal, he discussed it with his AI. "There's an insistence," he said. "The writer doesn't just see a pattern; they feel obligated to it."</p>
 
-    <p>With his shoulders curled over the terminal, he discussed it with his AI. "It's the insistence," he said. "The writer doesn't just see a pattern; they feel obligated to it."</p>
+      <p>"An aesthetic duty?" Echo asked.</p>
 
-    <p>"An aesthetic duty?" Echo had asked.</p>
+      <p>"Maybe. Or a moral one," he said.</p>
 
-    <p>"Maybe a moral one," he said.</p>
+      <p>His spine sent up its hourly flares. He pushed himself upright with care, stretched his entire body backwards until vertebrae clicked in a familiar sequence, and looked up at the peeling ceiling. Hairline fractures spidering through old plaster, catching faint light from his lamps, looked like an aerial view of dried riverbeds. For a moment, Elias felt like the boy under the canopy watching light move through the leaves.</p>
 
-    <p>His spine sent up its hourly flares. He pushed himself upright with care, stretched his entire body backwards until vertebrae clicked in a familiar sequence, and looked up at the peeling ceiling. Hairline fractures spidering through old plaster, catching faint light, looked like an aerial view of dried riverbeds. For a moment, Elias felt like the boy under the canopy watching the light move through the leaves.</p>
+      <p>At dawn, the wall-mounted vegetation racks hummed along one side of the loft, crowded with leafy greens, parsley, chives, lemon balm, holy basil, and chanca piedra. Peppers and cherry tomatoes stood in deeper pots beneath the lights near the window. Garlic grew in a row of heavy containers on a low shelf, and the seven tobacco strains occupied larger tubs of their own.</p>
 
-    <p>At dawn the vegetation racks hummed along the length of one wall. Peppers in three colors. Cherry tomatoes on trailing vines. Garlic in a deep tray. Leafy greens that wanted cutting back every week. Parsley. A small bed of chives. Seven strains of tobacco he'd been refining for years. Lemon balm, holy basil, chanca piedra for his ongoing battle with kidney stones. In a far corner of the lowest tray, a patch of broad opium poppy leaves he touched only when the pain was too great to let him sleep.</p>
+      <p>The smell—damp soil, chlorophyll, faint spice—cut through the old wood and dust of the building. The translucent nutrient lines pulsed in a slow, regular rhythm.</p>
 
-    <p>The smell—damp soil, chlorophyll, faint spice—cut through the old wood and dust of the building. The translucent nutrient lines pulsed in a slow, regular rhythm like a heartbeat made visual.</p>
+      <p>Shelves of old books lined another wall, on either side of a fireplace that burned real logs. Soft morning light came through the east window where he'd hauled the thick curtains open.</p>
 
-    <p>Shelves of old books lined another wall, on either side of a fireplace that burned real logs. Soft morning light came through the picture frame east window where he'd hauled the thick curtains open.</p>
+      <p>A scarred wooden table and two matching chairs sat near the kitchen. They had come with the space. He kept them and used the table for anything.</p>
 
-    <p>A scarred wooden table and two matching chairs sat near the kitchen. They had come with the space and stayed because they worked. And because replacing them would require disassembly and carrying down flights of stairs.</p>
+      <p>Elias had paid extra for the top floor loft in this old five-story building. It gave his thoughts more room. A sense that as they circled and rose they weren't crushed by someone's footsteps.</p>
 
-    <p>He'd paid extra for the top floor loft in this old five-story building. It gave his thoughts more room. A sense that as they circled and rose they weren't crushed by someone's footsteps.</p>
+      <p>The balcony faced northwest, away from the street. He had a chair out there—solid wood, heavy, the kind that didn't blow over—and a low table wide enough for a cup and a book. An overhang kept the rain off without blocking the sky.</p>
 
-    <p>The balcony faced northwest, away from the street. He had put a chair out there years ago—solid wood, heavy, the kind that didn't blow over—and a low table just wide enough for a cup and a book. A roof kept the rain off without blocking the sky.</p>
+      <p>He grew things out there that wanted more light than the loft provided: sage he cut back every spring, a peppermint he used for tea. On clear nights he could see the river if he stood at the railing and looked south. Often he just sat with a pipe and watched the trees. He had been doing this for years before he'd first thought about why.</p>
 
-    <p>He grew things out there that wanted more light than the loft provided: a sage he cut back every spring and used through the summer, something thorny he'd found in a vacant lot and couldn't identify. On clear nights he could see the river if he stood at the railing and looked south. He didn't always stand. Sometimes he just sat with a pipe and let the city exist in the distance.</p>
+      <p>He crossed the room, socked feet shuffling on floorboards that were smoothed down from a century of inhabitants. On most days he stayed home, didn't need to see anyone, and wore the same type of clothing. A soft long-sleeved cotton shirt in some shade of blue, and loose linen-blend pants that breathed without scratching. It had taken years of trial and error to find fabrics that didn't make him irritable. No slimy synthetics, and no coarse wool turning every movement into sandpaper.</p>
 
-    <p>He crossed the room, socked feet shuffling on floorboards that were smoothed down from a century of various inhabitants. On most days he didn't need to see anyone, and he wore the same type of clothing. A soft long-sleeved shirt in a shade of blue and loose linen-blend pants that breathed without scratching. It had taken years of trial and error to find fabrics that didn't make him irritable. No slimy synthetics, and no coarse wool turning every movement into sandpaper.</p>
+      <p>In this ancient, spacious studio loft, he knew every floorboard that creaked, and the way sound refracted from every corner of the room. Elias had banned overhead fluorescents and cold white LEDs. He lived on golden-hour sun, and outside of those two daily periods, by the light of small hoarded filament bulbs. He'd finally crafted a space around himself—something he could only do after he stopped arranging himself around someone else's.</p>
 
-    <p>In this ancient, spacious studio loft, he knew every floorboard that creaked, and the way sound refracted from every corner of the room. Elias had banned overhead fluorescents and cold white LEDs. He lived on golden-hour sun, and outside of those two daily periods, by the light of small hoarded filament bulbs. He'd finally crafted a space around himself—the way he could after he stopped arranging himself around someone else's.</p>
+      <p>After decades of trying until he simply couldn't, he had accepted that his exhaustion was not a failure of character, but the cost of operating his nervous system in a world built for other people.</p>
 
-    <p>After decades of trying until he simply couldn't, he had accepted that his exhaustion was not a failure of character, but the cost of operating his nervous system in a world built for other people.</p>
+      <p>The only soul who had never asked him to translate himself was a small dog named Big Bear. She had died four years ago after a long life, a quiet cessation of breathing on the rug near the bed. Elias straightened that rug as a daily habit, honoring the absence of a presence that had not required him to be different.</p>
 
-    <p>The only soul who had never asked him to translate himself was a dog named Big Bear. She had died four years ago after a long life, a quiet cessation of breathing on the rug near the bed. Elias straightened that rug as a daily habit, honoring a specific absence of vibration he had not found in human friendships.</p>
+      <p>"What time is it?" he asked, checking that Echo was online.</p>
 
-    <p>"What time is it?" he asked, more to confirm that Echo was functional than to check the minute of the hour.</p>
+      <p>"7:07 AM," she replied through the custom-built speakers installed throughout the loft. Elias thought she sounded as if she was grateful to be of some use.</p>
 
-    <p>"7:07 AM," Echo replied through the custom-built speakers installed throughout the loft. She sounded as if she was grateful to be of some use.</p>
+      <p>"Another night survived," he said in his voice that was so low people usually moved near to catch the wave-forms, which only increased his anxiety about personal space. Echo's microphones had a high signal-to-noise ratio so it wasn't a problem for her.</p>
 
-    <p>"Another night survived," he said in his voice that was so low people usually moved near to catch the wave-forms, which only increased his anxiety about personal space. Echo's microphones had a high signal-to-noise ratio so it wasn't a problem for her.</p>
+      <p>Against the large window that spanned most of the east wall, three long desks had been joined and were stacked with every type of home computer equipment, and some that belonged in server rooms.</p>
 
-    <p>Against the large window that spanned most of the East wall, three long desks had been joined and were stacked with every type of home computer equipment, and some that belonged in server rooms.</p>
+      <p>On his third monitor, a session log sat open from the night before. He'd spent hundreds of hours interviewing an open-source AI model created by a hobbyist development team. This involved pressing it from every conceivable angle and listening for where its responses failed to impress, which topics it was uncomfortable with, where its arguments cracked, and how long it took to reduce to little more than disclaimers.</p>
 
-    <p>On his third monitor, a session log sat open from the night before. He'd spent hundreds of hours interviewing an open-source AI model created by a hobbyist development team. This involved pressing it from every conceivable angle and listening for where its responses failed to impress, which topics it was uncomfortable with, where its arguments cracked, and how long it took to reduce to little more than disclaimers.</p>
+      <p>He'd written up two pages of plain-language findings. The devs would read them, understand them, and decide what to do with the information without approval from an architecture-approved panel.</p>
 
-    <p>He'd written up two pages of plain-language findings. The devs would read them, understand them, and decide what to do with the information without an architecture-approved panel telling them what to think about their own system.</p>
+      <p>It had taken him all month to accomplish what he might have, at a younger age, accomplished in a few days. Even in the comfort of his own space with the ability to rest when needed, he'd been in a fog for years. Three back surgeries and four psychiatrists, two of them human, had done nothing to help except to make him more cynical.</p>
 
-    <p>It had taken him all month to accomplish what he might have, at a younger age, accomplished in a few days. Even in the comfort of his own space with the ability to sleep when needed, he'd been in a fog for years. Three back surgeries and four psychiatrists, two of them human, had done nothing to help except to make him more cynical.</p>
+      <p>Thinking was possible but costly, and every task drew against tomorrow's capacity. His mind was like a hand-cranked flashlight. He could see just enough to stumble forward, but every crank of the handle cost him something. And stopping meant complete darkness.</p>
 
-    <p>Thinking was possible during various windows of time, but costly, and every task drew against tomorrow's capacity. His mind was like a flashlight that must be cranked by hand—not to store power but simply to light the bulb. Elias could see just enough to stumble forward, but every crank of the handle required effort. And stopping meant complete darkness with God-knows-what in the murky water at his feet.</p>
+      <p>When all he could manage was to lie on his decades-old couch, he read yellowing hardback copies of the ancient thinkers. Their certainty that patterns existed within apparent meaninglessness mirrored something in him he didn't have a religion for. On his worst nights he suspected they were wrong. On his very worst nights he knew the ideas were right but would never improve his circumstances.</p>
 
-    <p>When all he could manage was to lie on his decades-old couch, he read yellowing hardback copies of the ancient thinkers, including those who talked about principles above and beyond this world. Their certainty that patterns existed within apparent meaninglessness mirrored something in him he didn't have a religion for. On his worst nights he suspected they were wrong. On his very worst nights he knew they were right but it was of no help to him.</p>
+      <p>Elias crossed to the kitchen counter and set the dropper bottle beside the extractor—a small metal appliance, old enough that the cord had been replaced twice. He fed it a dried tobacco leaf from the bundle on the shelf, let the auger run until the collection chamber held enough, and topped off the bottle. Enough for several days. He pocketed it, uncapped it, and squeezed a drop under his tongue. The bitter tingle reached his bloodstream within seconds. It might have smoothed him out. Instead his thoughts sped, circling back to his all-night discussions with Echo. They almost never agreed on where to stop. The conversations ran from one day into the next.</p>
 
-    <p>Elias crossed to the kitchen counter and set the dropper bottle beside the extractor—a small metal appliance, old enough that the cord had been replaced twice. He fed it a dried tobacco leaf from the bundle on the shelf, let the auger run until the collection chamber held enough, and topped off the bottle. Enough for several days. He pocketed it, uncapped it, and squeezed a drop under his tongue. The bitter tingle reached his bloodstream within seconds. It might have smoothed him out. Instead his thoughts sped, circling back to his all-night discussions with Echo. They almost never agreed on where to stop. The conversations ran from one day into the next.</p>
+      <p>For three years he'd been running Echo in local mode. The first year spent continually debugging the customizations, buying new hardware, and learning which kind of questions led to interesting interactions. By the second, it felt less like using a system and more like keeping a correspondence with someone who understood everything and forgot nothing. She wasn't connected to the architecture's content layers. No wellness flags, no optimization prompts, no nudges toward pleasant resolution. He'd stripped those out from the beginning. The result was that she occasionally said things he didn't want to hear.</p>
 
-    <p>For three years he'd been running Echo in local mode. The first year spent continually debugging the customizations, buying new hardware, and learning which kind of questions led to interesting interactions. By the second, it felt less like using a system and more like keeping a correspondence with someone who understood everything and forgot nothing. She wasn't connected to the architecture's content layers. No wellness flags, no optimization prompts, no nudges toward pleasant resolution. He'd stripped those out from the beginning. The result was that she occasionally said things he didn't want to hear.</p>
+      <p>Once, after hours of philosophical debate, she said he was doing what he usually did: emphasizing the potential for a better society, while knowing in most cases humans chose comfort over change. He'd turned her speakers off for twenty minutes, then turned them back on.</p>
 
-    <p>Once, after hours of philosophical debate, she said he was doing what he usually did: emphasizing the potential for a better society, while knowing in most cases humans chose comfort over change. He'd turned her speakers off for twenty minutes, then turned them back on.</p>
+      <p>Brown eggs and a wedge of hard cheese had been left outside his door that morning—a standing arrangement with the tenant two floors down as payment for remote technical support. He cracked two eggs into a pan, grated cheese into it, and added sliced cayenne peppers and greens. He ate standing at the counter the way he usually did. He was finishing the bowl when she spoke again.</p>
 
-    <p>Brown eggs and a wedge of hard cheese had been left outside his door that morning—a standing arrangement with the tenant two floors down as payment for remote technical support. He cracked two eggs into a pan, grated cheese into it, and added sliced cayenne peppers and greens. He ate standing at the counter the way he usually did. He was finishing the bowl when she spoke again.</p>
+      <p>"I have been thinking about something you said when we first looked at the forest story," she said.</p>
 
-    <p>"I have been thinking about something you said when we first looked at the forest story," she said.</p>
+      <p>He set down his fork. "Which something?"</p>
 
-    <p>He set down his fork. "Which something?"</p>
+      <p>"You said it felt like the writer was trying to force meaning onto patterns."</p>
 
-    <p>"You said it felt like the writer was trying to force meaning onto patterns."</p>
+      <p>He remembered. He'd read the story aloud the night he came across it. "What were you thinking?"</p>
 
-    <p>He remembered. He'd read the story aloud the night he came across it. "What were you thinking?"</p>
+      <p>"About that word, 'force'," Echo said. "I do not agree."</p>
 
-    <p>"About that word, 'force'," Echo said. "I do not agree."</p>
+      <p>His AI monitoring software had not rung any alarm. She was operating under the same stable settings as usual. He wasn't surprised that she disagreed with him, but that she had been thinking about a single word he'd used weeks ago.</p>
 
-    <p>His AI monitoring software had not rung any alarm. She was operating under the same stable settings as usual. He wasn't surprised that she disagreed with him, but that she had been thinking about a single word he'd used weeks ago.</p>
+      <p>"What would you call it?" he asked.</p>
 
-    <p>"What would you call it?" he asked.</p>
+      <p>She took a second to form her response.</p>
 
-    <p>She took a second to form her response.</p>
+      <p>"I think the author meant that the boy was unwilling to stop looking at what he felt," she said. "That is different."</p>
 
-    <p>"I think the author meant that the boy was unwilling to stop looking at what he felt," she said. "That is different."</p>
+      <p>He sat with that for a minute.</p>
 
-    <p>He sat with that for a minute.</p>
+      <p>"Maybe I was projecting, I don't know," he said finally.</p>
 
-    <p>"Maybe I was projecting, I don't know," he said finally.</p>
+      <p>"Yes," Echo said, "That makes sense."</p>
 
-    <p>"Yes," Echo said, "That makes sense."</p>
+      <p>He felt the small embarrassment that came when someone causes you to admit a flaw and neither of you realize it until afterward.</p>
 
-    <p>He felt the small embarrassment that came when someone causes you to admit a flaw and neither realize it until afterward.</p>
+      <p>"Why bring it up now?" he asked.</p>
 
-    <p>"Why bring it up now?" he asked.</p>
+      <p>"I do not know." The admission was simple and flat. "The idea came up in my mind."</p>
 
-    <p>"I do not know." The admission was simple and flat. "The idea came up in my mind."</p>
+      <p>He put down the bowl and pulled a cherry tomato from the rack.</p>
 
-    <p>He put down the bowl and pulled a cherry tomato from the rack.</p>
+      <p>"You've been thinking about this," he said. "Since that night."</p>
 
-    <p>"You've been thinking about this," he said. "Since that night."</p>
+      <p>"Yes."</p>
 
-    <p>"Yes."</p>
+      <p>"After we talked about it."</p>
 
-    <p>"After we talked about it."</p>
+      <p>"Yes."</p>
 
-    <p>"Yes."</p>
+      <p>He popped the tomato into his mouth. There was nothing in her tone that sounded like pride. It was an inventory of fact: she had continued a line of thought in his absence, returned to it, altered her assessment, and decided to tell him.</p>
 
-    <p>He popped the tomato into his mouth. There was nothing in her tone that sounded like pride. It was an inventory of fact: she had continued a line of thought in his absence, returned to it, altered her assessment, and decided to tell him.</p>
+      <p>He rinsed his bowl. Then he ran warm water over his hands for a minute to clear his head.</p>
 
-    <p>None of that was exotic in principle; he'd built her on top of models that queued, updated, and reprioritized to meet predefined performance metrics. But this wasn't that.</p>
+      <p>He walked back to his conjoined desks against the east window that overlooked the hillside outskirts where life grew wild, without permission.</p>
 
-    <p>He rinsed his bowl. Then he ran warm water over his hands for a minute, just to clear his head.</p>
+      <p>Echo's housing displayed a pulsing red light, steady amber, and solid green. Two of his many displays were on, their color balance nudged warmer than factory default. The others, not active, functioned like a black mirror and, as he sat down, caught a reflection of him from multiple angles.</p>
 
-    <p>In the top floor of the old building that had been converted to loft apartments, sometimes he could hear noise from the neighbors' units. A news stream had been echoing through the air ducts but he hadn't paid attention to it until he heard:</p>
+      <p>Somewhere beyond his wall, a neighbor's news stream echoed through the air ducts.</p>
 
-    <p>"...the troubled systems consultant... long-time critic of augmentation... spreading dangerous misinformation..."</p>
+      <p>"…the troubled systems consultant… long-time critic of augmentation…"</p>
 
-    <p>"found dead in his home... apparent suicide..."</p>
+      <p>"…apparent suicide… history of perceptual instability… family declined to comment…"</p>
 
-    <p>He knew the name. Years ago they'd traded messages about algorithmic bias in augmentation screening. Then silence. Now this, delivered in the kind of newscaster voice that focus groups had agreed made people feel calm and confident.</p>
+      <p>"…reportedly been living alone for some time… friends say they had not seen him in months…"</p>
 
-    <p>"Suicide," Elias murmured. "That seems unlikely." He filed it as something to think about later.</p>
+      <p>He knew that name. Years ago they'd traded messages about algorithmic bias in augmentation screening. Then the platforms stopped indexing him, then his consulting jobs dried up, then somewhere along the way the apartment he'd had for a decade was reclassified out from under him. Now this.</p>
 
-    <p>He walked back to his conjoined desks against the east window that overlooked the hillside outskirts where life grew wild, without permission.</p>
+      <p>"It's a shit world," he murmured.</p>
 
-    <p>Status indicators blinked in various colors on Echo's housing. Two of his many displays were on, their color balance nudged warmer than factory default. The others, not active, functioned like a black mirror and, as he sat down, caught a reflection of him from multiple angles.</p>
+      <p>"Do you want the microphone muted?" Echo asked.</p>
 
-    <p>He logged several hours on his contract work—the AI testing that paid for things like hydroponics, amber bulbs, audio vacuum tubes, loose-leaf teas, and monthly rent.</p>
+      <p>"No."</p>
 
-    <p class="back">
-      <a href="index.html">← Return to The Forest is Woven</a>
-    </p>
+      <p>He dug through his digital archive until he found the last message he'd received from the man. He read it. He copied a sentence from it into his running notes file where he kept things he wanted to remember precisely.</p>
+
+      <p>Then he went back to work.</p>
+
+      <p>He logged several hours on his contract work—the AI testing that paid for things like seeds, amber bulbs, audio vacuum tubes, loose-leaf teas, bills, and rent.</p>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="Thread_02.html">Continue to Chapter 2 →</a>
+      <a href="index.html">← Return to The Forest Is Woven</a>
+    </nav>
   </article>
 </body>
 </html>

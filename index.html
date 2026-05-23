@@ -30,7 +30,6 @@
 
     * { box-sizing: border-box; }
 
-    /* Subtle paper texture using inline SVG noise — adds atmosphere without affecting load weight. */
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -123,7 +122,6 @@
       line-height: 1.55;
     }
 
-    /* Decorative branching rule — a small visual echo of the book's central image */
     .rule {
       width: 80px;
       height: 12px;
@@ -288,16 +286,16 @@
       border: 0;
     }
 
-    /* --- Sample links --- */
-    .samples {
-      list-style: none;
-      padding: 0;
+    /* --- Sample / archive links --- */
+    .links-section {
       margin: 40px 0 0;
-      font-size: 0.95rem;
-      color: var(--muted);
     }
 
-    .samples-label {
+    .links-section + .links-section {
+      margin-top: 28px;
+    }
+
+    .links-label {
       font-size: 0.82rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -305,8 +303,16 @@
       margin-bottom: 14px;
     }
 
-    .samples li { margin: 0 0 8px; }
-    .samples .label { color: var(--muted); }
+    .links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .links li { margin: 0 0 8px; }
+    .links .label { color: var(--muted); }
 
     a {
       color: var(--accent);
@@ -364,7 +370,6 @@
       letter-spacing: 0.02em;
     }
 
-    /* --- Mobile --- */
     @media (max-width: 820px) {
       main {
         grid-template-columns: 1fr;
@@ -465,13 +470,24 @@
         <p class="signup-status" role="status" aria-live="polite"></p>
       </form>
 
-      <div class="samples-label">From the archive</div>
-      <ul class="samples">
-        <li><span class="label">Chapter 1 —</span> <a href="Elias_01.html">01 Elias (2103)</a></li>
-        <li><span class="label">Adrian's whitepaper —</span> <a href="Adrian_M.html">M: Whitepaper (2116)</a></li>
-        <li><span class="label">A wellness training module —</span> <a href="Training_N.html">N: Protocol (2068)</a></li>
-        <li><span class="label">Daniel Osei's article —</span> <a href="Daniel_O.html">O: The Language We Were Given (2057)</a></li>
-      </ul>
+      <section class="links-section">
+        <div class="links-label">Read a sample</div>
+        <ul class="links">
+          <li><span class="label">Chapter 1 —</span> <a href="Elias_01.html">01: Elias (2103)</a></li>
+          <li><span class="label">Chapter 2 —</span> <a href="Thread_02.html">02: Thread (2103)</a></li>
+        </ul>
+      </section>
+
+      <section class="links-section">
+        <div class="links-label">From the archive</div>
+        <ul class="links">
+          <li><span class="label">Adrian's whitepaper —</span> <a href="Adrian_M.html">M: Whitepaper (2116)</a></li>
+          <li><span class="label">A wellness training module —</span> <a href="Training_N.html">N: Protocol (2068)</a></li>
+          <li><span class="label">Daniel Osei's article —</span> <a href="Daniel_O.html">O: The Language We Were Given (2057)</a></li>
+          <li><span class="label">Dasha at the terminal —</span> <a href="Message_P.html">P: Message (2104)</a></li>
+          <li><span class="label">Rikku at the garden —</span> <a href="Board_Q.html">Q: Board (2104)</a></li>
+        </ul>
+      </section>
 
       <section class="bio">
         <div class="bio-label">About the Author</div>

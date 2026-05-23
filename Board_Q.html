@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q: Board (2104) — The Forest Is Woven</title>
+  <meta name="description" content="From the archive of The Forest Is Woven by Edwin Massey: an evening at a community garden where the atlas passes from hand to hand." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --paper: #fbf8f3;
+      --ink: #1f1b17;
+      --muted: #6e675f;
+      --line: #d8d0c6;
+      --accent: #33533a;
+      --accent-dark: #243f29;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        linear-gradient(to bottom, #f7f3ed, var(--bg));
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .chapter {
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      opacity: 0;
+      animation: fadeIn 700ms ease-out 80ms forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .top-nav {
+      margin-bottom: 56px;
+      font-size: 0.92rem;
+    }
+
+    .chapter-header {
+      margin-bottom: 8px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    h1.chapter-title {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 0 0 6px;
+      color: #16120e;
+    }
+
+    .year {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .separator {
+      width: 80px;
+      height: 12px;
+      margin: 28px 0 36px;
+      color: var(--line);
+    }
+
+    .separator svg { width: 100%; height: 100%; display: block; }
+
+    .prose {
+      font-size: 1.06rem;
+      line-height: 1.72;
+    }
+
+    .prose p {
+      margin: 0 0 18px;
+    }
+
+    .prose p.lede::first-letter {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: 2.4em;
+      float: left;
+      line-height: 0.9;
+      padding: 0.05em 0.08em 0 0;
+      color: var(--accent-dark);
+    }
+
+    .prose .excerpt {
+      font-style: italic;
+      border-left: 2px solid var(--line);
+      padding: 4px 0 4px 20px;
+      margin: 22px 0;
+      color: #3a342d;
+    }
+
+    .bottom-nav {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    a:hover { border-color: currentColor; }
+
+    @media (max-width: 640px) {
+      .chapter { padding: 32px 20px 60px; }
+      .top-nav { margin-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <article class="chapter">
+    <nav class="top-nav">
+      <a href="index.html">← The Forest Is Woven</a>
+    </nav>
+
+    <header class="chapter-header">
+      <div class="eyebrow">From the archive · Q</div>
+      <h1 class="chapter-title">Board</h1>
+      <div class="year">2104</div>
+    </header>
+
+    <div class="separator" aria-hidden="true">
+      <svg viewBox="0 0 80 12" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 6 L34 6 M40 6 L46 6 M52 6 L80 6 M40 6 L36 2 M40 6 L44 2 M40 6 L36 10 M40 6 L44 10"
+              stroke="currentColor" stroke-width="0.8" fill="none" stroke-linecap="round" />
+      </svg>
+    </div>
+
+    <div class="prose">
+      <p class="lede">The community garden was not on any official map.</p>
+
+      <p>It sat on the back edge of a logistics yard, in the wedge where two fences failed to meet. The city had once marked the strip as a drainage corridor—a long, gray polygon with a designation code and no further notes. On the ground it was raised beds built from pallets, a large wooden tool shed with awnings for shade, and a large cork bulletin board that covered one side of it.</p>
+
+      <p>Most aug tech overlays gave up at the gate. The architecture signals that reached this abandoned section of city arrived late and fragmented, if at all. Notifications stacked up quietly and did not display until you were halfway home again.</p>
+
+      <p>It had become the habit of the gardeners to remove their earpieces before they walked in. No one had discussed this; it had just happened naturally after a year of working together.</p>
+
+      <p>Tabitha did it by habit, thumb and forefinger at her ear as she came through, dropping the device into the pocket of her work pants without looking. Theo hesitated a second longer, eyes unfocused in the way that meant his overlay was trying to re-establish a link and giving up. Mohan never wore one at all.</p>
+
+      <p>Rikku called the bulletin board 'the map.' If you wanted to know where things were, you looked there. What was planted in which bed. Which tools needed fixing. Who was scheduled to weed on which days. A handwritten note that said whoever took the good trowel home again would be buried with it.</p>
+
+      <p>Pinned between the bed diagram and a faded notice about the annual potluck was a sheet of paper with one line on it:</p>
+
+      <p class="excerpt">Maybe the world is made of paths instead of stuff.</p>
+
+      <p>She had printed it several weeks ago. The sheet was a little damp from the morning fog and was going wavy at the edges. She had checked it without thinking on her way in. Someone had come and worked in the garden since Saturday; the pin had been moved.</p>
+
+      <p>By the time the sun set, most of her fellow gardeners had left or were cleaning up. Rikku was still working on her bed, knees in the mud, thinning a row of carrots. The repetitive motion was peaceful to her.</p>
+
+      <p>Across the path, Tabitha was tying up the leggy tomatoes with strips of cloth, the kind of work that was never finished. Theo was at the spigot rinsing tools with more attention than the task needed, which Rikku had learned to recognize as how he stayed once he wasn't ready to leave. Mohan was inside the shed coiling hose, swearing softly at it for being too long.</p>
+
+      <p>No one had spoken in a while.</p>
+
+      <p>"Whoever took the trowel," Tabitha said, not looking up.</p>
+
+      <p>"It wasn't me," Theo said.</p>
+
+      <p>"I didn't say it was."</p>
+
+      <p>He glanced at her. "You said it like it was."</p>
+
+      <p>"The way you said it back, it definitely was." She smiled at him.</p>
+
+      <p>Theo turned the tap and shook water off a pair of pruners. "I accidentally took them last week."</p>
+
+      <p>"I know," Tabitha said.</p>
+
+      <p>Mohan came out of the shed with the hose a neat figure-eight on his shoulder. He looked at the board on his way past, paused, and came back to it.</p>
+
+      <p>"Rikku," he said.</p>
+
+      <p>"Mm?"</p>
+
+      <p>"This thing." He pointed his chin at the pinned note.</p>
+
+      <p>"What about it?"</p>
+
+      <p>"Did you move it, or did somebody."</p>
+
+      <p>She sat back on her heels. "I had posted it lower."</p>
+
+      <p>"Sami pinned it higher last Tuesday," Theo said from the spigot. "I watched her do it."</p>
+
+      <p>Rikku hadn't known anyone had been watching her watch the board. She wiped her hands on her thighs. "She didn't say anything to me."</p>
+
+      <p>"She doesn't say things to people," Theo said. "She does them and waits to see if anyone notices."</p>
+
+      <p>Mohan was reading the line again. He read it the way you read an advertisement at a bus stop—slowly, without expectation, because there was nothing else to look at.</p>
+
+      <p>"Is there more of it?" he said.</p>
+
+      <p>"More of what?" Rikku asked. Her focus had drifted back to her carrots.</p>
+
+      <p>"Whatever it's from," Mohan said.</p>
+
+      <p>Rikku thought about saying it was just a quote she liked. But she didn't. She stood, brushed dirt off her knees, went into the shed, and came back out with a folded sheet from her jacket. Same type of paper. Printer ink and a few sections underlined in pen.</p>
+
+      <p>"There's a lot more," she said. "I've been carrying it around for a while."</p>
+
+      <p>Mohan took the sheet and unfolded it.</p>
+
+      <p>"Read part of it," Tabitha said.</p>
+
+      <p>He passed her the sheet. She opened it and angled it to catch the last light.</p>
+
+      <p>She picked something not from the underlined sections—a few lines about ants moving in a coordinated line none of them had agreed to individually. She read flatly, the way someone who reads aloud at funerals reads when she does not want to make a thing bigger than it is.</p>
+
+      <p>When she was done she folded the page along its crease and gave it back to Rikku.</p>
+
+      <p>"My nephew did that," Theo said. "Watched ants for an hour in his mother's yard. Six years old. Wouldn't come inside."</p>
+
+      <p>"Did it help him?" Tabitha joked.</p>
+
+      <p>"It helped me," he said. "I went and watched with him. It was easier than cleaning up the kitchen after dinner."</p>
+
+      <p>Mohan was reading the line on the board again.</p>
+
+      <p>"My cousin had something happen," he said. "His stabilizers dropped one weekend and he started seeing—I don't know how to say it. Lines between things. He said it was like the world had been waiting to show him something. He didn't sleep for three nights and they put him back on a higher dose and he stopped talking about it."</p>
+
+      <p>"Was he better after?" Theo said.</p>
+
+      <p>Mohan thought about it. "He was quieter," he said. "I don't know if that was better."</p>
+
+      <p>The dark paint on the shed absorbed the last of the direct light. The beds were a darker green. Somewhere beyond the fence, a freight drone passed with its low mechanical sigh.</p>
+
+      <p>When the tools were put away and the shed was locked, Mohan asked if she would put the folder on his drive. Theo asked the same. Tabitha didn't ask.</p>
+
+      <p>"Just keep posting pieces of it here," Tabitha said when Rikku asked if she wanted a copy. "It works for me better that way. If I take it home I'll do too much with it, or nothing. Here it just is. I see what's there on my day."</p>
+
+      <p>"Okay," Rikku said.</p>
+
+      <p>Theo passed his drive over without making a thing of it. Mohan's had a sticker placed over a crack in the plastic.</p>
+
+      <p>"Don't make my music weird," he said.</p>
+
+      <p>"Your music is already weird."</p>
+
+      <p>"My algorithm thinks I'm a forty-year-old woman," he joked.</p>
+
+      <p>"Your algorithm is correct."</p>
+
+      <p>He laughed.</p>
+
+      <p>"What is it actually," Tabitha asked. "The folder."</p>
+
+      <p>Rikku turned the page over in her hands once before answering.</p>
+
+      <p>"Some of it is a girl's journal," she said. "Like that bit. Some of it is like a technical report written by a man in the system who started telling the truth. Some of it is… notes on how the system works from the inside. And other stuff."</p>
+
+      <p>"Where'd you get it?" Theo said.</p>
+
+      <p>"An offline drive," she said. "Passed by hand. Someone I know got it from someone they know. Nobody remembers where it came from, as far as I know. Some people call it an atlas."</p>
+
+      <p>"Atlas of what?" Mohan said.</p>
+
+      <p>"Of how things look when you stop letting the overlays decide what you should think about and spend your time on," Rikku said. "Or that's how it reads to me."</p>
+
+      <p>Tabitha looked at her, then at the page. "Does it tell you what to do with what you see?"</p>
+
+      <p>"No," Rikku said. "That's the part that's… annoying. It just tells you what someone saw and leaves you alone with it."</p>
+
+      <p>Theo nodded once, like that was the first thing that had fully made sense.</p>
+
+      <p>She walked home with the drives in her jacket pocket. Her overlay signal came back in pieces—first a buzz in her ear, then the sequenced shudder of notifications resolving themselves into the order the architecture wanted her to feel them. She let them queue. She wasn't going to read them on the walk.</p>
+
+      <p>A block from the garden she passed a buckled stretch of sidewalk where a tree root had lifted the concrete. Water from an earlier rain still sat in the dips. She stopped without meaning to and watched how it had settled—thin channels, dark against the pale surface.</p>
+
+      <p>A trio of office workers in smart jackets came up behind her, saw her standing still, and flowed around her on either side. She took her mobile screen out of her pocket and looked down at it so no one would ask if she was all right. The screen stayed black. No signal here yet.</p>
+
+      <p>She remembered Tabitha saying "it works for me better that way." One line at a time. On the board. On her day.</p>
+
+      <p>At home she copied the files onto both her neighbors drives. She thought about what to write at the bottom, and after a while she wrote:</p>
+
+      <p class="excerpt">If any of this inspires something you've noticed or wondered about, add it to the file. Don't try to make it perfect. Just try to be specific.</p>
+
+      <p>She put one drive in an envelope she would hand off the next day. The other she set by the door to take to the garden on Tuesday. She would put it in the toolbox where the spare hand trowel lived, the one no one had taken home yet.</p>
+
+      <p>Outside her window the city did what it did in the evenings—the lights coming up on a programmed curve, overlays brightening themselves to compensate for the dimming sky, the architecture working at all the small adjustments it was paid to make. Down at street level, in the places it had marked as drainage and forgotten, water was still finding its way through.</p>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="index.html">← Return to The Forest Is Woven</a>
+    </nav>
+  </article>
+</body>
+</html>

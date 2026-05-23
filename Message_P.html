@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P: Message (2104) — The Forest Is Woven</title>
+  <meta name="description" content="From the archive of The Forest Is Woven by Edwin Massey: a network analyst receives an unauthorized packet through a deprecated channel." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --paper: #fbf8f3;
+      --ink: #1f1b17;
+      --muted: #6e675f;
+      --line: #d8d0c6;
+      --accent: #33533a;
+      --accent-dark: #243f29;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        linear-gradient(to bottom, #f7f3ed, var(--bg));
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .chapter {
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      opacity: 0;
+      animation: fadeIn 700ms ease-out 80ms forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .top-nav {
+      margin-bottom: 56px;
+      font-size: 0.92rem;
+    }
+
+    .chapter-header {
+      margin-bottom: 8px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    h1.chapter-title {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 0 0 6px;
+      color: #16120e;
+    }
+
+    .year {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .separator {
+      width: 80px;
+      height: 12px;
+      margin: 28px 0 36px;
+      color: var(--line);
+    }
+
+    .separator svg { width: 100%; height: 100%; display: block; }
+
+    .prose {
+      font-size: 1.06rem;
+      line-height: 1.72;
+    }
+
+    .prose p {
+      margin: 0 0 18px;
+    }
+
+    .prose p.lede::first-letter {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: 2.4em;
+      float: left;
+      line-height: 0.9;
+      padding: 0.05em 0.08em 0 0;
+      color: var(--accent-dark);
+    }
+
+    .prose .excerpt {
+      font-style: italic;
+      border-left: 2px solid var(--line);
+      padding: 4px 0 4px 20px;
+      margin: 22px 0;
+      color: #3a342d;
+    }
+
+    .bottom-nav {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    a:hover { border-color: currentColor; }
+
+    @media (max-width: 640px) {
+      .chapter { padding: 32px 20px 60px; }
+      .top-nav { margin-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <article class="chapter">
+    <nav class="top-nav">
+      <a href="index.html">← The Forest Is Woven</a>
+    </nav>
+
+    <header class="chapter-header">
+      <div class="eyebrow">From the archive · P</div>
+      <h1 class="chapter-title">Message</h1>
+      <div class="year">2104</div>
+    </header>
+
+    <div class="separator" aria-hidden="true">
+      <svg viewBox="0 0 80 12" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 6 L34 6 M40 6 L46 6 M52 6 L80 6 M40 6 L36 2 M40 6 L44 2 M40 6 L36 10 M40 6 L44 10"
+              stroke="currentColor" stroke-width="0.8" fill="none" stroke-linecap="round" />
+      </svg>
+    </div>
+
+    <div class="prose">
+      <p class="lede">Her name was Dasha. Eleven years in network analysis, first in District 8's transit grid, now in District 2's industrial sector, where the infrastructure was older and meaner and the dashboards lied less creatively. They called her when systems failed in ways automated diagnostics couldn't explain—when an incident closed in the logs without any fix recorded.</p>
+
+      <p>The message came through a maintenance relay she kept open out of habit—a deprecated channel the automated monitors had stopped indexing two years ago. She had been at her home terminal for hours, working through the ordinary queue, when the indicator pulsed once in her peripheral display. Not an alert. Just presence. Something had arrived in a place nothing was supposed to arrive anymore.</p>
+
+      <p>She almost dismissed it. Her work queue was already full: maintenance tickets with vague subject lines, three separate incidents of dashboard load failure, an escalation flag from a supervisor who never read the actual logs. The kind of day where the architecture felt like a sulking animal, shedding errors everywhere and daring her to make sense of them.</p>
+
+      <p>On her desk between two monitors sat a brass compass that hadn't pointed true north in three years, and a dead succulent she kept meaning to throw away. The compass she kept because it still pointed somewhere—not magnetic north, which meant something nearby was pulling it off course. She'd thought about it for months without finding the source. The succulent she kept because getting rid of it felt like admitting failure.</p>
+
+      <p>The digital packet sat there. The size wrong for spam. The structure wrong for anything sanctioned. She opened it because she'd been bored for years.</p>
+
+      <p>It was a collection of documents. Not formatted for distribution—no header, no organizational seal, no content classification. Just files, arranged in an order that felt deliberate without announcing itself as such. A piece of fiction. A journal. Something that read like a technical analysis written by someone who had stopped caring whether anyone approved of the method.</p>
+
+      <p>She read the fiction first, the way you'd pick up the most colorful object in a room you hadn't been in before.</p>
+
+      <p>A boy and a tree. Visits to the forest. She read it the way she read anomalous logs—looking for where the pattern changed, where something stopped behaving the way it was supposed to. His third visit was where it happened. She read it twice.</p>
+
+      <p>Then she opened the journal.</p>
+
+      <p>She was twenty minutes in before she noticed she had stopped logging her work hours. She had never before lost track of the fact that she was at work.</p>
+
+      <p>The girl who wrote the journal had been trying to describe something that kept arriving just ahead of the sentences she could build. Dasha comprehended the frustration. Not because she had experienced what the girl was describing, but because she recognized the shape of a system that kept exceeding its own representation. She spent her working life with those. Infrastructure that behaved in ways its own documentation couldn't account for. The gap between the map and the territory.</p>
+
+      <p class="excerpt">Not seeing connections between things, the journal said. Being the place where connections meet.</p>
+
+      <p>Dasha kept reading. The analysis section. The structural argument that the architecture's management of perception was not incidental to its function but central to it. That what it smoothed out was not noise but signal, and that the distinction between the two was the whole question.</p>
+
+      <p>She recognized arguments she had made to herself at two in the morning and then set aside because there was no institutional category for them.</p>
+
+      <p>At the bottom of the collection was a note:</p>
+
+      <p class="excerpt">This is incomplete. If you see anything that belongs here, add it. Then send it somewhere it might find the person it's for.</p>
+
+      <p>She opened a blank document. She wrote three paragraphs about her compass—what it pointed at, the source she had never found, what it would mean if the source was infrastructure rather than geology. Technical. Specific to her. The kind of observation that wouldn't survive a performance review.</p>
+
+      <p>She appended it to the collection and sent it back into the deprecated channel.</p>
+
+      <p>Three weeks later, reviewing an audit trail for an unrelated incident, she found a flag that had been opened, closed, and reopened dozens of times across eighteen months. Someone had been keeping a trace alive that the system kept trying to let die. Each time it closed, the same auditor in District 10 had opened it again.</p>
+
+      <p>She didn't know who it was, but she could relate to the stubbornness.</p>
+
+      <p>She noted the flag, added her own observation to the record, and left it open.</p>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="index.html">← Return to The Forest Is Woven</a>
+    </nav>
+  </article>
+</body>
+</html>
