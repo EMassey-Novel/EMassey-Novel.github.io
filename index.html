@@ -380,6 +380,16 @@
       .cover { max-width: 300px; margin: 0 auto; }
       h1 { max-width: none; }
     }
+	
+	.hero-image {
+	  margin: 24px 0 32px;
+	}
+	.hero-image img {
+	  display: block;
+	  width: 100%;
+	  border-radius: 4px;
+	  box-shadow: 0 14px 32px var(--shadow);
+	}
   </style>
 </head>
 <body>
@@ -445,6 +455,16 @@
                 stroke="currentColor" stroke-width="0.8" fill="none" stroke-linecap="round" />
         </svg>
       </div>
+	  
+	  <div class="hero-image">
+		  <img
+			src="assets/forest-woven-hero.jpg"
+			alt="Abstract teal map of roots and river channels branching from a common source"
+			width="1280"
+			height="720"
+			loading="lazy"
+		  />
+	</div>
 
       <div class="pitch">
         <p>
