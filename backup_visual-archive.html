@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visual Archive | The Forest Is Woven</title>
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --panel: #f8f5ef;
+      --text: #1e1c19;
+      --muted: #6f6a63;
+      --line: rgba(30, 28, 25, 0.14);
+      --accent: #2d5a46;
+      --shadow: rgba(0, 0, 0, 0.10);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { margin: 0; padding: 0; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .topbar {
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .topbar a {
+      border-bottom: 1px solid rgba(30, 28, 25, 0.18);
+      padding-bottom: 2px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .archive-note {
+      max-width: 780px;
+      margin: 0 0 42px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.28);
+      color: var(--text);
+    }
+
+    .gallery {
+      display: grid;
+      gap: 34px;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 14px 34px var(--shadow);
+      background: #ece7de;
+    }
+
+    .entry h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 1.9rem);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .entry p {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    @media (min-width: 900px) {
+      .entry {
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        align-items: start;
+        gap: 24px;
+      }
+
+      .entry.reverse {
+        grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+      }
+
+      .entry.reverse .text {
+        order: 1;
+      }
+
+      .entry.reverse .image {
+        order: 2;
+      }
+    }
+	
+	.image a {
+	  display: block;
+	}
+
+	.image a:focus-visible {
+	  outline: 2px solid var(--accent);
+	  outline-offset: 4px;
+	  border-radius: 4px;
+	}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html">Back to The Forest Is Woven</a>
+    </div>
+
+    <header>
+      <h1>Visual Archive</h1>
+      <p class="intro">
+        A small collection of visual interpretations drawn from the atmospheres, places, and material textures of <em>The Forest Is Woven</em>.
+      </p>
+      <div class="archive-note">
+        These images are not literal scene illustrations so much as visual studies of setting, perception, and mood: Elias’s loft, Echo’s presence, and the branching root-river patterns that recur throughout the book.<br><br>
+		Click any image to open it full size.
+      </div>
+    </header>
+
+    <main class="gallery">
+      <article class="entry">
+        <div class="image">
+		 <a href="images/loft1.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/loft1.jpg"
+            alt="Wide interior view of Elias's loft with a large window, long desks, plant wall, bookshelves, and fireplace"
+            width="1152"
+            height="864"
+            loading="lazy"
+          />
+		 </a>
+        </div>
+        <div class="text">
+          <h2>Elias’s Loft</h2>
+          <p>
+            A wide-room study of the old top-floor loft: the large east window, joined computer desks, one long wall of living greens, and tall shelves of books around the fireplace.
+          </p>
+          <p class="caption">
+            The intent here is not spectacle, but a habitable world of wood, rain, thought, and cultivated attention.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry reverse">
+        <div class="image">
+		 <a href="images/loft2.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/loft2.jpg"
+            alt="Closer view of Elias's desk and Echo facing the window with monitors and status lights"
+            width="1152"
+            height="864"
+            loading="lazy"
+          />
+		  </a>
+        </div>
+        <div class="text">
+          <h2>Echo / Amara Workstation</h2>
+          <p>
+            A closer study of the conjoined desks against the window: warm-toned monitors, local hardware, edible plants, and Echo/Amara rendered as a built presence rather than an abstract cloud intelligence.
+          </p>
+          <p class="caption">
+            The room remains tactile and local, resisting the glossy smoothness of official systems.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="image">
+		 <a href="images/forest-woven-hero.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/forest-woven-hero.jpg"
+            alt="Abstract branching image of roots and river channels in dark teal with muted gold-green detail"
+            width="1280"
+            height="720"
+            loading="lazy"
+          />
+		 </a>
+        </div>
+        <div class="text">
+          <h2>Root / River Study</h2>
+          <p>
+            A visual interpretation of the branching structures that recur throughout the novel: roots, rivers, nerves, veins, and the persistent intuition that unlike things may share one underlying pattern.
+          </p>
+          <p class="caption">
+            More symbolic than narrative, this piece belongs to the book’s deeper pattern-language.
+          </p>
+        </div>
+      </article>
+	  
+	  <article class="entry reverse">
+        <div class="image">
+		 <a href="images/doc1.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/doc1.jpg"
+            alt="Close-up of a printed policy document with phrases about adaptive cognition overload and guided recalibration"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+		 </a>
+        </div>
+        <div class="text">
+          <h2>Policy Framework Fragment</h2>
+          <p>
+            A document study drawn from the language-world of the architecture: cognitive load management, recalibration, administrative abstraction, and the soft bureaucratic tone of systems that claim to optimize human life.
+          </p>
+          <p class="caption">
+            Coffee ring, warm desk light, and partial redaction make it feel less like a poster and more like a recovered working document.
+          </p>
+        </div>
+      </article>
+	  <article class="entry">
+        <div class="image">
+		 <a href="images/diner1.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/diner1.jpg"
+            alt="Retro chrome hilltop diner at night in the rain, glowing over a distant city"
+            width="1152"
+            height="864"
+            loading="lazy"
+          />
+		 </a>
+        </div>
+        <div class="text">
+          <h2>Hilltop Diner</h2>
+          <p>
+            A hilltop diner on the edge of the city, rain on the asphalt, chrome and fluorescent light, and a view over the softened grid of lights below.
+          </p>
+          <p class="caption">
+            This is the kind of place where architects and critics can talk off the record, a little outside the architecture's managed comfort.
+          </p>
+        </div>
+      </article>
+	  <article class="entry reverse">
+	  <div class="image">
+	   <a href="images/workshop1.jpg" target="_blank" rel="noopener noreferrer">
+		<img
+		  src="images/workshop1.jpg"
+		  alt="Cal's repair workshop at night with tools, thermos, and a small notepad on the bench"
+		  width="1152"
+		  height="864"
+		  loading="lazy"
+		/>
+	   </a>
+	  </div>
+	  <div class="text">
+		<h2>Cal’s Workshop</h2>
+		<p>
+		  A night view of the repair shop where Cal keeps aging machines alive, hands-on with tools, parts, and systems no overlay can fix for him.
+		</p>
+		<p class="caption">
+		  Thermos, notepad, and practical clutter anchor the work in touch and memory rather than dashboards.
+		</p>
+	  </div>
+	</article>
+	      <article class="entry">
+        <div class="image">
+		 <a href="images/r-apt1.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/r-apt1.jpg"
+            alt="Near-future apartment interior with smart-glass windows, softened city view, warm neutral furniture, and an open book on the couch"
+            width="1024"
+            height="1024"
+            loading="lazy"
+          />
+		 </a>
+        </div>
+        <div class="text">
+          <h2>NeuraComfort Apartment</h2>
+          <p>
+            A residential interior shaped by managed comfort: soft-edged furniture, careful lighting, quiet order, and smart-glass windows that filter the city into a softened, corrected view.
+          </p>
+          <p class="caption">
+            The room suggests Rinelle’s world—genuinely pleasant, carefully curated, and subtly mediated by systems designed to reduce friction.
+          </p>
+        </div>
+      </article>
+	  <article class="entry reverse">
+        <div class="image">
+		<a href="images/a-study.jpg" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/a-study.jpg"
+            alt="Warm executive study with tall bookshelves, a large wooden desk, and a softened city skyline beyond tall windows"
+            width="1152"
+            height="864"
+            loading="lazy"
+          />
+		 </a>
+        </div>
+        <div class="text">
+          <h2>Adrian’s Study</h2>
+          <p>
+            A high-floor study lined with books and case files, a single tablet glowing on the desk, and a softened city skyline beyond the glass.
+          </p>
+          <p class="caption">
+            The room is composed and controlled rather than flashy, the kind of place where an architect of systems invites a critic to talk off the record.
+          </p>
+        </div>
+      </article>
+	  <article class="entry">
+	  <div class="image">
+		<a href="images/r-clinic.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/r-clinic.jpg"
+			alt="Soft neutral wellness assessment room with rounded furniture, wall displays, and a water view"
+			width="1152"
+			height="864"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Wellness Assessment Room</h2>
+		<p>
+		  A softly lit clinic room where graphs, sliders, and gentle prompts track how well a person is adapting to the architecture’s expectations.
+		</p>
+		<p class="caption">
+		  Designed to feel kind and calming, with just enough invisible measurement to remind you that you are being evaluated.
+		</p>
+	  </div>
+	</article>
+	<article class="entry">
+	  <div class="image">
+		<a href="images/transit-station.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/transit-station.jpg"
+			alt="Near-future transit plaza at night in the rain, crowds moving under smooth architecture and unified signage"
+			width="1152"
+			height="864"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Transit Gate, 2103</h2>
+		<p>
+		  A city station where signage, lighting, and movement have all been gently standardized, the architecture managing flow as much as it moves people.
+		</p>
+		<p class="caption">
+		  The space is efficient and visually coherent, almost soothing—until you notice how little room it leaves for anything unscripted.
+		</p>
+	  </div>
+	</article>
+	<article class="entry reverse">
+	  <div class="image">
+		<a href="images/wellness1.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/wellness1.jpg"
+			alt="Projected wellness training slide titled Cognitive Load Management with pastel icons and practice pointers"
+			width="1280"
+			height="720"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Cognitive Load Management</h2>
+		<p>
+		  A wellness training slide teaching participants how to recognize overload, reduce inputs, and realign with the architectures expectations.
+		</p>
+		<p class="caption">
+		  The language is gentle and reasonable; the unsettling part is how thoroughly it invites people to adapt themselves to the system.
+		</p>
+	  </div>
+	</article>
+	<article class="entry">
+	  <div class="image">
+		<a href="images/neura-panel.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/neura-panel.jpg"
+			alt="Wall-mounted home interface showing ambient light, sleep quality, stress response, and environment sliders"
+			width="1024"
+			height="1024"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Home Environment Panel</h2>
+		<p>
+		  A wall-mounted interface that quietly tracks light, sleep, stress, and environmental factors, tuning the apartment around its resident.
+		</p>
+		<p class="caption">
+		  Helpful on the surface, it also shows how thoroughly comfort and compliance can blur together.
+		</p>
+	  </div>
+	</article>
+	<article class="entry">
+	  <div class="image">
+		<a href="images/shelter-aerial.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/shelter-aerial.jpg"
+			alt="Aerial view of a small corrugated riverside shelter near a brown river and transit bridge at dusk"
+			width="1280"
+			height="720"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Riverside Field Station</h2>
+		<p>
+		  
+		</p>
+		<p class="caption">
+		  Overlooked by the grid, it sits in the margin where infrastructure is still physical and the river does its work without being optimized.
+		</p>
+	  </div>
+	</article>
+
+	<article class="entry">
+	  <div class="image">
+		<a href="images/shelter-exterior.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/shelter-exterior.jpg"
+			alt="Small corrugated riverside field station in winter, warm light in the window, frozen river and thin snow all around"
+			width="1280"
+			height="720"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Riverside Field Station</h2>
+		<p>
+		  
+		</p>
+		<p class="caption">
+		  
+		</p>
+	  </div>
+	</article>
+	<article class="entry reverse">
+	  <div class="image">
+		<a href="images/shelter-interior.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/shelter-interior.jpg"
+			alt="Cold corrugated metal field station interior with cot, wood stove, workbench, and a few plants on the windowsill overlooking a frozen river"
+			width="1280"
+			height="720"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Interior: Field Station</h2>
+		<p>
+		  
+		</p>
+		<p class="caption">
+		  
+		</p>
+	  </div>
+	</article>
+	<article class="entry reverse">
+	  <div class="image">
+		<a href="images/betavoltaic.jpg" target="_blank" rel="noopener noreferrer">
+		  <img
+			src="images/betavoltaic.jpg"
+			alt="Compact betavoltaic unit and a small unmarked AI housing on a worn workbench, charge needle and status lights glowing with a frozen river beyond the window"
+			width="1280"
+			height="720"
+			loading="lazy"
+		  />
+		</a>
+	  </div>
+	  <div class="text">
+		<h2>Betavoltaic Array / Amara</h2>
+		<p>
+		  
+		</p>
+		<p class="caption">
+		  
+		</p>
+	  </div>
+	</article>
+
+    </main>
+  </div>
+    <script data-goatcounter="https://wovenaether.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js">
+  </script>
+</body>
+</html>
