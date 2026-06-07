@@ -392,6 +392,18 @@
 	  border-radius: 4px;
 	  box-shadow: 0 14px 32px var(--shadow);
 	}
+	body::before {
+	  content: "";
+	  position: fixed;
+	  inset: 0;
+	  background-image: url("bg.jpg");
+	  background-size: cover;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  opacity: 0.14;
+	  pointer-events: none;
+	  z-index: -1;
+	}
   </style>
 </head>
 <body>
@@ -458,7 +470,7 @@
         </svg>
       </div>
 	  
-	  <div class="hero-image">
+	  <!-- <div class="hero-image">
 		  <img
 			src="forest-woven-hero.jpg"
 			alt="Abstract teal map of roots and river channels branching from a common source"
@@ -466,7 +478,7 @@
 			height="720"
 			loading="lazy"
 		  />
-	</div>
+	</div> -->
 
       <div class="pitch">
         <p>
@@ -549,6 +561,7 @@
         <div class="links-label">For readers &amp; groups</div>
         <ul class="links">
           <li><a href="study-guide.html">Study Guide</a> — Discussion questions, philosophical lineages, structural maps, and practice-based engagements for book clubs and individual readers</li>
+		  <li><a href="visual-archive.html">Visual Archive</a> — Visual interpretations of places, atmospheres, and systems from the novel</li>
         </ul>
       </section>
 

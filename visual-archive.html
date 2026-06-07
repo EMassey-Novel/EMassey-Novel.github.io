@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visual Archive | The Forest Is Woven</title>
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --panel: #f8f5ef;
+      --text: #1e1c19;
+      --muted: #6f6a63;
+      --line: rgba(30, 28, 25, 0.14);
+      --accent: #2d5a46;
+      --shadow: rgba(0, 0, 0, 0.10);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { margin: 0; padding: 0; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .topbar {
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .topbar a {
+      border-bottom: 1px solid rgba(30, 28, 25, 0.18);
+      padding-bottom: 2px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .archive-note {
+      max-width: 780px;
+      margin: 0 0 42px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.28);
+      color: var(--text);
+    }
+
+    .gallery {
+      display: grid;
+      gap: 34px;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 14px 34px var(--shadow);
+      background: #ece7de;
+    }
+
+    .entry h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 1.9rem);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .entry p {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    @media (min-width: 900px) {
+      .entry {
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        align-items: start;
+        gap: 24px;
+      }
+
+      .entry.reverse {
+        grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+      }
+
+      .entry.reverse .text {
+        order: 1;
+      }
+
+      .entry.reverse .image {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html">Back to The Forest Is Woven</a>
+    </div>
+
+    <header>
+      <h1>Visual Archive</h1>
+      <p class="intro">
+        A small collection of visual interpretations drawn from the atmospheres, places, and material textures of <em>The Forest Is Woven</em>.
+      </p>
+      <div class="archive-note">
+        These images are not literal scene illustrations so much as visual studies of setting, perception, and mood: Elias’s loft, Echo’s presence, and the branching root-river patterns that recur throughout the book.
+      </div>
+    </header>
+
+    <main class="gallery">
+      <article class="entry">
+        <div class="image">
+          <img
+            src="images/loft1.jpg"
+            alt="Wide interior view of Elias's loft with a large window, long desks, plant wall, bookshelves, and fireplace"
+            width="1152"
+            height="864"
+            loading="lazy"
+          />
+        </div>
+        <div class="text">
+          <h2>Elias’s Loft</h2>
+          <p>
+            A wide-room study of the old top-floor loft: the large east window, joined computer desks, one long wall of living greens, and tall shelves of books around the fireplace.
+          </p>
+          <p class="caption">
+            The intent here is not spectacle, but a habitable world of wood, rain, thought, and cultivated attention.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry reverse">
+        <div class="image">
+          <img
+            src="images/loft2.jpg"
+            alt="Closer view of Elias's desk and Echo facing the window with monitors and status lights"
+            width="1152"
+            height="864"
+            loading="lazy"
+          />
+        </div>
+        <div class="text">
+          <h2>Echo / Amara Workstation</h2>
+          <p>
+            A closer study of the conjoined desks against the window: warm-toned monitors, local hardware, edible plants, and Echo/Amara rendered as a built presence rather than an abstract cloud intelligence.
+          </p>
+          <p class="caption">
+            The room remains tactile and local, resisting the glossy smoothness of official systems.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="image">
+          <img
+            src="images/forest-woven-hero.jpg"
+            alt="Abstract branching image of roots and river channels in dark teal with muted gold-green detail"
+            width="1280"
+            height="720"
+            loading="lazy"
+          />
+        </div>
+        <div class="text">
+          <h2>Root / River Study</h2>
+          <p>
+            A visual interpretation of the branching structures that recur throughout the novel: roots, rivers, nerves, veins, and the persistent intuition that unlike things may share one underlying pattern.
+          </p>
+          <p class="caption">
+            More symbolic than narrative, this piece belongs to the book’s deeper pattern-language.
+          </p>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
