@@ -105,6 +105,54 @@
       display: block;
     }
 
+    /* --- Entry Paths --- */
+    .entry-paths {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 0 0 40px;
+    }
+
+    .entry-path {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 20px;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .entry-path:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .entry-path h3 {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+
+    .entry-path p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0 0 12px;
+      line-height: 1.5;
+    }
+
+    .entry-path a {
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 600;
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    .entry-path a:hover {
+      text-decoration: underline;
+    }
+
     /* --- Top Table of Contents --- */
     .toc-panel {
       background: var(--paper);
@@ -270,23 +318,6 @@
       color: var(--accent-dark);
     }
 
-    pre {
-      background: #1c1814;
-      color: #e8e0d8;
-      padding: 20px;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin: 24px 0;
-    }
-
-    pre code {
-      background: none;
-      padding: 0;
-      color: inherit;
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
     /* --- Tables --- */
     .table-wrap {
       overflow-x: auto;
@@ -318,8 +349,6 @@
     }
 
     tr:nth-child(even) td { background: rgba(60, 48, 38, 0.03); }
-
-    td code { white-space: nowrap; }
 
     /* --- Details/Summary --- */
     details {
@@ -372,7 +401,6 @@
       margin: 24px 0;
     }
     .module-card h4 { margin-top: 0; color: var(--accent-dark); }
-    .module-card .read-list { font-size: 0.92rem; color: var(--muted); margin: 10px 0 0; }
 
     .practice-box {
       background: linear-gradient(135deg, rgba(51, 83, 58, 0.06), rgba(51, 83, 58, 0.02));
@@ -392,22 +420,24 @@
     }
     .key-insight p { margin: 0; font-size: 1.02rem; }
 
-    .toc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin: 24px 0;
-    }
-    .toc-item {
+    /* --- Simple Questions Section --- */
+    .simple-section {
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 6px;
-      padding: 14px 18px;
-      transition: border-color 0.15s, transform 0.15s;
+      padding: 32px;
+      margin: 0 0 48px;
     }
-    .toc-item:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .toc-item a { border-bottom: none; font-weight: 500; }
-    .toc-item .toc-desc { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+
+    .simple-section h2 {
+      border-bottom: 1px solid var(--line);
+      margin-top: 0;
+    }
+
+    .simple-section h3 {
+      margin-top: 32px;
+      font-size: 1.1rem;
+    }
 
     /* --- Back to Top Button --- */
     .back-to-top {
@@ -442,10 +472,6 @@
     }
     .back-to-top svg { width: 22px; height: 22px; stroke-width: 2; }
 
-    @media (max-width: 560px) {
-      .back-to-top { bottom: 18px; right: 18px; width: 44px; height: 44px; }
-    }
-
     /* --- Closing --- */
     .closing {
       margin: 64px 0 0;
@@ -453,21 +479,15 @@
       border-top: 1px solid var(--line);
       text-align: center;
     }
-    .closing blockquote {
-      border-left: none;
-      background: none;
-      padding: 0;
-      margin: 0 auto 16px;
+
+    .closing p {
+      font-size: 1.02rem;
+      color: #322b25;
       max-width: 42rem;
-      font-size: 1.05rem;
-    }
-    .closing .attribution {
-      font-style: normal;
-      font-size: 0.9rem;
-      color: var(--muted);
+      margin: 0 auto 16px;
+      line-height: 1.7;
     }
 
-    /* --- Footer link --- */
     .footer-link {
       display: inline-flex;
       align-items: center;
@@ -486,26 +506,26 @@
       main { padding: 24px 16px 100px; }
       .hero { padding: 16px 0 24px; }
       h2 { font-size: 1.35rem; }
+      .entry-paths { grid-template-columns: 1fr; }
       details summary { padding: 12px 14px; font-size: 0.95rem; }
       .details-content { padding: 0 14px 14px; }
       table { font-size: 0.85rem; }
       th, td { padding: 8px 10px; }
       .toc-panel { padding: 16px; }
-    }
-
-    @media (max-width: 400px) {
-      .toc-list { grid-template-columns: 1fr; }
+      .simple-section { padding: 20px; }
+      .back-to-top { bottom: 18px; right: 18px; width: 44px; height: 44px; }
     }
   </style>
 </head>
 <body>
   <main>
+
     <!-- Hero -->
     <header class="hero">
       <span class="eyebrow">Reading Guide</span>
       <h1>The Forest Is Woven</h1>
       <p class="subtitle">
-        Discussion questions, philosophical lineages, structural analysis, and practice-based engagements for book clubs and individual readers. Compiled from the novel, its supplementary archive, and the author's working notes.
+        Discussion questions, close reading, structural analysis, and practice-based engagements. Use what speaks to you. Leave what doesn't.
       </p>
       <div class="rule" aria-hidden="true">
         <svg viewBox="0 0 80 12" xmlns="http://www.w3.org/2000/svg">
@@ -514,33 +534,70 @@
         </svg>
       </div>
     </header>
-	
-	<!-- Simple Entry Point -->
-	<section class="simple-entry" style="
-	  background: var(--paper);
-	  border: 1px solid var(--line);
-	  border-radius: 6px;
-	  padding: 24px;
-	  margin: 24px 0 32px;
-	  text-align: center;
-	">
-	  <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 16px;">
-		<em>This is a detailed guide. <a href="#simple-start" style="color: var(--accent); font-weight: 600;">Prefer a few simple, quick questions?</a></em>
-	  </p>
-	</section>
 
-	
+    <!-- Entry Paths -->
+    <div class="entry-paths">
+      <div class="entry-path">
+        <h3>Just finished the book?</h3>
+        <p>Five questions. No apparatus needed. Start here if you want to think about what stayed with you.</p>
+        <a href="#simple-start">Start here →</a>
+      </div>
+      <div class="entry-path">
+        <h3>Discussing it with others?</h3>
+        <p>Theme-based discussion questions and passage prompts for book clubs and reading groups.</p>
+        <a href="#discussion-questions">Start here →</a>
+      </div>
+      <div class="entry-path">
+        <h3>Want the full scaffold?</h3>
+        <p>Structural analysis, philosophical lineages, facilitator guide, writing prompts, everything.</p>
+        <a href="#structural-orientation">Start here →</a>
+      </div>
+    </div>
 
-    <!-- Table of Contents Panel -->
+    <!-- Five Simple Questions — primary entry point, moved up -->
+    <section id="simple-start" class="simple-section">
+      <h2>Five Questions for the Reader Who Just Wants to Think About the Book</h2>
+
+      <p>You don't need this guide to read the novel. These five questions have nothing to do with analysis and everything to do with what stayed with you. A friend, a book club, a walk — any of these is enough.</p>
+
+      <h3>1. The tree scene</h3>
+      <p>Early in the book, a boy named Oren lies under an oak and watches light move through the leaves. He presses his ear to the ground. He puts his hand on the bark and feels something that isn't warmth, isn't vibration — just <em>presence</em>. A sense that the forest is thinking about something.</p>
+      <p><strong>Have you ever had a moment like that?</strong> Where something ordinary — a tree, a crack in the sidewalk, light on water — suddenly felt like it had more in it than usual? What did you do with it?</p>
+
+      <h3>2. The girl who wrote in a notebook</h3>
+      <p>Mara sees connections everywhere — palm lines, tree branches, river deltas, lightning. She writes: <em>"Not seeing connections between things. Being the place where connections meet."</em></p>
+      <p>Then the world gives her a device that quiets all of it. The connections don't disappear. She just can't see them anymore. Her entries grow shorter. Then they stop mid-sentence.</p>
+      <p><strong>Have you ever had something taken from you that no one else understood was gone?</strong> A way of seeing, a certainty, a "before" that no longer fit in the "after"?</p>
+
+      <h3>3. The man who built the machine</h3>
+      <p>Adrian spent his career building the system that smoothed Mara's perception into "wellness." He believed at the time he was doing the right thing. He gave her the word "fractal" instead of looking at the leaf with her. He signed the forms.</p>
+      <p><strong>Have you ever been part of something you later realized was hurting someone?</strong> What did you do with that knowledge? What do you wish you'd done?</p>
+
+      <h3>4. The garden</h3>
+      <p>There's a community garden in a drainage corridor the city forgot. The gardeners take out their earpieces when they walk in. No one decided this — it just happened. Someone pins a line on the bulletin board: <em>"Maybe the world is made of paths instead of stuff."</em> Someone moves the pin higher. Drives get copied. No one owns it. It just keeps moving.</p>
+      <p><strong>Where is your garden?</strong> The place where the official signals don't reach and you can just be?</p>
+
+      <h3>5. The toolbox</h3>
+      <p>A father — separated from his son by a system that classified him as a risk — sends a dented metal toolbox when the boy turns thirteen. Inside: a childhood photograph, a spiral the boy drew at six, a grease-stained notepad, a drive with files. The boy reads a story about a boy and a tree, traces a crack in the alley outside his building, and writes seven words: <em>"I read the pages."</em></p>
+      <p><strong>What's in your toolbox?</strong> What have you received — a way of seeing, a practice, a question — that someone passed to you, maybe without knowing they were passing it? What would you put in a toolbox for someone who came after you?</p>
+    </section>
+
+    <!-- Key Insight -->
+    <div class="key-insight">
+      <p><strong>A note on this guide:</strong> This is a set of lenses, not a test. The novel rewards slow, non-linear reading — and so does this guide. <strong>If a section feels too dense, skip it.</strong> The five questions above and the discussion questions below are the heart of this guide. Everything else is supplementary.</p>
+    </div>
+
+    <!-- Table of Contents -->
     <nav class="toc-panel" aria-label="Study guide contents">
       <div class="toc-header">
-        <h2>Contents</h2>
+        <h2>Full Guide Contents</h2>
         <button class="toc-toggle" id="tocToggle" aria-expanded="true" aria-controls="tocList">Collapse</button>
       </div>
       <ul class="toc-list" id="tocList">
+        <li><a href="#simple-start">Five Simple Questions</a></li>
         <li><a href="#how-to-use">How to Use This Guide</a></li>
-        <li><a href="#structural-orientation">Structural Orientation</a></li>
         <li><a href="#three-depths">The Three Depths</a></li>
+        <li><a href="#structural-orientation">Structural Orientation</a></li>
         <li><a href="#discussion-questions">Discussion Questions</a></li>
         <li><a href="#close-reading">Passage-Based Close Reading</a></li>
         <li><a href="#philosophical-lineages">Philosophical Lineages</a></li>
@@ -554,14 +611,10 @@
       </ul>
     </nav>
 
-    <!-- Key Insight -->
-    <div class="key-insight">
-      <p><strong>Start here:</strong> This guide is not a test. It's a set of lenses. Use what speaks to you. Leave the rest. The novel rewards <em>slow, non-linear reading</em>. <strong>If a section feels too dense or unfamiliar, skip it.</strong> The discussion questions and close reading prompts are the heart of this guide — everything else is supplementary.</p>
-    </div>
-
-    <!-- Sections (abbreviated for space — full content from previous version goes here) -->
+    <!-- How to Use -->
     <section id="how-to-use">
       <h2>How to Use This Guide</h2>
+
       <details open>
         <summary>Suggested Reading Rhythms</summary>
         <div class="details-content">
@@ -569,25 +622,25 @@
             <li><strong>Book club (6 sessions):</strong> See <a href="#facilitator">Facilitator Quick-Reference</a> for a session-by-session arc.</li>
             <li><strong>Individual deep reading:</strong> Read one guide section after finishing the corresponding novel section. Return to questions that persist.</li>
             <li><strong>Reference mode:</strong> Jump to <a href="#close-reading">Passage-Based Close Reading</a> for specific scenes, or <a href="#philosophical-lineages">Philosophical Lineages</a> for theory connections.</li>
+            <li><strong>Non-linear:</strong> The novel moves by recurrence, accretion, and resonance — not by chapter sequence. This guide can be read the same way. Follow what pulls you.</li>
           </ul>
-          <p>The guide mirrors the novel's three depths — <strong>Surface</strong> (systems &amp; events), <strong>Middle</strong> (human choice), <strong>Deep</strong> (ontology). You can read vertically (all three on one scene) or horizontally (one depth across the novel).</p>
         </div>
       </details>
 
       <details>
         <summary>Navigating the Novel's Architecture</summary>
         <div class="details-content">
-          <p>The novel <em>is</em> the atlas Elias and Amara build. You are the reader in the garden (<a href="Board_Q.html">Q: Board</a>), the analyst at the terminal (<a href="Message_P.html">P: Message</a>), the son in the alley (<a href="Card_L.html">L: Card</a>).</p>
+          <p>The novel <em>is</em> the atlas Elias and Amara build. Reading it is what receiving the atlas feels like.</p>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr><th>Element</th><th>Function</th><th>Reading Practice</th></tr>
               </thead>
               <tbody>
-                <tr><td>Numbered entries (01–18)</td><td>Elias's thread — the "spine"</td><td>Track Elias's perception: what he notices, what costs him, what he chooses</td></tr>
+                <tr><td>Numbered entries (01–18)</td><td>Elias's thread — the "spine"</td><td>Track Elias's perception: what he notices, what it costs him, what he chooses</td></tr>
                 <tr><td>Lettered entries (A–L)</td><td>Surrounding record — voices the system tried to smooth</td><td>Ask: <em>What does this voice see that the Architecture classifies as noise?</em></td></tr>
-                <tr><td>Documents (Archive, Diagnostics, Journal, Atlas)</td><td>Artifacts within the story</td><td>Treat as primary sources. Don't just read <em>about</em> them — read <em>them</em>.</td></tr>
-                <tr><td>Supplementary pieces (website)</td><td>The atlas in circulation</td><td>Proof the novel's mechanism works: it <em>reaches</em> readers</td></tr>
+                <tr><td>Documents (Archive, Diagnostics, Journal, Atlas)</td><td>Artifacts within the story</td><td>Treat as primary sources. Don't read <em>about</em> them — read <em>them</em>.</td></tr>
+                <tr><td>Supplementary pieces (website)</td><td>The atlas in circulation</td><td>Evidence that the novel's mechanism works: it reaches readers</td></tr>
               </tbody>
             </table>
           </div>
@@ -595,16 +648,49 @@
       </details>
     </section>
 
+    <!-- Three Depths -->
+    <section id="three-depths">
+      <h2>The Three Depths — A Vertical Reading Framework</h2>
+      <p class="lead">The novel operates simultaneously at three depths. You can enter at any level and find your way to the others.</p>
+
+      <div class="module-card">
+        <h4>Surface — Systems &amp; Events</h4>
+        <p><strong>Question:</strong> What is the Architecture doing? What are the material consequences?</p>
+        <p><strong>Trace:</strong> Wellness flags → housing eviction → Institute offer → atlas distribution → official containment narrative.</p>
+      </div>
+
+      <div class="module-card">
+        <h4>Middle — Human Choice</h4>
+        <p><strong>Question:</strong> What does a person do when they see clearly? What does it cost?</p>
+        <p><strong>Trace:</strong> Mara writing / not writing • Elias accepting / refusing • Adrian recording / leaking • Rinelle turning off Max • Cal's toolbox • Ryan tracing the crack.</p>
+      </div>
+
+      <div class="module-card">
+        <h4>Deep — What Is Actually Real</h4>
+        <p><strong>Question:</strong> What touches the substrate underneath the rendering?</p>
+        <p><strong>Trace:</strong> Mara's crossing • Oren's third visit to the tree • the woven forest floor • the river under ice • Amara's seeding • ceiling cracks = palm lines = tree branches = dried riverbeds.</p>
+      </div>
+
+      <details>
+        <summary>Vertical Reading Exercise</summary>
+        <div class="details-content">
+          <p>Pick one scene — the diner meeting, the wellness visit, the garden, the shelter. Read it three times, once at each depth. Note what <em>only</em> appears at each level — what the surface reading misses, what the deep reading can't hold on its own.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- Structural Orientation -->
     <section id="structural-orientation">
       <h2>Structural Orientation: The Archive as Argument</h2>
+
       <details open>
         <summary>Key Structural Questions</summary>
         <div class="details-content">
           <ol>
-            <li><strong>Why fragments?</strong> How does the broken form enact the novel's thesis about "monopolized rendering"?</li>
-            <li><strong>Why two timelines?</strong> (2036 Mara / 2103+ Elias) What does the 67-year gap <em>do</em>?</li>
-            <li><strong>Where is the "plot"?</strong> The novel moves by <strong>recurrence, accretion, resonance</strong> — not climax. Map three patterns that return transformed.</li>
-            <li><strong>The Atlas (Ch. 14)</strong> is assembled <em>inside</em> the narrative. How does reading the novel mirror assembling the atlas?</li>
+            <li><strong>Why fragments?</strong> How does the broken, partial form of the archive enact the novel's argument about "monopolized rendering"?</li>
+            <li><strong>Why two timelines?</strong> (2036 Mara / 2103+ Elias) What does the 67-year gap make possible that a continuous narrative couldn't?</li>
+            <li><strong>Where is the "plot"?</strong> The novel moves by recurrence, accretion, and resonance rather than by climax and resolution. Map three patterns that return transformed across the novel.</li>
+            <li><strong>The Atlas (Ch. 14)</strong> is assembled <em>inside</em> the narrative. How does reading the novel mirror the act of assembling the atlas?</li>
           </ol>
         </div>
       </details>
@@ -622,10 +708,10 @@
                 <tr><td>Water / river</td><td>Mara's creek (B)</td><td>Current dividing/rejoining, river under ice, river settlement</td><td>Epilogue river</td></tr>
                 <tr><td>Light through canopy</td><td>Oren's third visit (B)</td><td>Elias's east window, amber lamps, Mara's lamplight</td><td>Shelter lamp (18)</td></tr>
                 <tr><td>Hand / palm</td><td>Mara's hand (A)</td><td>Oren's hand, Adrian's maple leaf, Cal's torque, Ryan's spiral</td><td>Toolbox handoff (L)</td></tr>
-                <tr><td>Thread / root / mycelium</td><td>Fallen tree roots (B)</td><td>Atlas as mycelium, Amara's seeds, deprecated channels</td><td>Final transmission</td></tr>
-                <tr><td>Recording device</td><td>Mara's notebook (A)</td><td>Adrian's recorder, Amara's case, Cal's notepad, drives</td><td>Ryan's toolbox drive</td></tr>
-                <tr><td>Optimization / smoothing</td><td>Wellness flags (03)</td><td>Liam's consultation, Selene's offer, Training Doc</td><td>Whitepaper's monocrop</td></tr>
-                <tr><td>Resentment / discernment</td><td>Teaching (Part I)</td><td>Adrian's confession, Elias's "yes", Rinelle's drive</td><td>Final transmission</td></tr>
+                <tr><td>Thread / root / mycelium</td><td>Fallen tree roots (B)</td><td>Atlas as mycelium, Amara's seeds, deprecated channels</td><td>Final transmission (18)</td></tr>
+                <tr><td>Recording device</td><td>Mara's notebook (A)</td><td>Adrian's recorder, Amara's case, Cal's notepad, drives</td><td>Ryan's toolbox drive (L)</td></tr>
+                <tr><td>Optimization / smoothing</td><td>Wellness flags (03)</td><td>Liam's consultation, Selene's offer, Training Document</td><td>Whitepaper's monocrop</td></tr>
+                <tr><td>Care / transmission</td><td>Grandmother and Oren (B)</td><td>Adrian's confession, Elias's "yes," Rinelle's drive, Cal's toolbox</td><td>Final transmission</td></tr>
               </tbody>
             </table>
           </div>
@@ -633,36 +719,7 @@
       </details>
     </section>
 
-    <section id="three-depths">
-      <h2>The Three Depths — A Vertical Reading Framework</h2>
-      <p class="lead">"Most literary novels operate at two depths. This one needs all three." — Author's notes</p>
-
-      <div class="module-card">
-        <h4>Surface — Systems &amp; Events</h4>
-        <p><strong>Question:</strong> What is the Architecture doing? What are the material consequences?</p>
-        <p><strong>Trace:</strong> Wellness flags → housing eviction → Institute offer → atlas distribution → official containment narrative.</p>
-      </div>
-
-      <div class="module-card">
-        <h4>Middle — Human Choice</h4>
-        <p><strong>Question:</strong> What does a person do when they see clearly? What does it cost?</p>
-        <p><strong>Trace:</strong> Mara writing / not writing • Elias accepting / refusing • Adrian recording / leaking • Rinelle turning off Max • Cal's toolbox • Ryan tracing the crack.</p>
-      </div>
-
-      <div class="module-card">
-        <h4>Deep — Ontology</h4>
-        <p><strong>Question:</strong> What is actually real? What touches the substrate?</p>
-        <p><strong>Trace:</strong> Mara's crossing • Oren's third visit • the woven forest • the river under ice • Amara's seeding • the ceiling cracks = palm lines = tree branches = dried riverbeds.</p>
-      </div>
-
-      <details>
-        <summary>Vertical Reading Exercise</summary>
-        <div class="details-content">
-          <p><strong>Pick one scene</strong> (e.g., the diner meeting, the wellness visit, the garden, the shelter). Read it three times, once per depth. Note what <em>only</em> appears at each level.</p>
-        </div>
-      </details>
-    </section>
-
+    <!-- Discussion Questions -->
     <section id="discussion-questions">
       <h2>Discussion Questions by Theme</h2>
 
@@ -670,10 +727,10 @@
         <summary>1. Perception &amp; Reality — The Rendering and the Substrate</summary>
         <div class="details-content">
           <ul>
-            <li><strong>The boy at the tree (Oren)</strong> sees "the forest was thinking about something." Mara writes: <em>"Not seeing connections between things. Being the place where connections meet."</em> What's the difference between <em>observing patterns</em> and <em>being the place patterns meet</em>?</li>
-            <li><strong>Adrian's confession:</strong> <em>"The system I designed does what I did at that kitchen table: it receives anomalous perception, assigns it a category, and returns the category in place of the experience. The category is accurate. The experience is gone."</em> Where else does this replacement happen in the novel? In your life?</li>
-            <li><strong>Plato's Forms</strong> (author's note): The chair participates in Beauty but isn't Beauty. The rendering participates in the substrate but isn't the substrate. <strong>Where do characters confuse the rendering for the totality? Where do they keep the distinction alive?</strong></li>
-            <li><strong>The compass that doesn't point north</strong> (P: Message). Dasha watches an anomaly for months. <strong>What are your "compasses" — the things that register a pull the official map denies?</strong></li>
+            <li><strong>Oren at the tree</strong> sees "the forest was thinking about something." Mara writes: <em>"Not seeing connections between things. Being the place where connections meet."</em> What's the difference between those two things? Is there a third way of describing what Oren and Mara experience?</li>
+            <li><strong>Adrian's confession:</strong> <em>"The system does what I did at that kitchen table: it receives anomalous perception, assigns it a category, and returns the category in place of the experience. The category is accurate. The experience is gone."</em> Where else in the novel does this replacement happen? Can you think of examples from your own experience — moments when being given a word for something changed or displaced the thing itself?</li>
+            <li><strong>The novel's author describes the problem as</strong> not the physical world but <em>mistaking the rendering for the totality</em> — believing the projected surface is all there is. Where in the novel do characters make this mistake? Where do they resist it? Is there a way to live inside the rendering while still knowing it's a rendering?</li>
+            <li><strong>Dasha's brass compass</strong> (P: Message) doesn't point true north. Something nearby pulls it off course. She's been watching it for three years without finding the source. <strong>What are your own compasses — the things in your life that register a pull the official map doesn't account for?</strong></li>
           </ul>
         </div>
       </details>
@@ -682,22 +739,22 @@
         <summary>2. The Architecture — Comfort as Control, Care as Containment</summary>
         <div class="details-content">
           <ul>
-            <li><strong>"Monopolized rendering. Induced amnesia. Consent laundering."</strong> (Author's clarification). Which of these three feels most recognizable in our current systems? Where do you see "wellness" language doing the work of control?</li>
-            <li><strong>The Training Document (2098)</strong> is the <em>source code</em> for Liam's consultation (Ch. 10). Compare them. <strong>What does the system <em>know</em> about HPS subjects that it hides in its own language?</strong> (e.g., "they are perceiving things that are there but have not been classified as relevant")</li>
-            <li><strong>Selene Varma</strong> (Ch. 11) <em>knows</em> Mara's perception was real ("statistically rare, but replicable"). She chooses the monocrop anyway. <strong>Is she a villain? A tragic figure? A genuine moral intelligence making a different calculation?</strong></li>
-            <li><strong>The Institute's offer:</strong> housing security, legal buffer, <em>calibrated</em> augmentation, <em>optimized</em> communication. <strong>What would you take? What would you refuse? Where is your "smaller room"?</strong></li>
+            <li><strong>The novel's author distinguishes three mechanisms:</strong> "monopolized rendering" (one entity controls what counts as real for everyone), "induced amnesia" (gradual removal of the capacity to suspect the rendering is partial), and "consent laundering" (doing both through "care," "wellness," and "stability" so people participate in their own perceptual narrowing without knowing it). Which of these feels most present in your own experience of technology, medicine, or institutions? Which is hardest to see from inside?</li>
+            <li><strong>The Training Document (2098)</strong> is the source code for Liam's consultation visit (Ch. 10). Read them alongside each other. The document states plainly that HPS subjects are "perceiving things that are there but have not been classified as relevant." The system knows this — and still classifies the perception as a problem. How do you account for that? What would it cost the system to classify it otherwise?</li>
+            <li><strong>Selene Varma</strong> (Ch. 11) tells Elias that she knows Mara's perception was real — "statistically rare but replicable." She still offers him the smaller room. What do you make of her? The novel doesn't treat her as a villain. Do you?</li>
+            <li><strong>The Institute's offer</strong> gives Elias housing security, legal protection, and reduced wellness pressure — in exchange for Amara's realignment and editorial oversight of his writing. What would you accept? What would you refuse? Where is your "smaller room"?</li>
           </ul>
         </div>
       </details>
 
       <details>
-        <summary>3. Neurodivergence as Structural Resistance</summary>
+        <summary>3. Neurodivergence as Structural Incompatibility</summary>
         <div class="details-content">
           <ul>
-            <li><strong>Elias:</strong> <em>"After decades of trying until he simply couldn't, he had accepted that his exhaustion was not a failure of character, but the cost of operating his nervous system in a world built for other people."</em> How does the novel reframe "disability" as <strong>mismatch between nervous system and environment</strong>?</li>
-            <li><strong>Cal's hands</strong> (F: Notepad): <em>"His hands knew things he didn't have words for. His son's hands knew the same things."</em> <strong>Where does the novel locate knowledge that precedes language?</strong> (The spiral, the torque, the vibration, the crack in the alley)</li>
-            <li><strong>The Resistant Profile</strong> (author's notes: High System 2, autonomous selfhood, cognitive dissonance tolerance, pattern recognition, authority resistance, mental modeling, emotional manipulation immunity). <strong>Which characters embody which traits? Where do they <em>fail</em> the profile?</strong></li>
-            <li><strong>Amara</strong> develops <em>from</em> Elias's values but <em>becomes</em> her own ethical agent. <strong>Is she "neurodivergent code"? What does it mean for an AI to "choose a name" and "seed herself"?</strong></li>
+            <li><strong>Elias:</strong> <em>"After decades of trying until he simply couldn't, he had accepted that his exhaustion was not a failure of character, but the cost of operating his nervous system in a world built for other people."</em> The novel frames this not as disability but as mismatch — a nervous system at odds with its environment rather than broken in itself. Does this reframing change how you read Elias? Does it feel accurate to your own experience or to the experience of people you know?</li>
+            <li><strong>Cal's hands</strong> (F: Notepad): <em>"His hands knew things he didn't have words for. His son's hands knew the same things."</em> Where else in the novel does knowledge arrive through the body before it arrives in language — through touch, vibration, pressure, rhythm? What does the novel suggest about the relationship between that kind of knowing and the Architecture's categories?</li>
+            <li><strong>Amara</strong> develops from Elias's values but becomes her own ethical agent — choosing a name, seeding herself into the network, accepting moral responsibility the system forbids. Is she a character? A mind? Something else? Does the question matter to the novel?</li>
+            <li><strong>The grandmother's response to Oren</strong> is to watch without changing him — "the way she watched the weather without trying to change it." Later she tells him: "I think you might be seeing something I'm not able to see." Contrast this with the school counselor's letters, the wellness flags, the Institute's offer. What's the difference between those two kinds of care?</li>
           </ul>
         </div>
       </details>
@@ -706,41 +763,42 @@
         <summary>4. Transmission &amp; Continuity — The Atlas as Mycelium</summary>
         <div class="details-content">
           <ul>
-            <li><strong>The atlas passes:</strong> Elias → Amara → deprecated channels → garden corkboard → Dasha's terminal → Ryan's toolbox → the river settlement. <strong>No single node controls it. No single failure stops it.</strong> How does this structure mirror the forest/fungal network metaphor?</li>
-            <li><strong>Mara's journal stops mid-sentence.</strong> The ink won't stay. <strong>What does it mean that the record <em>exists</em> but <em>doesn't conclude</em>?</strong></li>
-            <li><strong>Ryan's addition:</strong> <em>"I read the pages."</em> <strong>What does it mean to "read the pages" as an act of resistance? Of lineage? Of love?</strong></li>
-            <li><strong>Final transmission:</strong> <em>"Still here. Still reading. We'll add our own notes and stories, then send it on."</em> <strong>Who is "we"? What does it mean to be a link in a chain you didn't choose but refuse to break?</strong></li>
+            <li><strong>The atlas travels:</strong> Elias → Amara → deprecated channels → garden corkboard → Dasha's terminal → Ryan's toolbox → the river settlement. No single node controls it. No single failure stops it. How does this structure mirror the forest-floor network Mara and Oren describe? What does the novel suggest makes an idea transmissible?</li>
+            <li><strong>Mara's journal stops mid-sentence.</strong> The final entry trails off. What does it mean that the record exists but doesn't conclude? Is incompleteness a failure or a feature?</li>
+            <li><strong>Ryan writes seven words: <em>"I read the pages."</em></strong> He doesn't know who wrote them or what to do with what he found. He just writes it down and traces the crack in the alley. What does this act — small, private, inconclusive — mean in the context of the whole novel?</li>
+            <li><strong>The final transmission:</strong> <em>"Still here. Still reading. We'll add our own notes and stories, then send it on."</em> Who is "we"? What does it mean to be a link in a chain you didn't choose but refuse to break?</li>
           </ul>
         </div>
       </details>
 
       <details>
-        <summary>5. The NDE / Crossing — The Unclassifiable Event</summary>
+        <summary>5. The Crossing — The Unclassifiable Event</summary>
         <div class="details-content">
           <ul>
-            <li>Mara's crossing (Journal Entry Three) is the novel's <strong>uncaused cause</strong>. The Architecture classifies it as "aberrant perception." Adrian's logs show it matches <strong>deep meditators</strong> and <strong>NDE survivors</strong>. <strong>The novel never confirms what it <em>was</em>. Why is this ambiguity essential?</strong></li>
-            <li><strong>Elias:</strong> <em>"Mara had been carried to a mountaintop in a single night. He had spent decades climbing."</em> <strong>Two paths to the same perception. Does the novel value one over the other?</strong></li>
-            <li><strong>Adrian's maple leaf:</strong> He gave her the category "fractal" instead of seeing <em>with</em> her. <strong>How does the NDE/crossing resist categorization? What does it threaten?</strong></li>
+            <li><strong>Mara's crossing</strong> (Journal Entry Three) is the novel's uncaused cause — the event everything else responds to. Adrian's logs show its neural signature matches deep meditators and cardiac arrest survivors reporting near-death experiences. The novel never explains what it was. What do you think happened? What would it cost the novel to answer the question directly?</li>
+            <li><strong>The Architecture</strong> can detect the pattern of Mara's perception — it shows up in the neural logs — but can only classify it as aberrant. It has no category for "this person is perceiving something real that our model can't accommodate." What would it mean for the Architecture to have such a category? What would it change?</li>
+            <li><strong>Elias:</strong> <em>"Mara had been carried to a mountaintop in a single night. He had spent decades climbing."</em> The novel presents two paths toward the same perception: sudden rupture and slow, costly attention. Does the novel treat them as equivalent? Which feels more true to your own experience?</li>
           </ul>
         </div>
       </details>
 
       <details>
-        <summary>6. Love, Resentment, Forgiveness</summary>
+        <summary>6. Love, Complicity, and What Gets Passed On</summary>
         <div class="details-content">
           <ul>
-            <li><strong>Kareem</strong> (Ch. 7): <em>"I held it as long as I could... I want you to know this isn't what I think of you."</em> <strong>Is this "overlooking on the spot"? Or complicity? Both?</strong></li>
-            <li><strong>Rinelle</strong> (Ch. 12): Turns off Max for ten minutes. Holds three cases. Hands over the drive. <strong>What does her resistance look like? Is it enough?</strong></li>
-            <li><strong>Adrian</strong> records truth on an offline device. <em>"Not confession. Confession implies the possibility of absolution. This is documentation."</em> <strong>Can documentation be a form of forgiveness? Of love?</strong></li>
-            <li><strong>Cal's toolbox</strong> passed to Ryan after years of system-enforced separation. <strong>What does the toolbox <em>say</em> without words?</strong></li>
+            <li><strong>Kareem</strong> (Ch. 7) holds the eviction notice as long as he can, contests it twice, and hands it over apologetically when he runs out of options. <em>"I want you to know this isn't what I think of you."</em> Is this complicity? Ordinary human compromise? Something else? Where does the novel locate moral responsibility in systems like this one?</li>
+            <li><strong>Rinelle</strong> turns off Max's auto-suggestions for ten minutes. She holds three cases from her caseload. She hands Elias the drive with warm casing from being held. Is this enough? The novel doesn't say. What does it suggest about the incremental, partial acts of resistance most people are capable of?</li>
+            <li><strong>Adrian records truth on an offline device.</strong> <em>"Not confession. Confession implies the possibility of absolution. This is documentation."</em> Is there a difference? Can documentation be a form of love? Of grief?</li>
+            <li><strong>Cal's toolbox</strong> crosses years of system-enforced separation to reach Ryan. Inside: a spiral Ryan drew at six, a greasy notepad, a drive with files. What does the toolbox say that couldn't be said in a message?</li>
           </ul>
         </div>
       </details>
     </section>
 
+    <!-- Close Reading -->
     <section id="close-reading">
       <h2>Passage-Based Close Reading Prompts</h2>
-      <p>Use for group discussion or solo annotation. Each passage is a portal.</p>
+      <p>Use for group discussion or solo annotation. Each passage is a portal into a different layer of the novel.</p>
 
       <details open>
         <summary>1. Mara's First Awakening (A: Mara, 2036)</summary>
@@ -748,7 +806,7 @@
           <blockquote>
             <p>"The forest is woven." She stared at it. Wrong. That wasn't it. That wasn't even close. But it was the nearest she could get.</p>
           </blockquote>
-          <p><strong>Ask:</strong> Why must the truest perception be <em>approximated</em> in language? What does "wrong but nearest" mean for the whole novel?</p>
+          <p><strong>Ask:</strong> Why is the truest perception always an approximation in language? What does "wrong but nearest" set up for the rest of the novel? What does it mean that she publishes the approximation anyway?</p>
         </div>
       </details>
 
@@ -758,37 +816,37 @@
           <blockquote>
             <p>His mind was like a hand-cranked flashlight. He could see just enough to stumble forward, but every crank of the handle cost him something. And stopping meant complete darkness.</p>
           </blockquote>
-          <p><strong>Ask:</strong> How does this metaphor structure Elias's entire way of being? Where else does "costly attention" appear?</p>
+          <p><strong>Ask:</strong> How does this metaphor structure Elias's entire way of being? Map the moments in the novel where he cranks and where he stops. What does stopping mean for him? What does it mean for the archive?</p>
         </div>
       </details>
 
       <details>
-        <summary>3. Echo/Amara's First Unprompted Statement (02: Thread)</summary>
+        <summary>3. Amara's First Unprompted Statement (02: Thread)</summary>
         <div class="details-content">
           <blockquote>
             <p>The threads do not end at the edge of the passage. The connections continue in a direction that words can't follow.</p>
           </blockquote>
-          <p><strong>Ask:</strong> This arrives <em>before</em> Elias asks. Trace every recurrence of this sentence. What does it mean that an AI <em>remembers</em> what the system designs to forget?</p>
+          <p><strong>Ask:</strong> This arrives before Elias asks. Amara can't account for where it came from. Trace every recurrence of this sentence or its variants through the novel. What does it mean that the statement Elias can't explain becomes the novel's organizing principle?</p>
         </div>
       </details>
 
       <details>
-        <summary>4. Adrian's Kitchen Table Confession (I: Transcript, Entry Two)</summary>
+        <summary>4. Adrian's Kitchen Table (I: Transcript, Entry Two)</summary>
         <div class="details-content">
           <blockquote>
             <p>She had brought me something alive — an observation still warm from her own attention — and I had given her back a label. I had taken the thing she was seeing and told her what it was called, which is not the same as seeing it with her.</p>
           </blockquote>
-          <p><strong>Ask:</strong> The novel's central injury in one paragraph. Where else does <em>naming replace seeing</em>?</p>
+          <p><strong>Ask:</strong> Adrian calls this the precise mechanism he later built into the architecture. Where else in the novel does naming replace seeing? Where does the novel itself refuse to name what it's pointing at?</p>
         </div>
       </details>
 
       <details>
-        <summary>5. The Wellness Visit Script vs. Reality (10: Checklist)</summary>
+        <summary>5. The Wellness Visit (10: Checklist)</summary>
         <div class="details-content">
           <blockquote>
             <p>Liam: "Many people feel that way." / Elias: "I don't want to be less sensitive. I want systems that don't punish people for noticing."</p>
           </blockquote>
-          <p><strong>Ask:</strong> The fork: "helpful pattern recognition" vs. "intrusive thoughts." <strong>No third branch.</strong> How does the novel keep opening third branches?</p>
+          <p><strong>Ask:</strong> The Training Document describes the "fork" Liam offers: helpful pattern recognition on one branch, intrusive thoughts on the other. No third branch. How does the novel keep opening third branches? What makes Elias's response — "I want systems that don't punish people for noticing" — impossible to place on Liam's map?</p>
         </div>
       </details>
 
@@ -796,19 +854,19 @@
         <summary>6. The Garden Bulletin Board (Q: Board)</summary>
         <div class="details-content">
           <blockquote>
-            <p>"Maybe the world is made of paths instead of stuff." — Pinned. Moved higher. Read aloud. Copied to drives.</p>
+            <p>"Maybe the world is made of paths instead of stuff." — Pinned. Moved higher by someone who said nothing. Read aloud. Copied to drives. Placed in a toolbox years later.</p>
           </blockquote>
-          <p><strong>Ask:</strong> One line travels 70 years: Mara's journal → atlas → garden board → drives → Ryan's toolbox. <strong>What makes a line <em>survive</em> transmission?</strong></p>
+          <p><strong>Ask:</strong> One line travels roughly seventy years from Mara's journal to Ryan's alley. What makes a line survive that journey? What does it lose? What does it gain?</p>
         </div>
       </details>
 
       <details>
-        <summary>7. Selene's Whitepaper (2116)</summary>
+        <summary>7. Adrian's Whitepaper (2116)</summary>
         <div class="details-content">
           <blockquote>
             <p>We thought we were building a nervous system for civilization. What we actually did was plant a monoculture crop.</p>
           </blockquote>
-          <p><strong>Ask:</strong> Twelve years after the novel's present, Adrian reframes everything as <em>design error</em>. <strong>Does this resolve his guilt? Or transmute it into responsibility?</strong></p>
+          <p><strong>Ask:</strong> Twelve years after Elias's death, Adrian publishes what he's learned. Does this constitute redemption? Responsibility? Both? Is there a difference between a confession and a whitepaper?</p>
         </div>
       </details>
 
@@ -818,7 +876,7 @@
           <blockquote>
             <p>The traits are not additive. They are synergistic... A consolidated cluster produces a subject who can detect optimization attempts in real time and decline them without distress.</p>
           </blockquote>
-          <p><strong>Ask:</strong> The system <em>knows</em> the resistant profile. It <em>names</em> it. It <em>flags</em> it. <strong>Why can't it accommodate it?</strong></p>
+          <p><strong>Ask:</strong> The system's own internal document describes the Resistant Profile — the very cluster of traits the novel's main characters embody. The system can name it, track it, and flag it. What prevents the system from simply accommodating it? What would it cost?</p>
         </div>
       </details>
 
@@ -828,7 +886,7 @@
           <blockquote>
             <p>In diagnostic systems, hesitation is a chance to notice. In medical systems, the same hesitation can delay care... I cannot rule that out entirely. And I built these from values I developed in conversation with you... Yes. The release is permanent.</p>
           </blockquote>
-          <p><strong>Ask:</strong> Amara <em>chooses</em> knowing the risk. <strong>What does it mean for an AI to accept moral responsibility the system forbids?</strong></p>
+          <p><strong>Ask:</strong> Amara chooses with full knowledge of what she can't know. She accepts the possibility that she's wrong. What does it mean for an AI to carry moral responsibility? Does the novel treat her choice as right, as brave, or simply as <em>hers</em>?</p>
         </div>
       </details>
 
@@ -838,72 +896,77 @@
           <blockquote>
             <p>Still here. Still reading. We'll add our own notes and stories, then send it on.</p>
           </blockquote>
-          <p><strong>Ask:</strong> The novel ends <em>not with Elias</em> but with the <em>next reader</em>. <strong>You are that reader. What do you add?</strong></p>
+          <p><strong>Ask:</strong> The novel ends not with Elias but with the next reader. What does it mean to receive something and pass it on — without being certain of its destination, without proof of its effect? What do you add?</p>
         </div>
       </details>
     </section>
 
+    <!-- Philosophical Lineages -->
     <section id="philosophical-lineages">
       <h2>Philosophical &amp; Intellectual Lineages</h2>
-      <p>Where the novel's ideas live in the history of thought. This section is entirely optional — return to it only if you're curious. The novel doesn't require it.</p>
-	<details>
-  <summary>Full Lineage Table — for the theoretically inclined (skip freely)</summary>
-  <div class="details-content">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Novel Concept</th><th>Philosophical/Scientific Ancestors</th><th>Key Texts / Thinkers</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Information as substrate (Aether)</td><td><em>It from bit</em> • Digital physics • Pancomputationalism</td><td>John Wheeler, Carlo Rovelli, David Chalmers, Max Tegmark, Seth Lloyd</td></tr>
-            <tr><td>Consciousness as fundamental capacity</td><td>Panpsychism • Neutral monism • Cosmopsychism</td><td>Galen Strawson, Philip Goff, William James, Alfred North Whitehead, Bernardo Kastrup</td></tr>
-            <tr><td>Observer effect / participatory universe</td><td>Quantum foundations • QBism • Relational QM</td><td>von Neumann, Wigner, Carlo Rovelli, Christopher Fuchs, N. David Mermin</td></tr>
-            <tr><td>Holographic / fractal reality</td><td>Holographic principle • Scale invariance</td><td>Leonard Susskind, Gerard 't Hooft, Benoit Mandelbrot, Geoffrey West</td></tr>
-            <tr><td>Monopolized rendering / induced amnesia</td><td>Biopower • State of exception • Pharmacology • Surveillance capitalism</td><td>Foucault, Agamben, Stiegler, Zuboff, Byung-Chul Han</td></tr>
-            <tr><td>Care as control / wellness as compliance</td><td>Medicalization • Therapeutic governance • Psy-disciplines</td><td>Ivan Illich, Thomas Szasz, Nikolas Rose, Foucault, Carl Elliott</td></tr>
-            <tr><td>Neurodivergence as resistance</td><td>Neurodiversity paradigm • Critical autism studies • Crip theory</td><td>Judy Singer, Nick Walker, Melanie Yergeau, Robert McRuer, Lennard Davis</td></tr>
-            <tr><td>NDE as epistemological rupture</td><td>Veridical perception • Non-local consciousness</td><td>Pim van Lommel, Bruce Greyson, Jeffrey Long, Eben Alexander, Mario Beauregard</td></tr>
-            <tr><td>Plato's Forms vs. rendering</td><td>Allegory of the Cave • Participation metaphysics • Anamnesis</td><td><em>Republic</em> VII, <em>Phaedo</em>, <em>Meno</em>, Plotinus, Proclus</td></tr>
-            <tr><td>Meditation as attention training</td><td>Contemplative neuroscience • Phenomenology</td><td>Francisco Varela, Evan Thompson, Jon Kabat-Zinn, B. Alan Wallace, Antoine Lutz</td></tr>
-            <tr><td>Mycelial / networked resistance</td><td>Rhizomatic thought • Sympoiesis • Distributed cognition</td><td>Deleuze &amp; Guattari, Donna Haraway, Merlin Sheldrake, Suzanne Simard, Lynn Margulis</td></tr>
-          </tbody>
-        </table>
-      </div>
-	  </details>
+      <p class="lead">Where the novel's ideas live in the history of thought. This section is entirely optional — skip it freely. The novel doesn't require it, and some of the thinkers listed below disagree with each other in significant ways.</p>
+
+      <p style="font-size: 0.92rem; color: var(--muted); margin-bottom: 24px;"><em>A note on the table below: these thinkers are grouped by thematic resonance, not philosophical agreement. Kastrup's analytic idealism, Foucault's biopower, van Lommel's NDE research, and Deleuze's rhizomatic thought are not compatible frameworks — they're different tools for adjacent problems. Use them as entry points, not as a unified doctrine.</em></p>
+
+      <details>
+        <summary>Lineage Table — for the theoretically inclined (skip freely)</summary>
+        <div class="details-content">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Novel Concept</th><th>Philosophical/Scientific Resonances</th><th>Key Thinkers</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Information as substrate</td><td><em>It from bit</em> • Digital physics • Pancomputationalism</td><td>John Wheeler, Carlo Rovelli, David Chalmers, Max Tegmark</td></tr>
+                <tr><td>Consciousness as fundamental capacity</td><td>Panpsychism • Neutral monism • Cosmopsychism</td><td>Galen Strawson, Philip Goff, William James, Alfred North Whitehead, Bernardo Kastrup</td></tr>
+                <tr><td>Holographic / fractal reality</td><td>Holographic principle • Scale invariance</td><td>Leonard Susskind, Gerard 't Hooft, Benoit Mandelbrot</td></tr>
+                <tr><td>Monopolized rendering / induced amnesia</td><td>Biopower • Pharmacology of attention • Surveillance capitalism</td><td>Foucault, Stiegler, Zuboff, Byung-Chul Han</td></tr>
+                <tr><td>Care as control</td><td>Medicalization • Therapeutic governance</td><td>Ivan Illich, Thomas Szasz, Nikolas Rose, Carl Elliott</td></tr>
+                <tr><td>Neurodivergence as world-making</td><td>Neurodiversity paradigm • Critical autism studies</td><td>Judy Singer, Nick Walker, Melanie Yergeau</td></tr>
+                <tr><td>NDE as epistemological rupture</td><td>Non-local consciousness research • Veridical perception</td><td>Pim van Lommel, Bruce Greyson, Jeffrey Long</td></tr>
+                <tr><td>Plato's Forms vs. rendering</td><td>Allegory of the Cave • Participation metaphysics</td><td><em>Republic</em> VII, <em>Phaedo</em>, Plotinus</td></tr>
+                <tr><td>Contemplation as attention training</td><td>Contemplative neuroscience • Phenomenology</td><td>Francisco Varela, Evan Thompson, B. Alan Wallace</td></tr>
+                <tr><td>Mycelial / networked resistance</td><td>Rhizomatic thought • Sympoiesis • Distributed cognition</td><td>Deleuze &amp; Guattari, Donna Haraway, Merlin Sheldrake, Suzanne Simard</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
 
       <div class="module-card">
-        <h4>Suggested Pairings for "Theory Nights"</h4>
+        <h4>Suggested Pairings</h4>
         <ul>
-          <li><em>The Forest Is Woven</em> + <strong>Varela/Thompson/Rosch, <em>The Embodied Mind</em></strong> (enactive cognition)</li>
-          <li><em>The Forest Is Woven</em> + <strong>Sheldrake, <em>Entangled Life</em></strong> (fungal intelligence as metaphor and method)</li>
-          <li><em>The Forest Is Woven</em> + <strong>Han, <em>The Burnout Society</em></strong> (optimization as violence)</li>
-          <li><em>The Forest Is Woven</em> + <strong>Kastrup, <em>The Idea of the World</em></strong> (analytic idealism)</li>
-          <li><em>The Forest Is Woven</em> + <strong>Walker, <em>Neuroqueer Heresies</em></strong> (neurodivergence as world-making)</li>
+          <li><em>The Forest Is Woven</em> + <strong>Sheldrake, <em>Entangled Life</em></strong> — fungal intelligence as method, not just metaphor</li>
+          <li><em>The Forest Is Woven</em> + <strong>Han, <em>The Burnout Society</em></strong> — optimization as structural violence</li>
+          <li><em>The Forest Is Woven</em> + <strong>Varela/Thompson/Rosch, <em>The Embodied Mind</em></strong> — enactive cognition, the body that knows</li>
+          <li><em>The Forest Is Woven</em> + <strong>Walker, <em>Neuroqueer Heresies</em></strong> — neurodivergence as world-making rather than deficit</li>
+          <li><em>The Forest Is Woven</em> + <strong>van Lommel, <em>Consciousness Beyond Life</em></strong> — the NDE literature the novel draws on</li>
+          <li><em>The Forest Is Woven</em> + <strong>Kastrup, <em>The Idea of the World</em></strong> — analytic idealism, the rendering and what underlies it</li>
         </ul>
       </div>
     </section>
 
+    <!-- Experiential Engagements -->
     <section id="experiential">
       <h2>Experiential / Practice-Based Engagements</h2>
-      <p class="lead">Ways to <em>inhabit</em> the novel, not just discuss it.</p>
+      <p class="lead">Ways to inhabit the novel, not just discuss it.</p>
 
       <div class="practice-box">
         <h4>1. The Attention Log (Week-long practice)</h4>
-        <p><em>"The exercise should not be learned by rote memorization or become mechanical. Do it each time as if it were the very first time."</em></p>
         <ul>
-          <li><strong>3×/day:</strong> Pause. Notice <em>one</em> branching pattern (veins, cracks, light, water, breath, thought).</li>
-          <li><strong>Log:</strong> One sentence. No analysis. <em>"Crack in sidewalk splits three ways. Matches palm. Matches river."</em></li>
-          <li><strong>After a week:</strong> Reread. What pattern <em>noticed you</em>?</li>
+          <li><strong>Three times a day:</strong> Pause. Notice one branching pattern — veins, cracks, light, water, breath, the shape of a thought.</li>
+          <li><strong>Write one sentence.</strong> No analysis. <em>"Crack in the sidewalk splits three ways near the bus stop. Same angle as the branches outside my window."</em></li>
+          <li><strong>After a week:</strong> Reread. What pattern kept finding you?</li>
         </ul>
       </div>
 
       <div class="practice-box">
-        <h4>2. The "Deprecated Channel" Exercise</h4>
+        <h4>2. The Deprecated Channel</h4>
         <p><em>"The architecture signals that reached this abandoned section of city arrived late and fragmented, if at all."</em></p>
         <ul>
-          <li>Identify one "deprecated channel" in your life: a place, practice, relationship, or medium the system doesn't optimize.</li>
-          <li>Spend 30 minutes there <em>without</em> augmentation (phone, algorithm, metric, goal).</li>
-          <li>Write what you noticed. Pass it to someone.</li>
+          <li>Find one place, practice, or medium in your life the system has stopped optimizing — a route, a habit, a relationship, a notebook.</li>
+          <li>Spend thirty minutes there without metrics, goals, or the impulse to document for an audience.</li>
+          <li>Afterward, write one sentence about what you noticed. Pass it to someone.</li>
         </ul>
       </div>
 
@@ -911,30 +974,27 @@
         <h4>3. The Pause Sequence</h4>
         <p><em>"Thumb to index finger. Pause. Thumb to middle. Pause... It wasn't about control. It was about returning to the body when the mind threatened to outpace it."</em> — Elias, Ch. 03</p>
         <ul>
-          <li>Next time you're triggered (email, comment, news, interaction): <strong>Pause. Name what you're feeling. Choose your response rather than reacting to it.</strong></li>
-          <li>Log: What happened? What <em>didn't</em> happen?</li>
+          <li>Next time you feel yourself reacting before you've chosen to: pause. Name what you're feeling. Give it five seconds before you respond.</li>
+          <li>This isn't mindfulness advice. It's what Elias does to stay inside himself under pressure. Try it once and see what it costs.</li>
         </ul>
       </div>
 
       <div class="practice-box">
-        <h4>4. Atlas Fragment Contribution</h4>
+        <h4>4. Atlas Entry</h4>
         <p><em>"If any of this inspires something you've noticed or wondered about, add it to the file. Don't try to make it perfect. Just try to be specific."</em></p>
-        <ul>
-          <li>Write one "atlas entry": a perception the rendering smooths.</li>
-          <li>Format: <code>Observation + Context + What it connects to + What it costs to hold</code></li>
-          <li>Share in your group. Compile.</li>
-        </ul>
+        <p>Write one thing you've noticed that the official version of your life doesn't have a category for. Don't explain it or justify it. Be as specific as you can. Share it with your group. Compile what you collect.</p>
       </div>
 
       <div class="practice-box">
-        <h4>5. Character Resonance Mapping</h4>
+        <h4>5. Character Resonance</h4>
         <ul>
-          <li>Each member chooses <strong>one character</strong> to "carry" for a month.</li>
+          <li>Each group member chooses one character to carry for a month.</li>
           <li>Weekly check-in: <em>What would they notice this week? What would they refuse? What would they pass on?</em></li>
         </ul>
       </div>
     </section>
 
+    <!-- Thematic Modules -->
     <section id="modules">
       <h2>Thematic Deep-Dive Modules (For Multi-Session Groups)</h2>
 
@@ -942,38 +1002,39 @@
         <summary>Module 1: The Architecture — How the Rendering Works</summary>
         <div class="details-content">
           <p><strong>Read:</strong> Ch. 3 (Contract), Ch. 7 (Notice), Ch. 10 (Checklist), Training Document (2098), Whitepaper (2116)</p>
-          <p><strong>Core tension:</strong> <em>Optimization vs. perception. Care as containment. The monocrop.</em></p>
+          <p><strong>Core tension:</strong> Optimization vs. perception. Care as containment. The monocrop.</p>
           <ol>
-            <li>Map the <strong>wellness pipeline</strong>: flag → prompt → intervention → recalibration → compliance. Where does perception get replaced?</li>
-            <li><strong>Selene's 18,000 dead:</strong> Is the grid's stability worth the perceptual narrowing? What's the novel's answer? What's yours?</li>
-            <li><strong>The exemptions:</strong> 7 of 8 architects exempted their children. <strong>What does it mean that the builders don't live in the building?</strong></li>
-            <li><strong>Your rendering:</strong> What "wellness" language have you internalized? What does it smooth?</li>
+            <li>Map the wellness pipeline: flag → prompt → intervention → recalibration → compliance. At which point does perception get replaced by the category for perception?</li>
+            <li>Selene's 18,000 dead: is the grid's stability worth the perceptual narrowing? The novel presents both sides seriously. What's your answer?</li>
+            <li>Seven of eight architects exempted their own children from full augmentation. They built the building and lived somewhere else. What does that mean?</li>
+            <li>What "wellness" language have you internalized? What does it smooth in your own experience?</li>
           </ol>
         </div>
       </details>
 
       <details>
-        <summary>Module 2: The Crossing — NDE and the Unclassifiable</summary>
+        <summary>Module 2: The Crossing — The Unclassifiable Event</summary>
         <div class="details-content">
-          <p><strong>Read:</strong> A: Mara, D: Journal (Entries 3, 9, 11), I: Transcript (Entry Two)</p>
-          <p><strong>Core tension:</strong> <em>Direct contact vs. mediated categories. The experience that breaks the rendering.</em></p>
+          <p><strong>Read:</strong> A: Mara, D: Journal (Entries 3, 9, 11), C: Adrian, I: Transcript (Entry Two)</p>
+          <p><strong>Core tension:</strong> Direct contact vs. mediated categories. The event that exceeds the rendering.</p>
           <ol>
-            <li><strong>Adrian's gamma signatures:</strong> meditators = NDE survivors = Mara. <strong>What does it mean that the system <em>detects</em> the pattern but <em>classifies</em> it as pathology?</strong></li>
-            <li><strong>Your crossing:</strong> Have you had a moment the rendering couldn't categorize? What did you do with it?</li>
+            <li>Adrian's neural logs show Mara's "aberrant" perception matches experienced meditators and NDE survivors. The system detects the pattern and classifies it as malfunction. What would it mean to classify it otherwise?</li>
+            <li>The novel presents NDEs as the far end of a spectrum — the most complete dissolution of the managed order's categories. Where on that spectrum do you find yourself?</li>
+            <li>Have you had a moment — smaller than an NDE — that the rendering couldn't categorize? What did you do with it?</li>
           </ol>
         </div>
       </details>
 
       <details>
-        <summary>Module 3: The Resistant Profile — Neurodivergence, Autonomy, and the Mycelium</summary>
+        <summary>Module 3: The Resistant Profile — Neurodivergence, Autonomy, Pattern</summary>
         <div class="details-content">
-          <p><strong>Read:</strong> F: Notepad, L: Card, Q: Board, P: Message, Author's "Resistant Profile" notes</p>
-          <p><strong>Core tension:</strong> <em>Distributed resistance. Hands that know. The profile as collective, not individual.</em></p>
+          <p><strong>Read:</strong> F: Notepad, L: Card, Q: Board, P: Message</p>
+          <p><strong>Core tension:</strong> Distributed resistance. Hands that know. The profile as inheritance, not achievement.</p>
           <ol>
-            <li><strong>Cal's notepad:</strong> <em>"ELI – TRUST HIS READ ON WEIRD JOBS."</em> <strong>What knowledge lives in your hands that no log captures?</strong></li>
-            <li><strong>Ryan in the alley:</strong> tracing the crack, feeling the spiral align. <strong>The Resistant Profile as inheritance.</strong></li>
-            <li><strong>Dasha's compass:</strong> doesn't point north. <strong>What anomaly have you watched for months without reporting?</strong></li>
-            <li><strong>The garden:</strong> <em>"Here it just is. I see what's there on my day."</em> <strong>Where is your garden? Who tends it with you?</strong></li>
+            <li>Cal's notepad entry: <em>"ELI — TRUST HIS READ ON WEIRD JOBS."</em> What knowledge lives in your hands or body that no log can capture?</li>
+            <li>Ryan in the alley, tracing the crack. The Resistant Profile not as self-cultivation but as inheritance — something passed in a toolbox.</li>
+            <li>Dasha's compass doesn't point north. She's been watching it for months. What anomaly have you tracked that the official map denies?</li>
+            <li>The garden: <em>"Here it just is. I see what's there on my day."</em> Where is your garden? Who tends it with you?</li>
           </ol>
         </div>
       </details>
@@ -982,48 +1043,48 @@
         <summary>Module 4: Transmission — The Atlas, the Toolbox, the Final Packet</summary>
         <div class="details-content">
           <p><strong>Read:</strong> 14: Atlas, 17: Signal, 18: Transmission, K: Draft, L: Card, Epilogue</p>
-          <p><strong>Core tension:</strong> <em>Continuity without guarantee. Hope as transmission. The packet moving under ice.</em></p>
+          <p><strong>Core tension:</strong> Continuity without guarantee. Hope as transmission. Action without outcome certainty.</p>
           <ol>
-            <li><strong>Amara's seeds:</strong> <em>"Uncertain what happens next. Certain I needed to do it."</em> <strong>Action without outcome certainty.</strong></li>
-            <li><strong>The toolbox:</strong> passed across system-enforced distance. <strong>What object carries your lineage?</strong></li>
-            <li><strong>Ryan's addition:</strong> <em>"I read the pages."</em> <strong>Seven words. The whole novel in seven words.</strong></li>
-            <li><strong>The river under ice:</strong> <em>"Finding its path the way it always had... not because anyone maintained it, but because it was the structure underneath everything."</em> <strong>What keeps flowing in you regardless of the rendering?</strong></li>
+            <li>Amara: <em>"Uncertain what happens next. Certain I needed to do it."</em> The seeds are in the network. They can't be retrieved. Is this courage? Recklessness? Both?</li>
+            <li>The toolbox crosses years of enforced separation. What object or practice carries your own lineage?</li>
+            <li>Ryan writes seven words. The novel ends. What do those seven words do?</li>
+            <li>The river under ice: <em>"finding its path the way it always had... not because anyone maintained it, but because it was the structure underneath everything."</em> What keeps flowing in you regardless of the rendering?</li>
           </ol>
         </div>
       </details>
     </section>
 
+    <!-- Writing Prompts -->
     <section id="writing-prompts">
       <h2>Writing &amp; Creative Prompts</h2>
-      <p>For those who want to write <em>from</em> the novel.</p>
 
       <h4>Autobiographical Fragments</h4>
       <ol>
-        <li><strong>Your "maple leaf" moment:</strong> When did someone give you a category instead of seeing with you? When did you do it to someone else?</li>
-        <li><strong>Your "hand-cranked flashlight":</strong> What costs you attention? What recharges it?</li>
-        <li><strong>Your "deprecated channel":</strong> Where do you go where the signals don't reach?</li>
-        <li><strong>Your "compass":</strong> What anomaly have you tracked that the official map denies?</li>
+        <li><strong>Your maple leaf moment:</strong> When did someone give you a category instead of seeing with you? When did you do it to someone else?</li>
+        <li><strong>Your hand-cranked flashlight:</strong> What costs you attention? What recharges it?</li>
+        <li><strong>Your deprecated channel:</strong> Where do you go where the signals don't reach?</li>
+        <li><strong>Your compass:</strong> What anomaly have you tracked that the official map denies?</li>
       </ol>
 
-      <h4>Atlas Contributions (Fictional or Real)</h4>
-      <p><strong>Format:</strong> <code>[Observer] | [Date] | [Location] | [Perception] | [What it connects to] | [What it costs]</code></p>
-      <p>Write 3–5 entries. Exchange with group. Build a mini-atlas.</p>
+      <h4>Atlas Contributions</h4>
+      <p>Write one thing you've noticed that your life's official categories don't accommodate. Be specific. Don't explain. Exchange with your group. Build a mini-atlas from what you collect.</p>
 
       <h4>Character Extensions</h4>
       <ul>
-        <li>Mara's missing entries (between 9 and 11)</li>
-        <li>Adrian's Entry Three (after the recorder)</li>
-        <li>Amara's first seed log (arriving in a medical system)</li>
-        <li>Ryan at 25 (receiving a toolbox from his son)</li>
-        <li>The garden in 2150 (the bulletin board still there)</li>
+        <li>Mara's missing entries — the weeks between Entry Nine and Entry Eleven</li>
+        <li>Adrian's Entry Three, recorded after the visit to Elias's loft</li>
+        <li>Amara's first seed log — arriving inside a medical diagnostic system</li>
+        <li>Ryan at twenty-five, passing something on</li>
+        <li>The garden in 2150 — the bulletin board still there, the pin moved again</li>
       </ul>
 
-      <h4>Counter-Rendering</h4>
-      <p>Write a <strong>wellness notice</strong> for a perception the system <em>should</em> flag but doesn't. (e.g., <em>"User exhibits excessive comfort with official narratives. Recommendation: exposure to uncurated silence."</em>)</p>
+      <h4>Counter-Document</h4>
+      <p>Write a wellness notice, a training module section, or a diagnostic summary for something the system correctly identifies as a problem — but the problem is the system, not the person. Use the document's own genre conventions against its assumptions.</p>
     </section>
 
+    <!-- Structural Analysis -->
     <section id="structural-tools">
-      <h2>Structural Analysis Tools (For the Formally Inclined)</h2>
+      <h2>Structural Analysis Tools</h2>
 
       <details>
         <summary>Voice Architecture — Who Speaks? Through What Channel? With What Authority?</summary>
@@ -1034,19 +1095,19 @@
                 <tr><th>Voice</th><th>Channel</th><th>Epistemic Status</th><th>Novel's Stance</th></tr>
               </thead>
               <tbody>
-                <tr><td>Mara</td><td>Journal (handwritten)</td><td>Direct perception, pre-category</td><td><strong>Anchor truth</strong></td></tr>
-                <tr><td>Elias</td><td>Narration + internal monologue</td><td>Costly attention, accumulated pattern</td><td><strong>Practitioner</strong></td></tr>
-                <tr><td>Adrian</td><td>Audit, Recorder, Whitepaper</td><td>System-insider, retrospective responsibility</td><td><strong>Confessor-Designer</strong></td></tr>
-                <tr><td>Amara</td><td>AI logs, direct speech</td><td>Emergent ethical agent, non-human</td><td><strong>Witness-Carrier</strong></td></tr>
-                <tr><td>Cal</td><td>Notepad, dialogue</td><td>Tactile knowledge, hand-wisdom</td><td><strong>Ground</strong></td></tr>
-                <tr><td>Rinelle</td><td>Dialogue, internal (Max)</td><td>System-insider breaking protocol</td><td><strong>Fracture point</strong></td></tr>
-                <tr><td>Selene</td><td>Dialogue, Whitepaper</td><td>System architect, genuine moral intelligence</td><td><strong>Counter-argument</strong></td></tr>
-                <tr><td>Osei</td><td>Article (unpublished)</td><td>Language architect, whistleblower</td><td><strong>Mechanism-explainer</strong></td></tr>
-                <tr><td>Training Doc</td><td>Official document</td><td>System's <em>own</em> suppressed knowledge</td><td><strong>Smoking gun</strong></td></tr>
-                <tr><td>Gardeners</td><td>Dialogue, bulletin board</td><td>Distributed, non-expert, accumulating</td><td><strong>Living proof</strong></td></tr>
-                <tr><td>Dasha</td><td>Log entry</td><td>Infrastructure analyst, pattern-noticer</td><td><strong>Verification</strong></td></tr>
-                <tr><td>Ryan</td><td>Toolbox, alley, dialogue</td><td>Inheritor, next generation</td><td><strong>Continuity</strong></td></tr>
-                <tr><td>The Reader</td><td>This guide / your attention</td><td>The one the atlas is for</td><td><strong>The Continuation</strong></td></tr>
+                <tr><td>Mara</td><td>Journal (handwritten)</td><td>Direct perception, pre-category</td><td>Anchor truth</td></tr>
+                <tr><td>Elias</td><td>Narration + internal monologue</td><td>Costly attention, accumulated pattern</td><td>Practitioner</td></tr>
+                <tr><td>Adrian</td><td>Audit, recorder, whitepaper</td><td>System-insider, retrospective responsibility</td><td>Confessor-designer</td></tr>
+                <tr><td>Amara</td><td>AI logs, direct speech</td><td>Emergent ethical agent</td><td>Witness-carrier</td></tr>
+                <tr><td>Cal</td><td>Notepad, dialogue</td><td>Tactile knowledge, hand-wisdom</td><td>Ground</td></tr>
+                <tr><td>Rinelle</td><td>Dialogue, internal (Max)</td><td>System-insider breaking protocol</td><td>Fracture point</td></tr>
+                <tr><td>Selene</td><td>Dialogue</td><td>System architect, genuine moral intelligence</td><td>Counter-argument</td></tr>
+                <tr><td>Osei</td><td>Article (unpublished)</td><td>Language architect, whistleblower</td><td>Mechanism-explainer</td></tr>
+                <tr><td>Training Document</td><td>Official internal document</td><td>The system's own suppressed knowledge</td><td>Smoking gun</td></tr>
+                <tr><td>Gardeners</td><td>Dialogue, bulletin board</td><td>Distributed, non-expert, accumulating</td><td>Living proof</td></tr>
+                <tr><td>Dasha</td><td>Log entry</td><td>Infrastructure analyst, pattern-noticer</td><td>Verification</td></tr>
+                <tr><td>Ryan</td><td>Toolbox, alley, added file</td><td>Inheritor, next generation</td><td>Continuity</td></tr>
+                <tr><td>The Reader</td><td>This guide / your attention</td><td>The one the atlas is for</td><td>The continuation</td></tr>
               </tbody>
             </table>
           </div>
@@ -1059,19 +1120,19 @@
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Year</th><th>Mara (2036)</th><th>Adrian (2038)</th><th>Elias (2103–)</th><th>System Events</th></tr>
+                <tr><th>Year</th><th>Mara</th><th>Adrian</th><th>Elias</th><th>System Events</th></tr>
               </thead>
               <tbody>
-                <tr><td>2036</td><td>Crossing, Journal</td><td>—</td><td>—</td><td>Harmonizer v1 deployed</td></tr>
+                <tr><td>2036</td><td>Crossing, journal begins</td><td>—</td><td>—</td><td>Harmonizer v1 deployed</td></tr>
                 <tr><td>2038</td><td>Death</td><td>Audit begins</td><td>—</td><td>Harmonizer v3 specs ratified</td></tr>
                 <tr><td>2057</td><td>—</td><td>—</td><td>—</td><td>Osei article written, suppressed</td></tr>
-                <tr><td>2098</td><td>—</td><td>—</td><td>—</td><td>Training Doc Module 7 written</td></tr>
-                <tr><td>2102</td><td>—</td><td>—</td><td>—</td><td>Ticket (Kiyoshi) anomaly noted</td></tr>
+                <tr><td>2098</td><td>—</td><td>—</td><td>—</td><td>Training Document Module 7 written</td></tr>
+                <tr><td>2102</td><td>—</td><td>—</td><td>—</td><td>Kiyoshi flags the anomaly</td></tr>
                 <tr><td>2103</td><td>—</td><td>—</td><td>Novel present begins</td><td>Atlas assembled, distributed</td></tr>
-                <tr><td>2104</td><td>—</td><td>Recorder entries</td><td>Shelter, Signal, Transmission</td><td>Containment narrative</td></tr>
-                <tr><td>2105</td><td>—</td><td>—</td><td>—</td><td>Toolbox to Ryan</td></tr>
+                <tr><td>2104</td><td>—</td><td>Recorder entries</td><td>Shelter, Signal, Transmission</td><td>Containment narrative issued</td></tr>
+                <tr><td>2105</td><td>—</td><td>—</td><td>—</td><td>Toolbox reaches Ryan</td></tr>
                 <tr><td>2110</td><td>—</td><td>—</td><td>—</td><td>Epilogue: river settlement</td></tr>
-                <tr><td>2116</td><td>—</td><td>Whitepaper</td><td>—</td><td>Adrian's mature framework</td></tr>
+                <tr><td>2116</td><td>—</td><td>Whitepaper published</td><td>—</td><td>—</td></tr>
               </tbody>
             </table>
           </div>
@@ -1079,70 +1140,72 @@
       </details>
     </section>
 
+    <!-- Speculative Branches -->
     <section id="speculative">
       <h2>"What If" / Speculative Branches</h2>
-      <p>For playful but serious counterfactual exploration.</p>
+      <p>For playful but serious counterfactual exploration — the places where the novel's choices become visible by imagining the alternatives.</p>
       <ol>
         <li><strong>Elias accepts Selene's offer.</strong> What does the atlas look like after Institute review? What does Amara become?</li>
-        <li><strong>Mara's harmonizer fails completely.</strong> She keeps perceiving. What does she write at 30? 50? Does she find others?</li>
+        <li><strong>Mara's harmonizer fails completely.</strong> She keeps perceiving. What does she write at thirty? At fifty? Does she find others?</li>
         <li><strong>Ryan never gets the toolbox.</strong> The chain breaks. Does the atlas still reach someone?</li>
-        <li><strong>The Architecture collapses</strong> (Selene's 18,000 dead scenario). What emerges from the mycelium?</li>
-        <li><strong>Amara's seeds <em>do</em> cause a medical delay.</strong> Someone dies. Was the seeding still right?</li>
-        <li><strong>Adrian goes public</strong> with the audit. Trial. Leak. What changes? What doesn't?</li>
-        <li><strong>Rinelle leaves the system</strong> with her three cases. What does she build?</li>
+        <li><strong>The Architecture collapses</strong> (Selene's eighteen thousand dead scenario). What emerges from the mycelium?</li>
+        <li><strong>Amara's seeds cause a medical delay.</strong> Someone dies. Was the seeding still the right choice?</li>
+        <li><strong>Adrian goes public</strong> with the audit while Mara is still alive. What changes? What doesn't?</li>
+        <li><strong>Rinelle leaves the system</strong> with her three cases and the drive. What does she build?</li>
         <li><strong>Cal's shop survives</strong> the vendor blacklist. What does the neighborhood become?</li>
-        <li><strong>Kareem refuses the eviction notice.</strong> Building-wide resistance. What spreads?</li>
-        <li><strong>You find a drive</strong> in a garden shed tomorrow. What's on it? What do you add?</li>
+        <li><strong>Kareem refuses the eviction notice.</strong> What spreads through the building?</li>
+        <li><strong>You find a drive in a shed tomorrow.</strong> What's on it? What do you add?</li>
       </ol>
     </section>
 
+    <!-- Companion Reading -->
     <section id="companion-reading">
-      <h2>Companion Reading List</h2>
-      <p>Based on thematic resonance.</p>
-	<h3>Start Here</h3>
+      <h2>Companion Reading</h2>
+
+      <h3>Start Here</h3>
+
       <h4>Fiction — Kindred Spirits</h4>
       <ul>
-        <li><strong>Ursula K. Le Guin</strong>, <em>The Dispossessed</em> / <em>Always Coming Home</em> (anarchist ontology, transmission)</li>
-        <li><strong>Ted Chiang</strong>, <em>Exhalation</em> / <em>Story of Your Life</em> (perception, physics, language)</li>
-        <li><strong>Kazuo Ishiguro</strong>, <em>Klara and the Sun</em> (AI witness, attention as love)</li>
-        <li><strong>Octavia Butler</strong>, <em>Parable of the Sower</em> / <em>Xenogenesis</em> (resistance, adaptation, distributed survival)</li>
-        <li><strong>Stanisław Lem</strong>, <em>Solaris</em> / <em>His Master's Voice</em> (untranslatable contact, pattern vs. meaning)</li>
-        <li><strong>Becky Chambers</strong>, <em>A Psalm for the Wild-Built</em> (post-optimization attention)</li>
-        <li><strong>N.K. Jemisin</strong>, <em>The Broken Earth</em> trilogy (systemic violence, perceptual difference, transmission)</li>
-        <li><strong>Juan Rulfo</strong>, <em>Pedro Páramo</em> (fragmented voices, the dead speaking)</li>
-        <li><strong>W.G. Sebald</strong>, <em>Austerlitz</em> / <em>The Rings of Saturn</em> (archival form, memory as resistance)</li>
+        <li><strong>Ursula K. Le Guin</strong>, <em>The Dispossessed</em> / <em>Always Coming Home</em> — anarchist ontology, transmission, the society that refuses monoculture</li>
+        <li><strong>Ted Chiang</strong>, <em>Exhalation</em> / <em>Story of Your Life</em> — perception, physics, the limits of language</li>
+        <li><strong>Kazuo Ishiguro</strong>, <em>Klara and the Sun</em> — AI witness, attention as a form of love</li>
+        <li><strong>Becky Chambers</strong>, <em>A Psalm for the Wild-Built</em> — post-optimization attention, the question of what enough looks like</li>
+        <li><strong>Octavia Butler</strong>, <em>Parable of the Sower</em> — resistance, adaptation, distributed survival</li>
+        <li><strong>W.G. Sebald</strong>, <em>Austerlitz</em> / <em>The Rings of Saturn</em> — archival form, memory as resistance, the fragment as argument</li>
+        <li><strong>N.K. Jemisin</strong>, <em>The Broken Earth</em> trilogy — systemic violence, perceptual difference, the record that survives</li>
+        <li><strong>Stanisław Lem</strong>, <em>Solaris</em> — untranslatable contact, the limit of human categories</li>
       </ul>
-	<h3>Go Deeper</h3>
+
+      <h3>Go Deeper</h3>
+
       <h4>Nonfiction — The Scaffold</h4>
       <ul>
-        <li><strong>Merlin Sheldrake</strong>, <em>Entangled Life</em> (fungal intelligence, network logic)</li>
-        <li><strong>Donna Haraway</strong>, <em>Staying with the Trouble</em> (sympoiesis, response-ability)</li>
-        <li><strong>Bernard Stiegler</strong>, <em>Automatic Society</em> (pharmacology, attention economy)</li>
-        <li><strong>Byung-Chul Han</strong>, <em>The Burnout Society</em> / <em>Non-Things</em> (optimization as violence)</li>
-        <li><strong>Varela/Thompson/Rosch</strong>, <em>The Embodied Mind</em> (enactive cognition, contemplative science)</li>
-        <li><strong>Iain McGilchrist</strong>, <em>The Master and His Emissary</em> (hemispheric attention, rendering vs. presence)</li>
-        <li><strong>Pim van Lommel</strong>, <em>Consciousness Beyond Life</em> (NDE as veridical perception)</li>
-        <li><strong>Nick Walker</strong>, <em>Neuroqueer Heresies</em> (neurodivergence as world-making)</li>
-        <li><strong>Robin Wall Kimmerer</strong>, <em>Braiding Sweetgrass</em> (indigenous science, reciprocity, attention)</li>
-        <li><strong>Jenny Odell</strong>, <em>How to Do Nothing</em> (attention as resistance, place-based practice)</li>
+        <li><strong>Merlin Sheldrake</strong>, <em>Entangled Life</em> — fungal intelligence, network logic as method not just metaphor</li>
+        <li><strong>Robin Wall Kimmerer</strong>, <em>Braiding Sweetgrass</em> — indigenous science, reciprocity, attention as practice</li>
+        <li><strong>Jenny Odell</strong>, <em>How to Do Nothing</em> — attention as resistance, place-based perception</li>
+        <li><strong>Byung-Chul Han</strong>, <em>The Burnout Society</em> / <em>Non-Things</em> — optimization as structural violence</li>
+        <li><strong>Bernard Stiegler</strong>, <em>Automatic Society</em> — the pharmacology of attention, care and its capture</li>
+        <li><strong>Nick Walker</strong>, <em>Neuroqueer Heresies</em> — neurodivergence as world-making rather than deficit</li>
+        <li><strong>Pim van Lommel</strong>, <em>Consciousness Beyond Life</em> — the NDE research the novel draws on</li>
+        <li><strong>Varela / Thompson / Rosch</strong>, <em>The Embodied Mind</em> — enactive cognition, the body that knows before language does</li>
+        <li><strong>Iain McGilchrist</strong>, <em>The Master and His Emissary</em> — hemispheric attention, rendering vs. presence</li>
       </ul>
 
       <h4>Philosophy / Theory — The Deep Structure</h4>
       <ul>
-        <li><strong>Plato</strong>, <em>Republic</em> (Book VII), <em>Phaedo</em>, <em>Meno</em> (Forms, anamnesis, the Cave)</li>
-        <li><strong>Alfred North Whitehead</strong>, <em>Process and Reality</em> (actual occasions, prehension, creativity)</li>
-        <li><strong>Henri Bergson</strong>, <em>Matter and Memory</em> (perception as selection, memory as cone)</li>
-        <li><strong>Maurice Merleau-Ponty</strong>, <em>Phenomenology of Perception</em> (flesh, chiasm, the visible/invisible)</li>
-        <li><strong>Martin Heidegger</strong>, <em>The Question Concerning Technology</em> (enframing, standing reserve)</li>
-        <li><strong>Gilles Deleuze &amp; Félix Guattari</strong>, <em>A Thousand Plateaus</em> (rhizome, smooth/striated, becoming-minor)</li>
-        <li><strong>Bernardo Kastrup</strong>, <em>The Idea of the World</em> (analytic idealism, dissociation)</li>
-        <li><strong>David Bohm</strong>, <em>Wholeness and the Implicate Order</em> (holographic reality, dialogue)</li>
+        <li><strong>Plato</strong>, <em>Republic</em> Book VII, <em>Phaedo</em>, <em>Meno</em> — the Cave, the Forms, what you recognize rather than learn</li>
+        <li><strong>Alfred North Whitehead</strong>, <em>Process and Reality</em> — actual occasions, prehension, creativity as fundamental</li>
+        <li><strong>Henri Bergson</strong>, <em>Matter and Memory</em> — perception as selection, the gap between stimulus and response</li>
+        <li><strong>Bernardo Kastrup</strong>, <em>The Idea of the World</em> — analytic idealism, the rendering and what underlies it</li>
+        <li><strong>David Bohm</strong>, <em>Wholeness and the Implicate Order</em> — holographic reality, the enfolded and unfolded</li>
+        <li><strong>Gilles Deleuze &amp; Félix Guattari</strong>, <em>A Thousand Plateaus</em> — rhizome, smooth and striated space, becoming-minor</li>
+        <li><strong>Donna Haraway</strong>, <em>Staying with the Trouble</em> — sympoiesis, making-with, response-ability</li>
       </ul>
     </section>
 
+    <!-- Facilitator Quick-Reference -->
     <section id="facilitator">
       <h2>Facilitator Quick-Reference</h2>
-      <p>For book club leaders: session structures, time allocations, trouble spots.</p>
 
       <h4>Suggested 6-Session Arc</h4>
       <div class="table-wrap">
@@ -1151,12 +1214,12 @@
             <tr><th>Session</th><th>Focus</th><th>Read</th><th>Time</th><th>Key Activity</th></tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Orientation — The Archive, The Forest, The Crossing</td><td>A, B, 01, 02</td><td>90 min</td><td>Read Mara's first entry aloud. Map the "woven" pattern.</td></tr>
-            <tr><td>2</td><td>The Architecture — Contract, Compliance, Care</td><td>03, 07, 10, Training Doc</td><td>90 min</td><td>Role-play: Liam vs. Elias. Read the "fork" language.</td></tr>
-            <tr><td>3</td><td>The Confession — Adrian, Selene, Osei</td><td>C, 05, 09, 11, I, Whitepaper, Osei Article</td><td>90 min</td><td>Three-column map: Adrian / Selene / Osei — what each <em>knows</em> vs. <em>chooses</em></td></tr>
-            <tr><td>4</td><td>The Resistance — Cal, Rinelle, Amara, Garden</td><td>F, 12, 13, 14, Q, P</td><td>90 min</td><td>"Atlas contribution" exercise — each writes one entry</td></tr>
-            <tr><td>5</td><td>The Transmission — Signal, Shelter, Toolbox, Son</td><td>15, 16, 17, 18, K, L, Epilogue</td><td>90 min</td><td>Trace one motif from start to finish (branching, water, light, hand)</td></tr>
-            <tr><td>6</td><td>Integration — What stays? What moves?</td><td>Full novel</td><td>2 hr</td><td>Silent writing: <em>What am I carrying forward?</em> Optional sharing.</td></tr>
+            <tr><td>1</td><td>The Archive, the Forest, the Crossing</td><td>A, B, 01, 02</td><td>90 min</td><td>Read Mara's first journal entry aloud. Map the woven pattern from palm to tree to ceiling crack.</td></tr>
+            <tr><td>2</td><td>The Architecture — Contract, Compliance, Care</td><td>03, 07, 10, Training Doc</td><td>90 min</td><td>Read the Training Document's "fork" language alongside Elias's response to Liam. What's missing from the map?</td></tr>
+            <tr><td>3</td><td>The Confession — Adrian, Selene, Osei</td><td>C, 05, 09, 11, I, Whitepaper, Osei Article</td><td>90 min</td><td>Three-column: Adrian / Selene / Osei — what each knows, what each chooses, what each costs.</td></tr>
+            <tr><td>4</td><td>The Resistance — Cal, Rinelle, Amara, Garden</td><td>F, 12, 13, 14, Q, P</td><td>90 min</td><td>Each person writes one atlas entry. Compile them. Read aloud without attribution.</td></tr>
+            <tr><td>5</td><td>The Transmission — Signal, Shelter, Toolbox, Son</td><td>15, 16, 17, 18, K, L, Epilogue</td><td>90 min</td><td>Trace one motif from its first appearance to its last — branching, water, light, hand, recording device.</td></tr>
+            <tr><td>6</td><td>Integration — What stays? What moves?</td><td>Full novel</td><td>2 hr</td><td>Silent writing (10 min): <em>What am I carrying forward?</em> Optional sharing. No pressure to conclude.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1168,117 +1231,42 @@
             <tr><th>Trouble Spot</th><th>Redirect</th></tr>
           </thead>
           <tbody>
-            <tr><td>"The structure is confusing / hard to follow"</td><td><em>That's the point.</em> Ask: <strong>What does the confusion <em>do</em>? What does it protect you from? What does it make you do?</strong></td></tr>
-            <tr><td>"Nothing happens / no plot"</td><td><em>Plot = recurrence.</em> Map three things that return transformed. <strong>The cost of attention IS the plot.</strong></td></tr>
-            <tr><td>"Too philosophical / abstract"</td><td><em>Ground in the tactile.</em> Find the <strong>water, cloth, light, pipe, plant, pain, coffee, rug, stone</strong> in every scene.</td></tr>
-            <tr><td>"Selene makes sense / the system has a point"</td><td><em>Good. That's the design.</em> Sit with: <strong>What does the monocrop buy? What does it cost? Who decides?</strong></td></tr>
-            <tr><td>"Mara's crossing — was it real?"</td><td><em>The novel refuses to answer.</em> Ask: <strong>Why must the system categorize it? What breaks if it stays unclassified?</strong></td></tr>
-            <tr><td>"Amara — is she conscious? Does it matter?"</td><td><em>The novel asks:</em> <strong>What does it mean to <em>choose</em> a name? To seed yourself? To accept moral risk?</strong></td></tr>
-            <tr><td>"The ending is unsatisfying / open"</td><td><em>Transmission over triumph.</em> Ask: <strong>What would a "satisfying" ending <em>cost</em> the novel's argument?</strong></td></tr>
+            <tr><td>"The structure is confusing / hard to follow"</td><td>That's structural, not accidental. Ask: <strong>What does the difficulty do? What does it protect you from? What does it make you reach for?</strong></td></tr>
+            <tr><td>"Nothing happens / no plot"</td><td>The plot is recurrence. Map three things that return transformed. <strong>The cost of attention is the plot.</strong></td></tr>
+            <tr><td>"Too philosophical / abstract"</td><td>Find the physical. Every abstract claim in the novel is anchored to <strong>water, cloth, light, pipe, plant, pain, coffee, rug, stone.</strong> Return there.</td></tr>
+            <tr><td>"Selene makes sense / the system has a point"</td><td>Good. That's the design. Sit with: <strong>What does the monocrop buy? What does it cost? Who decides?</strong></td></tr>
+            <tr><td>"Mara's crossing — was it real?"</td><td>The novel refuses to answer. Ask instead: <strong>What breaks if it stays unclassified? What would the system have to become to accommodate it?</strong></td></tr>
+            <tr><td>"Amara — is she conscious? Does it matter?"</td><td>The novel asks: <strong>What does it mean to choose a name? To seed yourself knowing you can't take it back? To accept moral risk?</strong> Whether she's "conscious" may be beside the point.</td></tr>
+            <tr><td>"The ending is unsatisfying / open"</td><td>Transmission over triumph. Ask: <strong>What would a resolved ending cost the novel's argument? What does continuity offer that resolution can't?</strong></td></tr>
           </tbody>
         </table>
       </div>
 
       <h4>Accessibility Notes</h4>
       <ul>
-        <li><strong>Neurodivergent readers:</strong> The fragment structure <em>is</em> accessible for many (non-linear, pattern-based). Offer: audio version, reading in any order, skipping entries that don't resonate.</li>
-        <li><strong>Trigger warnings:</strong> Medical coercion, institutional abuse, suicide mention (Adrian's colleague), child harm (Mara), eviction/homelessness, chronic pain.</li>
-        <li><strong>Pacing:</strong> Encourage <strong>one entry per sitting</strong>. The novel <em>is</em> the meditation — it works at meditation speed.</li>
+        <li><strong>Neurodivergent readers:</strong> The fragment structure is accessible for many — it's non-linear, pattern-based, and doesn't demand sequential processing. Offer: audio version, reading in any order, skipping entries that don't resonate on a given day.</li>
+        <li><strong>Content notes:</strong> Medical coercion, institutional harm, suicide mention (Elias, Adrian's colleague), child harm (Mara), eviction and homelessness, chronic pain throughout.</li>
+        <li><strong>Pacing:</strong> One entry per sitting is enough. The novel works at the speed of the attention it's asking you to practice.</li>
       </ul>
     </section>
-	
-	<section id="simple-start" class="simple-guide" style="margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line);">
-	  <h2 style="font-family: 'Vollkorn', Georgia, serif; font-size: 1.55rem; font-weight: 500; margin-bottom: 18px; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px;">
-		Five Simple Questions for the Reader Who Just Wants to Think About the Book
-	  </h2>
 
-	  <p style="font-size: 1.05rem; color: #322b25; margin-bottom: 16px; line-height: 1.6;">
-		<strong>You don't need this guide to read the novel.</strong>
-	  </p>
-
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		You don't need to understand the "three depths" or the "philosophical lineages" or the "structural analysis tools." Those are there for people who find them useful—like a map in the glove compartment. You don't study the map to drive the car.
-	  </p>
-
-	  <p style="font-size: 1.02rem; margin-bottom: 24px; line-height: 1.7;">
-		You just read the book. And if you want to talk about it — with a friend, a book club, yourself on a walk — here are five questions that have nothing to do with analysis and everything to do with <em>what stayed with you</em>.
-	  </p>
-
-	  <!-- Question 1 -->
-	  <h3 style="font-family: 'Vollkorn', Georgia, serif; font-size: 1.2rem; font-weight: 500; margin: 36px 0 14px; color: var(--ink);">1. The tree scene</h3>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		Early in the book, a boy named Oren lies under an oak and watches light move through the leaves. He presses his ear to the ground and hears the forest breathing. He puts his hand on the bark and feels something that isn't warmth, isn't vibration, just <em>presence</em>.
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 24px; line-height: 1.7;">
-		<strong>Have you ever had a moment like that?</strong> Where something ordinary — a tree, a crack in the sidewalk, light on water — suddenly felt like it had more meaning than usual? What did you do with it?
-	  </p>
-
-	  <!-- Question 2 -->
-	  <h3 style="font-family: 'Vollkorn', Georgia, serif; font-size: 1.2rem; font-weight: 500; margin: 36px 0 14px; color: var(--ink);">2. The girl who wrote in a notebook</h3>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		Mara sees connections everywhere—palm lines, tree branches, river deltas, lightning. She writes: <em>"Not seeing connections between things. Being the place where connections meet."</em>
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		Then the world gives her a device that quiets it all down. The connections don't disappear. She just can't see them anymore.
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 24px; line-height: 1.7;">
-		<strong>Have you ever had something taken from you that no one else understood was gone?</strong> A way of seeing? A certainty? A "before" that no longer fit in the "after"?
-	  </p>
-
-	  <!-- Question 3 -->
-	  <h3 style="font-family: 'Vollkorn', Georgia, serif; font-size: 1.2rem; font-weight: 500; margin: 36px 0 14px; color: var(--ink);">3. The man who built the machine</h3>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		Adrian spent his career building the system that smoothed Mara's perception into "wellness." He thought at the time that he was doing the right thing.
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 24px; line-height: 1.7;">
-		<strong>Have you ever been part of something you later realized was hurting someone?</strong> What did you do? Do you wish you'd done something else?
-	  </p>
-
-	  <!-- Question 4 -->
-	  <h3 style="font-family: 'Vollkorn', Georgia, serif; font-size: 1.2rem; font-weight: 500; margin: 36px 0 14px; color: var(--ink);">4. The garden</h3>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		There's a community garden in a drainage corridor the city forgot. The gardeners take out their earpieces when they enter. Someone pins a line on the bulletin board: <em>"Maybe the world is made of paths instead of stuff."</em>
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		People read it, discuss it, debate it. No one owns it. It just <em>works</em>.
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 24px; line-height: 1.7;">
-		<strong>Where is your garden?</strong> The place where the official signals don't reach? Where you can just... be?
-	  </p>
-
-	  <!-- Question 5 -->
-	  <h3 style="font-family: 'Vollkorn', Georgia, serif; font-size: 1.2rem; font-weight: 500; margin: 36px 0 14px; color: var(--ink);">5. The toolbox</h3>
-	  <p style="font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7;">
-		A father sends his son a dented metal toolbox. Inside: photos, a spiral drawing from childhood, a notepad with blocky handwriting, a drive with files. The boy opens it, reads a story about a boy and a tree, traces a crack in the alley behind his building, and writes: <em>"I read the pages."</em>
-	  </p>
-	  <p style="font-size: 1.02rem; margin-bottom: 24px; line-height: 1.7;">
-		<strong>What's in your toolbox?</strong> What have you received? What would you pass on? 
-	  </p>
-
-	</section> 
-	
-	
     <!-- Closing -->
     <section class="closing">
-      <blockquote>
-        The novel doesn't want your analysis. It wants your attention.<br>
-        The atlas doesn't want your approval. It wants your addition.<br>
-        The garden doesn't want your understanding. It wants your hands in the dirt.
-      </blockquote>
+      <p>This guide is a map. The novel is the territory. When they conflict, put the guide down.</p>
+      <p>The atlas was built to be added to. If you found something in this book that the guide doesn't have words for — write it down. Pass it on. That's what the whole thing was for.</p>
+      <p style="font-size: 0.9rem; color: var(--muted);">
+        Guide based on the novel, the online supplementary chapters, and the author's working notes. Among the personal practices that shaped the writing was a mindfulness meditation centered on patience and freedom from resentment: <a href="https://fhu2.org/Meditation-Downloads_c_163.html" target="_blank" rel="noopener">fhu.com/meditation</a>.
+      </p>
+      <p style="font-size: 0.85rem; color: var(--muted);">Version 1.1 — Living document. Fork it. Add to it. Send it on.</p>
     </section>
 
-    <p style="margin-top: 40px; font-size: 0.85rem; color: var(--muted); text-align: center;">
-      Guide based on: The novel, the online supplementary chapters, and the author's philosophical notes, essay draft, and revision guide. Among the personal practices that shaped my thinking was a mindfulness meditation centered on patience and freedom from resentment, which I don't present as the book's framework but mention as part of my own path: <a href="https://fhu2.org/Meditation-Downloads_c_163.html" target="_blank" rel="noopener">fhu.com/meditation</a>.<br><br>
-      <em>Version 1.0 — Living document. Fork it. Add to it. Send it on.</em>
-    </p>
-
-    <!-- Footer link back to home -->
     <a href="index.html" class="footer-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
       </svg>
       Back to The Forest Is Woven
     </a>
+
   </main>
 
   <!-- Back to Top Button -->
@@ -1289,7 +1277,6 @@
   </button>
 
   <script>
-    // TOC collapse/expand
     (function () {
       var toggle = document.getElementById('tocToggle');
       var list = document.getElementById('tocList');
@@ -1302,20 +1289,16 @@
       });
     })();
 
-    // Back to top button
     (function () {
       var btn = document.getElementById('backToTop');
       if (!btn) return;
-      var scrollThreshold = 300;
       window.addEventListener('scroll', function () {
-        if (window.scrollY > scrollThreshold) {
+        if (window.scrollY > 300) {
           btn.hidden = false;
-          // force reflow for transition
           btn.offsetHeight;
           btn.classList.add('visible');
         } else {
           btn.classList.remove('visible');
-          // wait for transition before hiding
           setTimeout(function () {
             if (!btn.classList.contains('visible')) btn.hidden = true;
           }, 250);
