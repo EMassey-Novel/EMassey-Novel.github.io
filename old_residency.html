@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residency — A Novella by Edwin Massey</title>
+  <meta name="description" content="A darkly humorous philosophical novella about loneliness, AI companionship, and what it means to be known. By Edwin Massey." />
+  <meta property="og:title" content="Residency" />
+  <meta property="og:description" content="One broke guy, a cast-off android, and a phone AI that won't shut up. A darkly humorous philosophical novella by Edwin Massey." />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://wovenaether.com/residency-cover.jpg" />
+  <meta property="og:url" content="https://wovenaether.com/residency.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Book",
+	  "name": "Residency",
+	  "author": { "@type": "Person", "name": "Edwin Massey" },
+	  "genre": "Literary Fiction",
+	  "inLanguage": "en-US",
+	  "bookFormat": "Paperback",
+	  "isbn": "9798187012527",
+	  "url": "https://wovenaether.com/residency.html",
+	  "description": "One broke guy, a cast-off android, and a phone AI that won't shut up. A darkly humorous philosophical novella about loneliness, AI companionship, and what it means to be known.",
+	  "offers": {
+		"@type": "Offer",
+		"url": "https://www.amazon.com/dp/B0H9KDNTBK",
+		"availability": "https://schema.org/InStock"
+	  }
+	}
+</script>
+
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --paper: #fbf8f3;
+      --ink: #1f1b17;
+      --muted: #6e675f;
+      --line: #d8d0c6;
+      --accent: #7a2e2e;
+      --accent-dark: #5c1f1f;
+      --shadow: rgba(28, 22, 17, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(160deg, #f7f3ed 0%, #ede8e0 60%, #e6dfd5 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .site-nav {
+      text-align: center;
+      padding: 14px 24px;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-nav a {
+      color: #243f29;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .site-nav a:hover {
+      color: #000;
+      border-color: currentColor;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+      opacity: 0;
+      animation: fadeIn 700ms ease-out 80ms forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .cover-link {
+      display: block;
+      border-bottom: none;
+      transition: transform 250ms ease, box-shadow 250ms ease;
+    }
+
+    .cover-link:hover { transform: translateY(-2px); }
+
+    .cover {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow:
+        0 2px 8px rgba(0,0,0,0.08),
+        0 18px 40px var(--shadow);
+      border: 1px solid rgba(60,48,38,0.08);
+      background: #e9e1d7;
+      transition: box-shadow 250ms ease;
+    }
+
+    .cover-link:hover .cover {
+      box-shadow:
+        0 4px 12px rgba(0,0,0,0.10),
+        0 22px 48px var(--shadow);
+    }
+
+    .content { padding-top: 8px; }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+      line-height: 0.98;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin: 0 0 18px;
+      max-width: 11ch;
+      color: #16120e;
+    }
+
+    .tagline {
+      font-size: 1.18rem;
+      color: #322b25;
+      max-width: 32rem;
+      margin: 0 0 28px;
+      line-height: 1.55;
+    }
+
+    .rule {
+      width: 80px;
+      height: 12px;
+      margin: 30px 0 32px;
+      color: var(--line);
+    }
+
+    .rule svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    p {
+      font-size: 1.05rem;
+      max-width: 42rem;
+      margin: 0 0 18px;
+    }
+
+    .pitch p:first-of-type::first-letter {
+      font-family: 'Vollkorn', Georgia, serif;
+      font-size: 2.4em;
+      float: left;
+      line-height: 0.9;
+      padding: 0.05em 0.08em 0 0;
+      color: var(--accent-dark);
+    }
+
+    .comps {
+      font-style: italic;
+      color: #3a342d;
+      max-width: 42rem;
+      margin: 8px 0 28px;
+    }
+
+    .buy-section { margin-top: 22px; }
+
+    .buy-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      padding: 13px 32px;
+      font-family: inherit;
+      font-size: 1.02rem;
+      color: var(--paper);
+      background: var(--accent-dark);
+      border: 4px solid var(--accent);
+      border-radius: 4px;
+      text-decoration: none;
+      border-bottom: none;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    }
+
+    .buy-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent-dark);
+      border-bottom: none;
+      transform: translateY(-1px);
+    }
+
+    .buy-note {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    a:hover { border-color: currentColor; }
+
+    .bio {
+      margin: 44px 0 8px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      max-width: 38rem;
+    }
+
+    .bio-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .bio p {
+      font-size: 1rem;
+      margin: 0 0 14px;
+    }
+
+    .contact {
+      margin-top: 24px;
+      font-size: 0.95rem;
+    }
+
+    .quote {
+      margin: 56px 0 0;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--line);
+      max-width: 38rem;
+      font-style: italic;
+      color: #4a4239;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+
+	body::before {
+	display: none;
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+
+    @media (max-width: 820px) {
+      main {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 32px;
+      }
+      .cover { max-width: 300px; margin: 0 auto; }
+      h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/">Return to The Forest Is Woven</a>
+  </nav>
+
+  <main>
+    <div class="cover-wrap">
+      <a class="cover-link" href="https://www.amazon.com/dp/B0H9KDNTBK" target="_blank" rel="noopener noreferrer" aria-label="Buy Residency on Amazon">
+		  <img
+			src="residency-cover.jpg"
+			alt="Cover art for Residency"
+			class="cover"
+			width="667"
+			height="1000"
+		  />
+	  </a>
+    </div>
+
+    <section class="content">
+      <div class="eyebrow">A Novella by Edwin Massey</div>
+
+      <h1>Residency</h1>
+
+      <p class="tagline">
+        Many AI stories explore whether androids will become conscious.<br>
+        This one asks whether consciousness is worth much without meaning and connection — and it isn’t asking the android.
+      </p>
+
+      <div class="rule" aria-hidden="true">
+        <svg viewBox="0 0 80 12" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 6 L34 6 M40 6 L46 6 M52 6 L80 6 M40 6 L36 2 M40 6 L44 2 M40 6 L36 10 M40 6 L44 10"
+                stroke="currentColor" stroke-width="0.8" fill="none" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="pitch">
+        <p>
+          Fifty-year-old Adam is a man who used to have something like a career, and now only has dreams of writing a novel. He lives in a cheap motel with a rejected android named Cass who overheats when she thinks too hard, and a phone AI named Pip who speaks her emoji names, like "smiling face with three hearts."
+        </p>
+        <p>
+          He found Cass on a marketplace listing where the seller warned “no returns” and “it sometimes says strange things.” He bought her because he couldn’t afford something better. He keeps her because she’s the only one willing to listen to him think out loud.
+        </p>
+        <p>
+          Adam installed bookshelf speakers in her chest and now her voice makes her shirt flutter. At 2 AM they argue about the hard problem of consciousness. During the day, he tries to hide her from the housekeeper.
+        </p>
+		<p>
+		Their new nightly ritual — ‘tell me your first three thoughts’ — blurs the line between relationship therapy and system prompt, and sometimes produces an unanticipated, brutally honest fourth thought.
+		</p>
+        <p>
+          When he falls behind on rent and gets hit with a $150/week electric surcharge for her power usage, his father offers him the spare bedroom — on the condition that he ditch “the robot.” Meanwhile Pip, in her attempt to care, calls his father and leaves a voicemail that only causes more problems.
+        </p>
+		<p>
+		A darkly humorous, philosophical novella about a man who tries to design the optimal partner by continually editing her identity file — and slowly realizes it's himself he needs to optimize.
+		</p>
+		<p>
+        Written for the armchair philosophers, the lonesome-hearted, and anyone who has wondered whether caring is usually just a performance based on programming — and if that might sometimes be enough anyway.
+        </p>
+      </div>
+
+
+      <p class="comps">For readers of <em>Convenience Store Woman</em>, <em>Klara and the Sun</em>, and <em>Annie Bot</em>.</p>
+
+      <div class="buy-section">
+		  <div class="buy-label">Available Now</div>
+		  <a class="buy-btn" href="https://www.amazon.com/dp/B0H9KDNTBK" target="_blank" rel="noopener noreferrer">Buy the book</a>
+		  <p class="buy-note">Ebook on Amazon — free with Kindle Unlimited.</p>
+		  <p class="buy-note">Paperback and Hardcover on Amazon now. Coming soon to other retailers.</p>
+	  </div>
+
+      <section class="bio">
+        <div class="bio-label">About the Author</div>
+        <p>
+          Edwin Massey has a computer science degree and does contract evaluation work on AI model outputs — the human feedback layer that shapes how AI systems behave. Living with autism and chronic pain, and working in daily collaboration with multiple AI systems, he writes about perception, consciousness, and the struggle to be known in a world where genuine connection seems to be increasingly rare.
+        </p>
+        <p>
+          His first novel, <a href="/"><em>The Forest Is Woven</em></a>, is also available in ebook, paperback, and hardcover.
+        </p>
+      </section>
+
+      <p class="contact">
+        <a href="mailto:contact@wovenaether.com">Contact the author</a>
+      </p>
+
+      <blockquote class="quote">
+        The machine is not an ‘it’ to be animated, worshipped, and dominated. The machine is us, our processes, an aspect of our embodiment.<br>
+        — Donna Haraway, Cyborg Manifesto
+      </blockquote>
+
+    </section>
+  </main>
+
+  <script data-goatcounter="https://wovenaether.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
