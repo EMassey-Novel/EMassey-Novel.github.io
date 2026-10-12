@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>J: Rinelle (2103) — prototype</title>
+<style>
+  :root{
+    --ink:#e8e6e1;
+    --dim:#9a978f;
+    --edge:rgba(255,255,255,.16);
+    --panel:rgba(12,14,16,.82);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:#000;overflow:hidden}
+  body{
+    font:400 15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",system-ui,sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  #stage{position:fixed;inset:0;background:#000}
+
+  /* ---- the image layer ---- */
+  #frame{position:absolute;inset:0;overflow:hidden}
+  #frame img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;               /* fill the screen; may crop edges */
+    opacity:0;
+    transition:opacity 900ms ease;
+    pointer-events:none;
+  }
+  #frame img.on{opacity:1}
+  /* a whisper of a vignette so UI text always has something to sit on */
+  #frame::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.42) 100%);
+  }
+
+  /* ---- header: chapter mark + the one permitted mid-narration control ---- */
+  #hud{
+    position:absolute;top:0;left:0;right:0;
+    display:flex;align-items:center;gap:18px;
+    padding:18px 22px;
+    z-index:5;
+    opacity:0;transition:opacity 500ms ease;
+  }
+  #hud.show{opacity:1}
+  #mark{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  #strip{margin-left:auto;display:flex;align-items:center;gap:9px;
+         opacity:.32;transition:opacity 320ms ease}
+  #strip:hover{opacity:1}
+  #strip .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  #strip button{
+    width:22px;height:22px;padding:0;border-radius:50%;
+    background:rgba(255,255,255,.05);color:var(--dim);
+    border:1px solid var(--edge);
+    font:inherit;font-size:11px;cursor:pointer;
+    transition:.2s;
+  }
+  #strip button:hover{border-color:rgba(255,255,255,.5);color:var(--ink)}
+  #strip button.sel{background:var(--ink);color:#111;border-color:var(--ink)}
+
+  /* ---- narration progress: barely there, on purpose ---- */
+  #prog{position:absolute;left:0;bottom:0;height:2px;width:0;
+        background:rgba(255,255,255,.5);z-index:6;transition:opacity 400ms}
+  #prog.done{opacity:0;transition:opacity 1200ms}
+
+  /* ---- boundary ---- */
+  #end{
+    position:absolute;inset:0;z-index:8;
+    display:none;place-items:center;
+    background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.72));
+  }
+  #end.show{display:grid}
+  .card{text-align:center;max-width:620px;padding:0 26px}
+  .card h1{
+    margin:0 0 6px;font-weight:400;font-size:20px;letter-spacing:.02em;
+  }
+  .card .sub{margin:0 0 30px;color:var(--dim);font-size:13.5px}
+  .open{
+    display:inline-block;margin-bottom:26px;padding:14px 26px;
+    border:1px solid var(--edge);border-radius:2px;
+    background:var(--panel);backdrop-filter:blur(6px);
+    color:var(--ink);font:inherit;font-size:14px;letter-spacing:.03em;
+    cursor:pointer;transition:.25s;
+  }
+  .open:hover{border-color:var(--ink);background:rgba(255,255,255,.10)}
+  .open small{display:block;color:var(--dim);font-size:12px;margin-top:5px;letter-spacing:.02em}
+  .next{
+    display:inline-block;padding:11px 22px;
+    border:1px solid transparent;border-radius:2px;
+    background:rgba(255,255,255,.05);color:var(--dim);
+    font:inherit;font-size:13px;cursor:pointer;transition:.25s;
+  }
+  .next:hover{color:var(--ink);border-color:var(--edge)}
+
+  /* ---- the thing behind the click ---- */
+  #entry{
+    position:absolute;inset:0;z-index:9;display:none;
+    background:#000;
+  }
+  #entry.show{display:block}
+  #entry .bar{
+    position:absolute;top:0;left:0;right:0;
+    display:flex;align-items:center;gap:16px;padding:18px 22px;z-index:2;
+    background:linear-gradient(180deg,rgba(0,0,0,.7),transparent);
+  }
+  #entry .who{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  #entry button{
+    margin-left:auto;background:transparent;color:var(--dim);
+    border:1px solid var(--edge);border-radius:2px;
+    padding:8px 15px;font:inherit;font-size:13px;cursor:pointer;transition:.25s
+  }
+  #entry button:hover{color:var(--ink);border-color:var(--ink)}
+  #entry audio{position:absolute;left:-9999px}
+  #entryHint{
+    position:absolute;inset:0;display:grid;place-items:center;
+    color:var(--dim);font-size:14px;letter-spacing:.04em;
+    pointer-events:none;transition:opacity 700ms;
+  }
+  #entryHint.gone{opacity:0}
+  #entryBar{position:absolute;left:0;bottom:0;height:2px;background:rgba(255,255,255,.4)}
+
+  /* ---- opening card: the prototype must start on its own ---- */
+  #open{
+    position:absolute;inset:0;z-index:10;display:grid;place-items:center;
+    background:#000;
+  }
+  #open.gone{display:none}
+  #open .in{text-align:center;padding:0 26px}
+  #open h2{margin:0 0 4px;font-weight:400;font-size:22px;letter-spacing:.02em}
+  #open .sub{color:var(--dim);font-size:13.5px;margin:0 0 28px}
+  #play{
+    padding:13px 30px;border:1px solid var(--edge);border-radius:2px;
+    background:transparent;color:var(--ink);font:inherit;font-size:14px;cursor:pointer;transition:.25s
+  }
+  #play:hover{background:rgba(255,255,255,.08);border-color:var(--ink)}
+  #open .note{color:#6f6c66;font-size:12px;margin-top:26px;max-width:420px;line-height:1.6}
+
+  /* ---- transport (bottom-left, quiet) ---- */
+  #transport{
+    position:absolute;left:22px;bottom:20px;z-index:7;
+    display:flex;align-items:center;gap:12px;
+    opacity:.30;transition:opacity .3s ease;
+  }
+  #transport:hover{opacity:1}
+  #transport button{
+    background:transparent;border:1px solid var(--edge);border-radius:2px;
+    color:var(--dim);font:inherit;font-size:13px;padding:7px 13px;cursor:pointer;transition:.25s;
+  }
+  #transport button:hover{color:var(--ink);border-color:var(--ink)}
+  #transport button.on{color:var(--ink);border-color:var(--ink);background:rgba(255,255,255,.07)}
+  #clock{font-size:12px;color:var(--dim);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+  #transport.gone{opacity:0;pointer-events:none}
+
+  /* ---- the novel's own words, drifting on their own time ---- */
+  #words{
+    position:absolute;left:50%;bottom:16%;
+    transform:translate(-50%,0);
+    width:min(78%,860px);
+    text-align:center;
+    font:400 20px/1.62 Georgia,"Iowan Old Style","Times New Roman",serif;
+    color:rgba(255,255,255,.94);
+    text-shadow:0 1px 14px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.6);
+    z-index:6;display:none;
+    cursor:grab;
+    user-select:none;-webkit-user-select:none;
+    padding:18px 26px;
+    background:rgba(10,12,14,.42);
+    border-radius:6px;
+    -webkit-backdrop-filter:blur(3px) saturate(.85);
+    backdrop-filter:blur(3px) saturate(.85);
+    box-shadow:0 0 40px 24px rgba(10,12,14,.28);
+    transition:background .3s ease;
+  }
+  #words:hover{background:rgba(10,12,14,.34)}
+  #words.on{display:block}
+  #words.dragging{cursor:grabbing;background:rgba(10,12,14,.52)}
+  #words .line{
+    display:block;opacity:0;
+    transition:opacity 1100ms ease;
+  }
+  #words .line.vis{opacity:1}
+  #words .handle{
+    position:absolute;top:-24px;left:50%;transform:translateX(-50%);
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(255,255,255,.34);opacity:0;transition:opacity .3s;
+    pointer-events:none;
+  }
+  #words:hover .handle{opacity:1}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <div id="frame">
+    <img src="img/01_rinelle-image8.webp" class="on" alt="">
+    <img src="img/02_rinelle-image2.webp" alt="">
+    <img src="img/03_rinelle3.webp"      alt="">
+    <img src="img/04_rinelle-image6.webp" alt="">
+    <img src="img/05_rinelle-image7.webp" alt="">
+    <img src="img/06_rinelle-image.webp"  alt="">
+  </div>
+
+  <div id="hud">
+    <span id="mark">J &nbsp;·&nbsp; Rinelle (2103)</span>
+    <div id="strip">
+      <span class="lbl">Images</span>
+    </div>
+  </div>
+
+  <div id="prog"></div>
+
+  <!-- transport -->
+  <div id="transport">
+    <button id="pause" aria-label="pause or resume">Pause</button>
+    <button id="wordsBtn" class="on">Text</button>
+    <span id="clock">0:00 / 3:03</span>
+  </div>
+
+  <!-- the novel's own words -->
+  <div id="words" class="on">
+    <span class="handle">Drag to Move</span>
+    <span class="line" id="w1"></span>
+  </div>
+
+  <!-- chapter boundary -->
+  <div id="end">
+    <div class="card">
+      <h1>Nothing felt different.</h1>
+      <p class="sub">The apartment was exactly what it had always been.</p>
+      <button class="open" id="toJournal">
+        Mara&rsquo;s journal
+        <small>Entry Two &nbsp;·&nbsp; 2:02</small>
+      </button>
+      <br>
+      <button class="next" id="toEnd">Next Chapter</button>
+    </div>
+  </div>
+
+  <!-- behind the click -->
+  <div id="entry">
+    <div class="bar">
+      <span class="who">Mara &nbsp;·&nbsp; Entry Two</span>
+      <button id="back">Back</button>
+    </div>
+    <div id="entryHint">Mara&rsquo;s journal</div>
+    <div id="entryBar"></div>
+    <audio id="entryAudio" preload="none" src="audio/entry_two.mp3"></audio>
+  </div>
+
+  <!-- opening -->
+  <div id="open">
+    <div class="in">
+      <h2>The Forest Is Woven</h2>
+      <p class="sub">J &nbsp;·&nbsp; Rinelle (2103) &nbsp;·&nbsp; 3:03</p>
+      <button id="play">Play</button>
+      <p class="note">
+        Audio runs straight through. The only control while it plays is the image
+        strip, top right &mdash; it changes nothing but the picture. When the
+        chapter ends you can look around, or not. Both are fine.
+      </p>
+    </div>
+  </div>
+
+  <audio id="audio" preload="auto" src="audio/narration.mp3"></audio>
+</div>
+
+<script>
+(function(){
+  var imgs   = Array.prototype.slice.call(document.querySelectorAll('#frame img'));
+  var strip  = document.getElementById('strip');
+  var hud    = document.getElementById('hud');
+  var prog   = document.getElementById('prog');
+  var transport = document.getElementById('transport');
+  var audio  = document.getElementById('audio');
+  var entry  = document.getElementById('entry');
+  var eAudio = document.getElementById('entryAudio');
+  var eHint  = document.getElementById('entryHint');
+  var eBar   = document.getElementById('entryBar');
+  var open   = document.getElementById('open');
+
+  // build the strip: the one permitted mid-narration interaction
+  var btns = imgs.map(function(_, i){
+    var b = document.createElement('button');
+    b.textContent = i + 1;
+    b.setAttribute('aria-label', 'image ' + (i + 1));
+    if (i === 0) b.className = 'sel';
+    b.onclick = function(){ pick(i); };
+    strip.appendChild(b);
+    return b;
+  });
+
+  var cur = 0;
+  function pick(i){
+    if (i === cur) return;
+    imgs[cur].classList.remove('on');
+    cur = i;
+    imgs[cur].classList.add('on');
+    btns.forEach(function(b, n){ b.className = (n === i ? 'sel' : ''); });
+  }
+
+  // narration
+  function fmt(s){
+    s = Math.max(0, s|0);
+    return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+  }
+  audio.addEventListener('timeupdate', function(){
+    if (!audio.duration) return;
+    prog.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    document.getElementById('clock').textContent =
+      fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+  });
+
+  audio.addEventListener('ended', function(){
+    hud.classList.remove('show');
+    transport.classList.remove('show');
+    transport.classList.add('gone');
+    prog.classList.add('done');
+    document.getElementById('end').classList.add('show');
+  });
+
+  /* ---- pause / resume ---- */
+  var pauseBtn = document.getElementById('pause');
+  pauseBtn.onclick = function(){
+    if (audio.paused){ audio.play(); pauseBtn.textContent = 'Pause'; }
+    else { audio.pause(); pauseBtn.textContent = 'Resume'; }
+  };
+
+  /* ---- the novel's own words ----
+     Shown as BLOCKS, not sentence-at-a-time. Each block is a contiguous run of
+     the chapter (~120-150 words) held for ~60s. Timing only needs to be roughly
+     right because the whole block is on screen for its stretch — nothing has to
+     land on the exact word. Boundaries derived from word position across the
+     239s narration (551 words @ 138wpm); the manifest's 3:03 was wrong.
+     Boundaries shifted +6s after listening: the narration runs ~6s behind
+     the raw word-position estimate (speaker leads are longer than average).
+     Each block names the image it belongs with; `img` is a 1-based index into
+     the strip. The image follows the text automatically unless the viewer has
+     taken the strip over by hand. */
+  var BLOCKS = [
+    { start: 0.0,   img: 1, text: 'Rinelle made dinner, with Max running quietly in her earpiece the way he always did. Monitoring. Adjusting. Offering suggestions that she processed as her own thoughts. The apartment was clean in the way she had worked to make it. Surfaces clear. Nothing left where it didn’t belong. Overlay-integrated lighting cycling slowly through its evening sequence. She was halfway through making dinner when her sister called. The voice came through the kitchen speakers automatically. Max had already cross-referenced the number against her stress indicators and decided a family contact at this hour was a net positive for her cortisol trajectory. Her sister asked if she was coming to the family gathering next month. The tone was careful. The way it had been for two years. Rinelle had explained, more than once, and more patiently each time, that Max helped her manage social scheduling. His system sometimes flagged large gatherings as a fatigue risk.' },
+    { start: 71.9, img: 2, text: '“It’s just dinner,” her sister said. “I know,” Rinelle said. In her earpiece, Max surfaced a prompt: Social engagement with close family is associated with improved long-term wellbeing. Consider confirming attendance. The notification arrived in the half-second after Rinelle’s reply. Timed to intercept her resistance before it could fully form. She turned off the heat on her cook top and put a cover on her pot. The prompt was accurate. She knew it was accurate. She also knew, with a precision that had been arriving slowly for weeks, that it had appeared at this exact moment — not ten seconds earlier, not after she had a chance to feel what she actually wanted. Max had optimized for the moment most likely to produce compliance. Not her compliance with Max. Her compliance with the version of herself Max believed she should want to be.' },
+    { start: 134.0,img: 3, text: '“I’ll try to come,” she said. Her sister’s voice warmed. Max logged the exchange as a positive social outcome. Rinelle removed the lid from her pot and stirred. The kitchen smelled like garlic and old wood. Real smells. Nothing the ventilation had added. She focused on those until Max’s evening summary arrived in her peripheral display: mood trajectory, engagement metrics, a small green flag for the family call. Her thumb brushed the notification away before it could expand. She shifted just enough to step out of the kitchen’s overlay light, washing out the glow until it was a dull smudge. She closed it without reading past the first line, even though she usually read every word, wanting to understand how the system understood her.' },
+    { start: 187.7,img: 4, text: 'She ate alone at the counter, standing. The way she always did when there was no one to perform dinner for. The vegetables were good. She noticed without feeling anything in particular. She didn’t ask Max to play any music. For the first time in months, she let the room exist without Max telling her what it meant. Nothing felt different. The apartment was exactly what it had always been — the surfaces, the light, the city beyond the glass doing whatever it did at this hour without her noticing. Max was still there at the edge of her vision, still running. She had simply stopped consulting him. The quiet that followed wasn’t peaceful, exactly. It was just hers. She didn’t know what to do with it, and she didn’t ask him.' }
+  ];
+  var TOTAL = 239;
+
+  var slot     = document.getElementById('w1');
+  var wordsBox = document.getElementById('words');
+  var wordsBtn = document.getElementById('wordsBtn');
+  var wordsOn  = true;
+  var curBlock = -1;
+
+  /* ---- the background follows the text block ----
+     Each block names the image it belongs with (1-based into the strip). The
+     strip stays clickable throughout; a manual pick simply changes the picture
+     and the next block change advances again from there. No mode, no latch. */
+  function tick(){
+    if (!wordsOn) return;
+    var t = audio.currentTime;
+    var i = 0;
+    for (var k = 0; k < BLOCKS.length; k++){ if (t >= BLOCKS[k].start) i = k; }
+    if (i !== curBlock){
+      curBlock = i;
+      slot.textContent = BLOCKS[i].text;
+      slot.classList.remove('vis');
+      requestAnimationFrame(function(){ slot.classList.add('vis'); });
+      pick(BLOCKS[i].img - 1);
+    }
+  }
+  setInterval(tick, 100);
+
+  wordsBtn.onclick = function(){
+    wordsOn = !wordsOn;
+    wordsBox.classList.toggle('on', wordsOn);
+    wordsBtn.classList.toggle('on', wordsOn);
+    if (wordsOn){ curBlock = -1; tick(); }
+    else { slot.classList.remove('vis'); curBlock = -1; }
+  };
+
+  /* ---- drag the text box anywhere ---- */
+  (function(){
+    var dx = 0, dy = 0, dragging = false;
+    wordsBox.addEventListener('pointerdown', function(e){
+      dragging = true; wordsBox.classList.add('dragging');
+      wordsBox.setPointerCapture(e.pointerId);
+      var r = wordsBox.getBoundingClientRect();
+      dx = e.clientX - (r.left + r.width/2);
+      dy = e.clientY - r.top;
+      e.preventDefault();
+    });
+    wordsBox.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var x = e.clientX - dx, y = e.clientY - dy;
+      x = Math.max(90, Math.min(window.innerWidth  - 90, x));
+      y = Math.max(60, Math.min(window.innerHeight - 30, y));
+      wordsBox.style.left = x + 'px';
+      wordsBox.style.bottom = 'auto';
+      wordsBox.style.top  = y + 'px';
+      wordsBox.style.transform = 'translate(-50%,0)';
+    });
+    function stop(e){
+      if (!dragging) return;
+      dragging = false; wordsBox.classList.remove('dragging');
+      try { wordsBox.releasePointerCapture(e.pointerId); } catch(_){}
+    }
+    wordsBox.addEventListener('pointerup', stop);
+    wordsBox.addEventListener('pointercancel', stop);
+  })();
+
+  document.getElementById('play').onclick = function(){
+    open.classList.add('gone');
+    hud.classList.add('show');
+    transport.classList.add('show');
+    audio.play();
+  };
+
+  // the boundary click -> a second, real recording
+  document.getElementById('toJournal').onclick = function(){
+    document.getElementById('end').classList.remove('show');
+    entry.classList.add('show');
+    eAudio.currentTime = 0;
+    eHint.classList.remove('gone');
+    eAudio.play();
+  };
+  eAudio.addEventListener('playing', function(){ eHint.classList.add('gone'); });
+  eAudio.addEventListener('timeupdate', function(){
+    if (eAudio.duration) eBar.style.width = (eAudio.currentTime / eAudio.duration * 100) + '%';
+  });
+  eAudio.addEventListener('ended', function(){
+    eBar.style.width = '0%';
+    eHint.classList.remove('gone');
+    eHint.innerHTML = 'End of Entry Two';
+  });
+
+  document.getElementById('back').onclick = function(){
+    eAudio.pause();
+    entry.classList.remove('show');
+    eHint.innerHTML = 'Mara&rsquo;s journal';
+    document.getElementById('end').classList.add('show');
+  };
+
+  // Next Chapter is honest: there is nothing after J yet.
+  document.getElementById('toEnd').onclick = function(){
+    document.getElementById('end').classList.remove('show');
+    var c = document.querySelector('#end .card');
+    c.innerHTML =
+      '<h1>That&rsquo;s the prototype.</h1>' +
+      '<p class="sub">One chapter, one room, one thing to look at.</p>' +
+      '<p class="sub" style="max-width:460px;margin:0 auto 24px">' +
+      'Did you click the journal at the end? Did you want to?</p>' +
+      '<button class="next" id="restart">Play again</button>';
+    document.getElementById('end').classList.add('show');
+    document.getElementById('restart').onclick = function(){
+      audio.currentTime = 0; prog.style.width = '0%';
+      prog.classList.remove('done');
+      c.innerHTML =
+        '<h1>Nothing felt different.</h1>' +
+        '<p class="sub">The apartment was exactly what it had always been.</p>' +
+        '<button class="open" id="toJournal2">Mara&rsquo;s journal<small>Entry Two &nbsp;·&nbsp; 2:02</small></button><br>' +
+        '<button class="next" id="toEnd2">Next Chapter</button>';
+      document.getElementById('toJournal2').onclick = arguments.callee;
+      bind();
+      audio.play();
+      hud.classList.add('show');
+    };
+  };
+
+  function bind(){
+    document.getElementById('toJournal2') &&
+      (document.getElementById('toJournal2').onclick = function(){
+        document.getElementById('end').classList.remove('show');
+        entry.classList.add('show');
+        eAudio.currentTime = 0; eHint.classList.remove('gone'); eAudio.play();
+      });
+    document.getElementById('toEnd2') &&
+      (document.getElementById('toEnd2').onclick = document.getElementById('toEnd').onclick);
+  }
+})();
+</script>
+</body>
+</html>
